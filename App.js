@@ -10,9 +10,29 @@ import { Footer } from "./src/components/Footer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Dashboard from "./src/screens/User/Dashboard";
 import CreateTask from "./src/screens/User/CreateTask";
+
+const DashStack = createNativeStackNavigator();
+const TaskStack = createNativeStackNavigator();
+
+function DashStackScreen() {
+  return (
+    <DashStack.Navigator>
+      <DashStack.Screen name='Dashboard' component={Dashboard} />
+    </DashStack.Navigator>
+  );
+}
+
+function TaskStackScreen() {
+  return (
+    <TaskStack.Navigator>
+      <TaskStack.Screen name='CreateTask' component={CreateTask} />
+    </TaskStack.Navigator>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 
@@ -31,34 +51,9 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        <Tab.Navigator initialRouteName="Dashboard">
-          <Tab.Screen
-            name="Dashboard"
-            component={Dashboard}
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
-
-                if (route.name === "Dashboard") {
-                  iconName = focused ? "home" : "home-outline";
-                } else if (route.name === "Settings") {
-                  iconName = focused ? "ios-list" : "ios-list-outline";
-                }
-
-                return (
-                  <Icon
-                    mb="1"
-                    as={<MaterialCommunityIcons name={iconName} />}
-                    color="white"
-                    size="xl"
-                  />
-                );
-              },
-              tabBarActiveTintColor: "tomato",
-              tabBarInactiveTintColor: "gray",
-            })}
-          />
-          <Tab.Screen name="CreateTask" component={CreateTask} />
+        <Tab.Navigator initialRouteName='Dashboard'>
+          <Tab.Screen name='Dashboard' component={DashStackScreen} />
+          <Tab.Screen name='CreateTask' component={TaskStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
