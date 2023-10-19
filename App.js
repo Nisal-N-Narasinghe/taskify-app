@@ -21,7 +21,7 @@ const TaskStack = createNativeStackNavigator();
 function DashStackScreen() {
   return (
     <DashStack.Navigator>
-      <DashStack.Screen name='Dashboard' component={Dashboard} />
+      <DashStack.Screen name="Dashboard" component={Dashboard} />
     </DashStack.Navigator>
   );
 }
@@ -29,7 +29,7 @@ function DashStackScreen() {
 function TaskStackScreen() {
   return (
     <TaskStack.Navigator>
-      <TaskStack.Screen name='CreateTask' component={CreateTask} />
+      <TaskStack.Screen name="CreateTask" component={CreateTask} />
     </TaskStack.Navigator>
   );
 }
@@ -51,9 +51,9 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        <Tab.Navigator initialRouteName='Dashboard'>
-          <Tab.Screen name='Dashboard' component={DashStackScreen} />
-          <Tab.Screen name='CreateTask' component={TaskStackScreen} />
+        <Tab.Navigator initialRouteName="Dashboard">
+          <Tab.Screen name="Dashboard" component={DashStackScreen} />
+          <Tab.Screen name="CreateTask" component={TaskStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
