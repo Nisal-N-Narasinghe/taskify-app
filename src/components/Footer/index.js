@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import { Box, Center, HStack, Icon } from "native-base";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { useNavigation } from "@react-navigation/native";
 
 export const Footer = () => {
+  const navigation = useNavigation();
+
   const [selected, setSelected] = useState(1);
+
   return (
     <HStack
       pb={8}
@@ -19,7 +23,10 @@ export const Footer = () => {
         opacity={selected === 0 ? 1 : 0.5}
         py="3"
         flex={1}
-        onPress={() => setSelected(0)}>
+        onPress={() => {
+          setSelected(0);
+          navigation.navigate("CreateTask");
+        }}>
         <Center>
           <Icon
             mb="1"
