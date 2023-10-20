@@ -52,12 +52,12 @@ function ExpertProfileStackScreen() {
 }
 function CreateTaskDetailsStackScreen() {
   return (
-    <ExpertProfileStack.Navigator>
-      <ExpertProfileStack.Screen
+    <CreateTaskSatck.Navigator>
+      <CreateTaskSatck.Screen
         name='CreateTaskDetails'
         component={CreateDetails}
       />
-    </ExpertProfileStack.Navigator>
+    </CreateTaskSatck.Navigator>
   );
 }
 
@@ -85,9 +85,9 @@ export default function App() {
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
-              if (route.name === "Dashboard") {
+              if (route.name === "DashboardPage") {
                 iconName = "dashboard";
-              } else if (route.name === "CreateTask") {
+              } else if (route.name === "CreateTaskPage") {
                 iconName = "playlist-add";
               } else if (route.name === "ExpertProfile1") {
                 iconName = "person";
