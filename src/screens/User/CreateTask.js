@@ -10,6 +10,7 @@ import {
   Input,
   Icon,
   ScrollView,
+  Row,
 } from "native-base";
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -66,10 +67,10 @@ function CreateTask() {
         <VStack space={3}>
           <HStack space={3}>
             {/* First Box */}
-            <TouchableOpacity>
+            <TouchableOpacity style={{ flex: 1 }}>
               <Box
                 id="clean"
-                maxW="1/2"
+                maxW="100%"
                 rounded="lg"
                 overflow="hidden"
                 borderColor="coolGray.200"
@@ -108,196 +109,206 @@ function CreateTask() {
             </TouchableOpacity>
 
             {/* second box*/}
-            <Box
-              maxW="1/2"
-              rounded="lg"
-              overflow="hidden"
-              borderColor="coolGray.200"
-              borderWidth="1"
-              _dark={{
-                borderColor: "coolGray.600",
-                backgroundColor: "gray.700",
-              }}
-              _web={{
-                shadow: 2,
-                borderWidth: 0,
-              }}
-              _light={{
-                backgroundColor: "gray.50",
-              }}
-            >
-              <Box>
-                <AspectRatio w="100%" ratio={16 / 9}>
-                  <Image
-                    source={PlumberImg}
-                    alt="image"
-                    width="100%"
-                    height="auto"
-                  />
-                </AspectRatio>
-              </Box>
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    Plumbing
-                  </Heading>
+            <TouchableOpacity style={{ flex: 1 }}>
+              <Box
+                maxW="100%"
+                rounded="lg"
+                overflow="hidden"
+                borderColor="coolGray.200"
+                borderWidth="1"
+                _dark={{
+                  borderColor: "coolGray.600",
+                  backgroundColor: "gray.700",
+                }}
+                _web={{
+                  shadow: 2,
+                  borderWidth: 0,
+                }}
+                _light={{
+                  backgroundColor: "gray.50",
+                }}
+              >
+                <Box>
+                  <AspectRatio w="100%" ratio={16 / 9}>
+                    <Image
+                      source={PlumberImg}
+                      alt="image"
+                      width="100%"
+                      height="auto"
+                    />
+                  </AspectRatio>
+                </Box>
+                <Stack p="4" space={3}>
+                  <Stack space={2}>
+                    <Heading size="md" ml="-1">
+                      Plumbing
+                    </Heading>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </Box>
+              </Box>
+            </TouchableOpacity>
           </HStack>
           <HStack space={3}>
             {/* First Box */}
-            <Box
-              maxW="1/2"
-              rounded="lg"
-              overflow="hidden"
-              borderColor="coolGray.200"
-              borderWidth="1"
-              _dark={{
-                borderColor: "coolGray.600",
-                backgroundColor: "gray.700",
-              }}
-              _web={{
-                shadow: 2,
-                borderWidth: 0,
-              }}
-              _light={{
-                backgroundColor: "gray.50",
-              }}
-            >
-              <Box>
-                <AspectRatio w="100%" ratio={16 / 9}>
-                  <Image
-                    source={ElectricImg}
-                    alt="image"
-                    width="100%"
-                    height="auto"
-                  />
-                </AspectRatio>
-              </Box>
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    Electric Work
-                  </Heading>
+            <TouchableOpacity style={{ flex: 1 }}>
+              <Box
+                maxW="100%"
+                rounded="lg"
+                overflow="hidden"
+                borderColor="coolGray.200"
+                borderWidth="1"
+                _dark={{
+                  borderColor: "coolGray.600",
+                  backgroundColor: "gray.700",
+                }}
+                _web={{
+                  shadow: 2,
+                  borderWidth: 0,
+                }}
+                _light={{
+                  backgroundColor: "gray.50",
+                }}
+              >
+                <Box>
+                  <AspectRatio w="100%" ratio={16 / 9}>
+                    <Image
+                      source={ElectricImg}
+                      alt="image"
+                      width="100%"
+                      height="auto"
+                    />
+                  </AspectRatio>
+                </Box>
+                <Stack p="4" space={3}>
+                  <Stack space={2}>
+                    <Heading size="md" ml="-1">
+                      Electric Work
+                    </Heading>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </Box>
+              </Box>
+            </TouchableOpacity>
 
             {/* second box*/}
-            <Box
-              maxW="1/2"
-              rounded="lg"
-              overflow="hidden"
-              borderColor="coolGray.200"
-              borderWidth="1"
-              _dark={{
-                borderColor: "coolGray.600",
-                backgroundColor: "gray.700",
-              }}
-              _web={{
-                shadow: 2,
-                borderWidth: 0,
-              }}
-              _light={{
-                backgroundColor: "gray.50",
-              }}
-            >
-              <Box>
-                <AspectRatio w="100%" ratio={16 / 9}>
-                  <Image
-                    source={GardenImg}
-                    alt="image"
-                    width="100%"
-                    height="auto"
-                  />
-                </AspectRatio>
-              </Box>
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    Landscaping
-                  </Heading>
+            <TouchableOpacity style={{ flex: 1 }}>
+              <Box
+                maxW="100%"
+                rounded="lg"
+                overflow="hidden"
+                borderColor="coolGray.200"
+                borderWidth="1"
+                _dark={{
+                  borderColor: "coolGray.600",
+                  backgroundColor: "gray.700",
+                }}
+                _web={{
+                  shadow: 2,
+                  borderWidth: 0,
+                }}
+                _light={{
+                  backgroundColor: "gray.50",
+                }}
+              >
+                <Box>
+                  <AspectRatio w="100%" ratio={16 / 9}>
+                    <Image
+                      source={GardenImg}
+                      alt="image"
+                      width="100%"
+                      height="auto"
+                    />
+                  </AspectRatio>
+                </Box>
+                <Stack p="4" space={3}>
+                  <Stack space={2}>
+                    <Heading size="md" ml="-1">
+                      Landscaping
+                    </Heading>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </Box>
+              </Box>
+            </TouchableOpacity>
           </HStack>
           <HStack space={3}>
             {/* First Box */}
-            <Box
-              maxW="1/2"
-              rounded="lg"
-              overflow="hidden"
-              borderColor="coolGray.200"
-              borderWidth="1"
-              _dark={{
-                borderColor: "coolGray.600",
-                backgroundColor: "gray.700",
-              }}
-              _web={{
-                shadow: 2,
-                borderWidth: 0,
-              }}
-              _light={{
-                backgroundColor: "gray.50",
-              }}
-            >
-              <Box>
-                <AspectRatio w="100%" ratio={16 / 9}>
-                  <Image
-                    source={ComputerImg}
-                    alt="image"
-                    width="100%"
-                    height="auto"
-                  />
-                </AspectRatio>
-              </Box>
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    Computer Repair
-                  </Heading>
+            <TouchableOpacity style={{ flex: 1 }}>
+              <Box
+                maxW="100%"
+                rounded="lg"
+                overflow="hidden"
+                borderColor="coolGray.200"
+                borderWidth="1"
+                _dark={{
+                  borderColor: "coolGray.600",
+                  backgroundColor: "gray.700",
+                }}
+                _web={{
+                  shadow: 2,
+                  borderWidth: 0,
+                }}
+                _light={{
+                  backgroundColor: "gray.50",
+                }}
+              >
+                <Box>
+                  <AspectRatio w="100%" ratio={16 / 9}>
+                    <Image
+                      source={ComputerImg}
+                      alt="image"
+                      width="100%"
+                      height="auto"
+                    />
+                  </AspectRatio>
+                </Box>
+                <Stack p="4" space={3}>
+                  <Stack space={2}>
+                    <Heading size="md" ml="-1">
+                      Computer Repair
+                    </Heading>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </Box>
+              </Box>
+            </TouchableOpacity>
 
             {/* second box*/}
-            <Box
-              maxW="1/2"
-              rounded="lg"
-              overflow="hidden"
-              borderColor="coolGray.200"
-              borderWidth="1"
-              _dark={{
-                borderColor: "coolGray.600",
-                backgroundColor: "gray.700",
-              }}
-              _web={{
-                shadow: 2,
-                borderWidth: 0,
-              }}
-              _light={{
-                backgroundColor: "gray.50",
-              }}
-            >
-              <Box>
-                <AspectRatio w="100%" ratio={16 / 9}>
-                  <Image
-                    source={DogImg}
-                    alt="image"
-                    width="100%"
-                    height="auto"
-                  />
-                </AspectRatio>
-              </Box>
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    Pet Care
-                  </Heading>
+            <TouchableOpacity style={{ flex: 1 }}>
+              <Box
+                maxW="100%"
+                rounded="lg"
+                overflow="hidden"
+                borderColor="coolGray.200"
+                borderWidth="1"
+                _dark={{
+                  borderColor: "coolGray.600",
+                  backgroundColor: "gray.700",
+                }}
+                _web={{
+                  shadow: 2,
+                  borderWidth: 0,
+                }}
+                _light={{
+                  backgroundColor: "gray.50",
+                }}
+              >
+                <Box>
+                  <AspectRatio w="100%" ratio={16 / 9}>
+                    <Image
+                      source={DogImg}
+                      alt="image"
+                      width="100%"
+                      height="auto"
+                    />
+                  </AspectRatio>
+                </Box>
+                <Stack p="4" space={3}>
+                  <Stack space={2}>
+                    <Heading size="md" ml="-1">
+                      Pet Care
+                    </Heading>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </Box>
+              </Box>
+            </TouchableOpacity>
           </HStack>
         </VStack>
       </ScrollView>
