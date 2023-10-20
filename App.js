@@ -16,13 +16,15 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Dashboard from "./src/screens/User/Dashboard";
 import CreateTask from "./src/screens/User/CreateTask";
 import CreateDetails from "./src/screens/User/CreateTaskDetails";
-import CreateTaskImg from "./src/screens/User/CreateTaskImage";
+import CreateTaskImage from "./src/screens/User/CreateTaskImage";
+
+import ExpertProfileScreen from "./src/screens/Expert/ExpertProfileScreen";
 
 const DashStack = createNativeStackNavigator();
 const TaskStack = createNativeStackNavigator();
 const ExpertProfileStack = createNativeStackNavigator();
 const CreateTaskSatck = createNativeStackNavigator();
-const CreateTaskDetailsImg = createNativeStackNavigator();
+const CreateTaskImgStack = createNativeStackNavigator();
 
 function DashStackScreen() {
   return (
@@ -62,12 +64,12 @@ function CreateTaskDetailsStackScreen() {
 }
 function CreateTaskImgStackScreen() {
   return (
-    <CreateTaskDetailsImg.Navigator>
-      <CreateTaskDetailsImg.Screen
-        name="CreateTaskImages"
-        component={CreateTaskImg}
+    <CreateTaskImgStack.Navigator>
+      <CreateTaskImgStack.Screen
+        name="CreateTaskImage"
+        component={CreateTaskImage}
       />
-    </CreateTaskDetailsImg.Navigator>
+    </CreateTaskImgStack.Navigator>
   );
 }
 
@@ -103,7 +105,7 @@ export default function App() {
                 iconName = "person";
               } else if (route.name === "CreateTaskDetailsPage") {
                 iconName = "playlist-add-check";
-              } else if (route.name === "CreateTaskImgScreen") {
+              } else if (route.name === "CreateTaskImg") {
                 iconName = "image";
               }
 
@@ -124,7 +126,7 @@ export default function App() {
             component={ExpertProfileStackScreen}
           />
           <Tab.Screen
-            name="CreateTaskImgScreen"
+            name="CreateTaskImage"
             component={CreateTaskImgStackScreen}
           />
         </Tab.Navigator>
