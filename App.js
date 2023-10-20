@@ -29,7 +29,7 @@ const CreateTaskImgStack = createNativeStackNavigator();
 function DashStackScreen() {
   return (
     <DashStack.Navigator>
-      <DashStack.Screen name="Dashboard" component={Dashboard} />
+      <DashStack.Screen name='Dashboard' component={Dashboard} />
     </DashStack.Navigator>
   );
 }
@@ -37,7 +37,7 @@ function DashStackScreen() {
 function TaskStackScreen() {
   return (
     <TaskStack.Navigator>
-      <TaskStack.Screen name="CreateTask" component={CreateTask} />
+      <TaskStack.Screen name='CreateTask' component={CreateTask} />
     </TaskStack.Navigator>
   );
 }
@@ -46,7 +46,7 @@ function ExpertProfileStackScreen() {
   return (
     <ExpertProfileStack.Navigator>
       <ExpertProfileStack.Screen
-        name="ExpertProfile"
+        name='ExpertProfile'
         component={ExpertProfileScreen}
       />
     </ExpertProfileStack.Navigator>
@@ -56,7 +56,7 @@ function CreateTaskDetailsStackScreen() {
   return (
     <CreateTaskSatck.Navigator>
       <CreateTaskSatck.Screen
-        name="CreateTaskDetails"
+        name='CreateTaskDetails'
         component={CreateDetails}
       />
     </CreateTaskSatck.Navigator>
@@ -66,7 +66,7 @@ function CreateTaskImgStackScreen() {
   return (
     <CreateTaskImgStack.Navigator>
       <CreateTaskImgStack.Screen
-        name="CreateTaskImage"
+        name='CreateTaskImage'
         component={CreateTaskImage}
       />
     </CreateTaskImgStack.Navigator>
@@ -91,7 +91,7 @@ export default function App() {
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Dashboard"
+          initialRouteName='Dashboard'
           screenOptions={({ route }) => ({
             headerShown: false,
             tabBarIcon: ({ focused, color, size }) => {
@@ -105,7 +105,7 @@ export default function App() {
                 iconName = "person";
               } else if (route.name === "CreateTaskDetailsPage") {
                 iconName = "playlist-add-check";
-              } else if (route.name === "CreateTaskImg") {
+              } else if (route.name === "CreateTaskImage") {
                 iconName = "image";
               }
 
@@ -113,20 +113,19 @@ export default function App() {
                 <MaterialIcons name={iconName} size={size} color={color} />
               );
             },
-          })}
-        >
-          <Tab.Screen name="DashboardPage" component={DashStackScreen} />
-          <Tab.Screen name="CreateTaskPage" component={TaskStackScreen} />
+          })}>
+          <Tab.Screen name='DashboardPage' component={DashStackScreen} />
+          <Tab.Screen name='CreateTaskPage' component={TaskStackScreen} />
           <Tab.Screen
-            name="CreateTaskDetailsPage"
+            name='CreateTaskDetailsPage'
             component={CreateTaskDetailsStackScreen}
           />
           <Tab.Screen
-            name="ExpertProfile1"
+            name='ExpertProfile1'
             component={ExpertProfileStackScreen}
           />
           <Tab.Screen
-            name="CreateTaskImage"
+            name='CreateTaskImage'
             component={CreateTaskImgStackScreen}
           />
         </Tab.Navigator>
