@@ -15,11 +15,14 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 import Dashboard from "./src/screens/User/Dashboard";
 import CreateTask from "./src/screens/User/CreateTask";
+import CreateDetails from "./src/screens/User/CreateTaskDetails";
+
 import ExpertProfileScreen from "./src/screens/Expert/ExpertProfileScreen";
 
 const DashStack = createNativeStackNavigator();
 const TaskStack = createNativeStackNavigator();
 const ExpertProfileStack = createNativeStackNavigator();
+const CreateTaskSatck = createNativeStackNavigator();
 
 function DashStackScreen() {
   return (
@@ -43,6 +46,16 @@ function ExpertProfileStackScreen() {
       <ExpertProfileStack.Screen
         name='ExpertProfile'
         component={ExpertProfileScreen}
+      />
+    </ExpertProfileStack.Navigator>
+  );
+}
+function CreateTaskDetailsStackScreen() {
+  return (
+    <ExpertProfileStack.Navigator>
+      <ExpertProfileStack.Screen
+        name='CreateTaskDetails'
+        component={CreateDetails}
       />
     </ExpertProfileStack.Navigator>
   );
@@ -78,6 +91,8 @@ export default function App() {
                 iconName = "playlist-add";
               } else if (route.name === "ExpertProfile1") {
                 iconName = "person";
+              } else if (route.name === "CreateTaskDetailsPage") {
+                iconName = "playlist-add-check";
               }
 
               return (
@@ -87,6 +102,10 @@ export default function App() {
           })}>
           <Tab.Screen name='DashboardPage' component={DashStackScreen} />
           <Tab.Screen name='CreateTaskPage' component={TaskStackScreen} />
+          <Tab.Screen
+            name='CreateTaskDetailsPage'
+            component={CreateTaskDetailsStackScreen}
+          />
           <Tab.Screen
             name='ExpertProfile1'
             component={ExpertProfileStackScreen}

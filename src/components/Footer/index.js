@@ -17,7 +17,8 @@ export const Footer = () => {
       pt={5}
       bg="primary.green"
       alignItems="center"
-      shadow={6}>
+      shadow={6}
+    >
       <Pressable
         cursor="pointer"
         opacity={selected === 0 ? 1 : 0.5}
@@ -26,7 +27,8 @@ export const Footer = () => {
         onPress={() => {
           setSelected(0);
           navigation.navigate("CreateTask");
-        }}>
+        }}
+      >
         <Center>
           <Icon
             mb="1"
@@ -45,7 +47,8 @@ export const Footer = () => {
         opacity={selected === 1 ? 1 : 0.5}
         py="2"
         flex={1}
-        onPress={() => setSelected(1)}>
+        onPress={() => setSelected(1)}
+      >
         <Center>
           <Icon
             mb="1"
@@ -60,7 +63,8 @@ export const Footer = () => {
         opacity={selected === 2 ? 1 : 0.6}
         py="2"
         flex={1}
-        onPress={() => setSelected(2)}>
+        onPress={() => setSelected(2)}
+      >
         <Center>
           <Icon
             mb="1"
@@ -79,7 +83,8 @@ export const Footer = () => {
         opacity={selected === 3 ? 1 : 0.5}
         py="2"
         flex={1}
-        onPress={() => setSelected(3)}>
+        onPress={() => setSelected(3)}
+      >
         <Center>
           <Icon
             mb="1"
