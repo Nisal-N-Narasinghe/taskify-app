@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Dashboard from "./src/screens/User/Dashboard";
 import CreateTask from "./src/screens/User/CreateTask";
+import CreateTaskDetails from "./src/screens/User/CreateTaskDetails";
 
 const DashStack = createNativeStackNavigator();
 const TaskStack = createNativeStackNavigator();
@@ -30,6 +31,16 @@ function TaskStackScreen() {
   return (
     <TaskStack.Navigator>
       <TaskStack.Screen name="CreateTask" component={CreateTask} />
+    </TaskStack.Navigator>
+  );
+}
+function TaskDetailsStackScreen() {
+  return (
+    <TaskStack.Navigator>
+      <TaskStack.Screen
+        name="CreateTaskDetails"
+        component={CreateTaskDetails}
+      />
     </TaskStack.Navigator>
   );
 }
@@ -51,9 +62,16 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        <Tab.Navigator initialRouteName="Dashboard">
+        <Tab.Navigator
+          initialRouteName="Dashboard"
+          screenOptions={{ headerShown: false }}
+        >
           <Tab.Screen name="Dashboard" component={DashStackScreen} />
           <Tab.Screen name="CreateTask" component={TaskStackScreen} />
+          <Tab.Screen
+            name="CreateTaskDetails"
+            component={TaskDetailsStackScreen}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

@@ -5,10 +5,16 @@ const StepIndicator = () => {
   return (
     <View style={styles.container}>
       <View style={styles.line}></View>
-      <View style={styles.circle}></View>
-      <View style={styles.circle}></View>
-      <View style={styles.circle}></View>
-      <View style={styles.circle}></View>
+      <View style={styles.circleBlack}></View>
+      <View style={styles.line}></View>
+      <View style={styles.circleBlack}></View>
+      <View style={styles.line}></View>
+      <View style={styles.circleGrey}></View>
+      <View style={styles.line}></View>
+      <View style={styles.circleGrey}></View>
+      <View style={styles.line}></View>
+      <View style={styles.circleGrey}></View>
+      <View style={styles.line}></View>
     </View>
   );
 };
@@ -21,14 +27,21 @@ const styles = StyleSheet.create({
   },
   line: {
     height: 2,
-    width: 80, // Adjust the length of the line as needed
+    width: 10, // Adjust the length of the line as needed
     backgroundColor: "black",
   },
-  circle: {
+  circleBlack: {
     width: 20,
     height: 20,
     borderRadius: 10,
     backgroundColor: "black",
+    margin: 10, // Adjust the spacing between circles as needed
+  },
+  circleGrey: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: "grey",
     margin: 10, // Adjust the spacing between circles as needed
   },
 });
