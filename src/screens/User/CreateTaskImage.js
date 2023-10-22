@@ -9,7 +9,7 @@ import {
   Text,
 } from "native-base";
 import React from "react";
-import StepIndicator from "../../components/stepIndicators/step3";
+import StepIndicator from "../../components/stepIndicators/stepIndicator";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 // import {} from "@expo/vector-icon";
 
@@ -17,7 +17,7 @@ const CreateTaskImage = () => {
   return (
     <Box padding={3}>
       <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
-        <StepIndicator />
+        <StepIndicator currentStep={3} />
         <Heading marginTop={6} size="md" alignSelf="center">
           Please Upload an Image
         </Heading>
