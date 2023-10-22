@@ -14,7 +14,7 @@ import {
   TextArea,
 } from "native-base";
 import React from "react";
-import StepIndicator from "../../components/stepIndicators/step2";
+import StepIndicator from "../../components/stepIndicators/stepIndicator";
 
 import { StyleSheet } from "react-native";
 
@@ -22,7 +22,7 @@ function CreateTask() {
   return (
     <Box padding={3}>
       <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
-        <StepIndicator />
+        <StepIndicator currentStep={2} />
         <Heading marginBottom={3} marginTop={3} size="md">
           Please fill the below details
         </Heading>

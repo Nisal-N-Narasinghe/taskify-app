@@ -14,7 +14,7 @@ import {
 } from "native-base";
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import StepIndicator from "../../components/stepIndicators/step1";
+import StepIndicator from "../../components/stepIndicators/stepIndicator";
 import CleanImg from "../../../assets/cleaning.jpg";
 import PlumberImg from "../../../assets/plumber.jpg";
 import ElectricImg from "../../../assets/electrician.jpg";
@@ -28,7 +28,7 @@ function CreateTask() {
   return (
     <Box padding={3}>
       <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
-        <StepIndicator />
+        <StepIndicator currentStep={1} />
         <Heading marginTop={3} size="md">
           Create Your Task Now
         </Heading>
