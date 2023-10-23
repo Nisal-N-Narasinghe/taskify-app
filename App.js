@@ -6,7 +6,7 @@ import {
   extendTheme,
 } from "native-base";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { Footer } from "./src/components/Footer";
+import { Footer } from "./src/components/common/Footer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -18,7 +18,7 @@ import CreateTask from "./src/screens/User/CreateTask";
 import CreateDetails from "./src/screens/User/CreateTaskDetails";
 import CreateTaskImage from "./src/screens/User/CreateTaskImage";
 
-import ExpertProfileScreen from "./src/screens/Expert/ExpertProfileScreen";
+import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
 
 const DashStack = createNativeStackNavigator();
 const TaskStack = createNativeStackNavigator();
