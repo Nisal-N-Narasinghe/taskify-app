@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import {
   Box,
@@ -10,12 +9,15 @@ import {
   Icon,
   Heading,
   Image,
-  Stack,
 } from "native-base";
-import { Ionicons } from "@expo/vector-icons";
+
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import PROImg from "../../../assets/Expertimages/expertPRO.jpg";
-import StarIndicator from "../../components/StarIndicator/StarIndicator";
+import PROImg from "../../../../assets/Expertimages/expertPRO.jpg";
+import styles from "../../../styles/Expert/ExpertProfile";
+import {
+  ExpertCard,
+  RatingCard,
+} from "../../../components/Expert/ExpertProfile";
 const ExpertProfileScreen = () => {
   return (
     <Box safeArea flex={1}>
@@ -101,112 +103,4 @@ const ExpertProfileScreen = () => {
     </Box>
   );
 };
-const RatingCard = ({ rating, review }) => {
-  return (
-    <Box
-      style={styles.ratingCard}
-      backgroundColor='white'
-      borderRadius={8}
-      shadow={1}
-      p={2}
-      mx={2}>
-      <Stack alignItems='center' my={2}>
-        <Text style={styles.ratintext}>Rating</Text>
-        <StarIndicator rating={rating} />
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Flex flex={1} flexDirection='row' width='auto'>
-            <Text style={styles.reviewtext}>{review}</Text>
-          </Flex>
-        </ScrollView>
-      </Stack>
-    </Box>
-  );
-};
-
-const ExpertCard = ({ title, jobcount, experience, JobDiscription }) => {
-  return (
-    <Box
-      style={styles.expertCard}
-      backgroundColor='white'
-      borderRadius={8}
-      padding={4}
-      marginY={2}
-      shadow={1}>
-      <Heading fontSize='18' fontWeight='bold' alignSelf='center'>
-        {title}
-      </Heading>
-
-      <Text style={styles.expertCardDiscription} alignSelf='center'>
-        {JobDiscription}
-      </Text>
-      <Text style={styles.expertCardText}>{jobcount}</Text>
-      <Text style={styles.expertCardText}>{experience}</Text>
-    </Box>
-  );
-};
-
-const styles = {
-  ratingCard: {
-    backgroundColor: "white",
-    borderRadius: 16,
-    padding: 2,
-    shadow: 1,
-    width: 150,
-    height: 100,
-    borderWidth: 1,
-    borderColor: "gray.200",
-  },
-  ratintext: {
-    fontSize: 16,
-    paddingBottom: 4,
-    fontWeight: "bold",
-  },
-  reviewtext: {
-    fontSize: 12,
-    paddingBottom: 4,
-  },
-  buttonAdd: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    padding: 4,
-    width: 75,
-    height: 75,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 2,
-    borderColor: "#149873",
-  },
-  buttonHistoryContainer: {
-    alignItems: "flex-end",
-    marginRight: 10,
-  },
-  buttonHistory: {
-    backgroundColor: "#149873",
-    borderRadius: 16,
-    padding: 4,
-    width: 150,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  expertCard: {
-    backgroundColor: "white",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "gray.200",
-    padding: 4,
-    marginY: 2,
-    shadow: 1,
-  },
-  expertCardText: {
-    fontWeight: "bold",
-    fontSize: 12,
-    paddingBottom: 4,
-  },
-  expertCardDiscription: {
-    fontSize: 10,
-    paddingBottom: 4,
-  },
-};
-
 export default ExpertProfileScreen;

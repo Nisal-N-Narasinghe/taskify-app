@@ -1,15 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome"; // You can use any icon library you prefer
+import Icon from "react-native-vector-icons/FontAwesome";
 
-const StarIndicator = ({ rating }) => {
+const RatingIndicator = ({ rating }) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     stars.push(
       <Icon
-        name={i <= rating ? "star" : "star-o"} // Use solid or outline star icons based on the rating
+        name={i <= rating ? "star" : "star-o"}
         size={20}
-        color='gold' // Color of the stars
+        color='gold'
         key={i}
       />
     );
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StarIndicator;
+export default RatingIndicator;
