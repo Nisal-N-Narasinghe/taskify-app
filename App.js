@@ -124,6 +124,10 @@ export default function App() {
             name='ExpertProfile1'
             component={ExpertProfileStackScreen}
           />
+          {/* <Tab.Screen
+            name='CreateTaskImage'
+            component={CreateTaskImgStackScreen}
+          /> */}
           <Tab.Screen
             name='CreateTaskImage'
             component={CreateTaskImgStackScreen}

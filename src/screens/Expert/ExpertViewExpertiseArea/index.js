@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native"; // Import ScrollView
-import { Box, Button, Card, VStack } from "native-base";
+import { Box, Button, Text, Image, ScrollView, VStack } from "native-base";
 import { styles } from "../../../styles/Expert/ExpertViewExpertiseArea";
 import {
   Availability,
@@ -20,39 +19,45 @@ const ExpertViewExpertiseArea = () => {
   };
 
   return (
-    <Box safeArea flex={1} style={styles.container}>
-      <ScrollView
-        flex={1}
-        showsVerticalScrollIndicator={true}
-        contentContainerStyle={styles.centeredContent}>
-        <Image source={slideImage} style={styles.photoSlider} />
-        <ExpertDiscription discription='sample discription' />
-        <ExpertDetails
-          name='John Doe'
-          field='Developer'
-          experience={5}
-          location='New York'
-          phone='(123) 456-7890'
-        />
-        <Availability availability='Monday | Tuesday | Wednesday ' />
-        <View style={styles.buttonContainer}>
-          <Button
-            style={{ ...styles.button, backgroundColor: "#149873" }}
-            onPress={handleEdit}>
-            <View style={styles.buttonContent}>
-              <Text style={{ color: "white", marginRight: 10 }}>Edit</Text>
-              <MaterialIcons name='edit' size={30} color='white' />
-            </View>
-          </Button>
-          <Button
-            style={{ ...styles.button, backgroundColor: "red" }}
-            onPress={handleDelete}>
-            <View style={styles.buttonContent}>
-              <Text style={{ color: "white", marginRight: 10 }}>Delete</Text>
-              <MaterialIcons name='delete' size={30} color='white' />
-            </View>
-          </Button>
-        </View>
+    <Box style={styles.container}>
+      <ScrollView flex={1} showsVerticalScrollIndicator={true}>
+        <Box safeArea flex={1}>
+          <VStack>
+            <Image
+              source={slideImage}
+              alt='slideImage'
+              style={styles.photoSlider}
+            />
+            <ExpertDiscription discription='sample discription' />
+            <ExpertDetails
+              name='John Doe'
+              field='Developer'
+              experience={5}
+              location='New York'
+              phone='(123) 456-7890'
+            />
+            <Availability availability='Monday | Tuesday | Wednesday ' />
+          </VStack>
+
+          <Box justifyContent='center' alignItems='center'>
+            <Button
+              style={styles.button}
+              onPress={handleEdit}
+              background={"#149873"}
+              startIcon={<MaterialIcons name='edit' size={24} color='white' />}>
+              <Text style={styles.buttonContent}>Edit</Text>
+            </Button>
+            <Button
+              style={styles.button}
+              onPress={handleDelete}
+              background={"red.500"}
+              startIcon={
+                <MaterialIcons name='delete' size={24} color='white' />
+              }>
+              <Text style={styles.buttonContent}>Delete</Text>
+            </Button>
+          </Box>
+        </Box>
       </ScrollView>
     </Box>
   );
