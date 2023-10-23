@@ -1,15 +1,15 @@
 import React from "react";
 import { View, Text, Image, ScrollView } from "react-native"; // Import ScrollView
 import { Box, Button, Card, VStack } from "native-base";
-import { styles } from "../../../styles/Expert/ExpertViewExperticseArea";
+import { styles } from "../../../styles/Expert/ExpertViewExpertiseArea";
 import {
   Availability,
   ExpertDetails,
   ExpertDiscription,
-} from "../../../components/Expert/ExpertViewExperticseArea";
+} from "../../../components/Expert/ExpertViewExpertiseArea";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-const ExpertViewExperticseArea = () => {
+const ExpertViewExpertiseArea = () => {
   const slideImage = require("../../../../assets/cleaning.jpg");
 
   const handleEdit = () => {
@@ -58,4 +58,4 @@ const ExpertViewExperticseArea = () => {
   );
 };
 
-export default ExpertViewExperticseArea;
+export default ExpertViewExpertiseArea;

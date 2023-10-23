@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Box, Card } from "native-base";
-import { styles } from "../../../styles/Expert/ExpertViewExperticseArea";
+import { styles } from "../../../styles/Expert/ExpertViewExpertiseArea";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 export const ExpertDetails = ({ name, field, experience, location, phone }) => {
