@@ -1,9 +1,6 @@
 export const styles = {
   container: {
     flex: 1,
-  },
-  centeredContent: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
@@ -44,7 +41,8 @@ export const styles = {
   buttonContent: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "flexcenter",
+    marginLeft: 10,
     width: "100%",
   },
   ExpertDetails: {
@@ -60,13 +58,12 @@ export const styles = {
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 5,
-    marginLeft: 15,
   },
   label: {
     fontWeight: "bold",
     marginRight: 10,
   },
   value: {
-    flex: 1,
+    margin: 5,
   },
 };
