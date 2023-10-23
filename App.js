@@ -2,6 +2,7 @@ import {
   Box,
   Icon,
   NativeBaseProvider,
+  Stack,
   VStack,
   extendTheme,
 } from "native-base";
@@ -14,31 +15,67 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 import Dashboard from "./src/screens/User/Dashboard";
-import CreateTask from "./src/screens/User/CreateTask";
-import CreateDetails from "./src/screens/User/CreateTaskDetails";
-import CreateTaskImage from "./src/screens/User/CreateTaskImage";
-
+import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
+import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
+import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
+import CreateTaskSuccess from "./src/screens/User/CreateTask";
 import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
 
 const DashStack = createNativeStackNavigator();
-const TaskStack = createNativeStackNavigator();
+const CreateTaskCategoryStack = createNativeStackNavigator();
 const ExpertProfileStack = createNativeStackNavigator();
-const CreateTaskSatck = createNativeStackNavigator();
+const CreateTaskDetailsSatck = createNativeStackNavigator();
 const CreateTaskImgStack = createNativeStackNavigator();
+const CreateTaskSuccessStack = createNativeStackNavigator();
 
 function DashStackScreen() {
   return (
     <DashStack.Navigator>
-      <DashStack.Screen name='Dashboard' component={Dashboard} />
+      <DashStack.Screen name="Dashboard" component={Dashboard} />
     </DashStack.Navigator>
   );
 }
 
-function TaskStackScreen() {
+function CreateTaskCategoryStackScreen() {
   return (
-    <TaskStack.Navigator>
-      <TaskStack.Screen name='CreateTask' component={CreateTask} />
-    </TaskStack.Navigator>
+    <CreateTaskCategoryStack.Navigator>
+      <CreateTaskCategoryStack.Screen
+        name="CreateTaskCategory"
+        component={CreateTaskCategory}
+      />
+    </CreateTaskCategoryStack.Navigator>
+  );
+}
+
+function CreateTaskDetailsStackScreen() {
+  return (
+    <CreateTaskDetailsSatck.Navigator>
+      <CreateTaskDetailsSatck.Screen
+        name="CreateTaskDetails"
+        component={CreateTaskDetails}
+      />
+    </CreateTaskDetailsSatck.Navigator>
+  );
+}
+
+function CreateTaskImgStackScreen() {
+  return (
+    <CreateTaskImgStack.Navigator>
+      <CreateTaskImgStack.Screen
+        name="CreateTaskImage"
+        component={CreateTaskImage}
+      />
+    </CreateTaskImgStack.Navigator>
+  );
+}
+function CreateTaskSuccessStackScreen() {
+  return (
+    <CreateTaskSuccessStack.Navigator>
+      <CreateTaskSuccessStack.Screen
+        name="CreateTaskSUccess"
+        component={CreateTaskSuccess}
+      />
+    </CreateTaskSuccessStack.Navigator>
   );
 }
 
@@ -46,30 +83,10 @@ function ExpertProfileStackScreen() {
   return (
     <ExpertProfileStack.Navigator>
       <ExpertProfileStack.Screen
-        name='ExpertProfile'
+        name="ExpertProfile"
         component={ExpertProfileScreen}
       />
     </ExpertProfileStack.Navigator>
-  );
-}
-function CreateTaskDetailsStackScreen() {
-  return (
-    <CreateTaskSatck.Navigator>
-      <CreateTaskSatck.Screen
-        name='CreateTaskDetails'
-        component={CreateDetails}
-      />
-    </CreateTaskSatck.Navigator>
-  );
-}
-function CreateTaskImgStackScreen() {
-  return (
-    <CreateTaskImgStack.Navigator>
-      <CreateTaskImgStack.Screen
-        name='CreateTaskImage'
-        component={CreateTaskImage}
-      />
-    </CreateTaskImgStack.Navigator>
   );
 }
 
@@ -91,7 +108,7 @@ export default function App() {
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName='Dashboard'
+          initialRouteName="Dashboard"
           screenOptions={({ route }) => ({
             headerShown: false,
             tabBarIcon: ({ focused, color, size }) => {
@@ -99,13 +116,15 @@ export default function App() {
 
               if (route.name === "DashboardPage") {
                 iconName = "dashboard";
-              } else if (route.name === "CreateTaskPage") {
+              } else if (route.name === "CreateTaskCategoryPage") {
                 iconName = "playlist-add";
               } else if (route.name === "ExpertProfile1") {
                 iconName = "person";
               } else if (route.name === "CreateTaskDetailsPage") {
                 iconName = "playlist-add-check";
-              } else if (route.name === "CreateTaskImage") {
+              } else if (route.name === "CreateTaskImagePage") {
+                iconName = "image";
+              } else if (route.name === "CreateTaskSuccessPage") {
                 iconName = "image";
               }
 
@@ -113,20 +132,28 @@ export default function App() {
                 <MaterialIcons name={iconName} size={size} color={color} />
               );
             },
-          })}>
-          <Tab.Screen name='DashboardPage' component={DashStackScreen} />
-          <Tab.Screen name='CreateTaskPage' component={TaskStackScreen} />
+          })}
+        >
+          <Tab.Screen name="DashboardPage" component={DashStackScreen} />
           <Tab.Screen
-            name='CreateTaskDetailsPage'
+            name="CreateTaskCategoryPage"
+            component={CreateTaskCategoryStackScreen}
+          />
+          <Tab.Screen
+            name="CreateTaskDetailsPage"
             component={CreateTaskDetailsStackScreen}
           />
           <Tab.Screen
-            name='ExpertProfile1'
-            component={ExpertProfileStackScreen}
+            name="CreateTaskImagePage"
+            component={CreateTaskImgStackScreen}
           />
           <Tab.Screen
-            name='CreateTaskImage'
-            component={CreateTaskImgStackScreen}
+            name="CreateTaskSuccessPage"
+            component={CreateTaskSuccessStackScreen}
+          />
+          <Tab.Screen
+            name="ExpertProfile1"
+            component={ExpertProfileStackScreen}
           />
         </Tab.Navigator>
       </NavigationContainer>
