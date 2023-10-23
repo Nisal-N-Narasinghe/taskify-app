@@ -19,6 +19,7 @@ import CreateDetails from "./src/screens/User/CreateTaskDetails";
 import CreateTaskImage from "./src/screens/User/CreateTaskImage";
 
 import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
+import ExpertViewExperticseArea from "./src/screens/Expert/ExpertViewExperticseArea";
 
 const DashStack = createNativeStackNavigator();
 const TaskStack = createNativeStackNavigator();
@@ -125,8 +126,8 @@ export default function App() {
             component={ExpertProfileStackScreen}
           />
           <Tab.Screen
-            name='CreateTaskImage'
-            component={CreateTaskImgStackScreen}
+            name='viewExperticepro'
+            component={ExpertViewExperticseArea}
           />
         </Tab.Navigator>
       </NavigationContainer>
