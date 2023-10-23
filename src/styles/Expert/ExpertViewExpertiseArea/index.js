@@ -24,16 +24,9 @@ export const styles = {
     width: "90%",
     marginTop: 20,
   },
-  buttonContainer: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 100,
-    width: "75%",
-  },
   button: {
     padding: 10,
-    width: "80%",
+    width: "60%",
     justifyContent: "center",
     borderRadius: 34,
     margin: 10,
@@ -41,17 +34,17 @@ export const styles = {
   buttonContent: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flexcenter",
     marginLeft: 10,
     width: "100%",
+    color: "white",
   },
   ExpertDetails: {
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "gray",
     backgroundColor: "white",
-    padding: 10,
-    margin: 10,
+    padding: 16,
+    margin: 16,
     width: "90%",
   },
   row: {

@@ -37,31 +37,26 @@ const ExpertViewExpertiseArea = () => {
               phone='(123) 456-7890'
             />
             <Availability availability='Monday | Tuesday | Wednesday ' />
-            <Box justifyContent={"center"} alignItems={"center"}>
-              <Box style={styles.buttonContainer}>
-                <Button
-                  style={{ ...styles.button, backgroundColor: "#149873" }}
-                  onPress={handleEdit}>
-                  <Box style={styles.buttonContent}>
-                    <Text style={{ color: "white", marginRight: 10 }}>
-                      Edit
-                    </Text>
-                    <MaterialIcons name='edit' size={30} color='white' />
-                  </Box>
-                </Button>
-                <Button
-                  style={{ ...styles.button, backgroundColor: "red" }}
-                  onPress={handleDelete}>
-                  <Box style={styles.buttonContent}>
-                    <Text style={{ color: "white", marginRight: 10 }}>
-                      Delete
-                    </Text>
-                    <MaterialIcons name='delete' size={30} color='white' />
-                  </Box>
-                </Button>
-              </Box>
-            </Box>
           </VStack>
+
+          <Box justifyContent='center' alignItems='center'>
+            <Button
+              style={styles.button}
+              onPress={handleEdit}
+              background={"#149873"}
+              startIcon={<MaterialIcons name='edit' size={24} color='white' />}>
+              <Text style={styles.buttonContent}>Edit</Text>
+            </Button>
+            <Button
+              style={styles.button}
+              onPress={handleDelete}
+              background={"red.500"}
+              startIcon={
+                <MaterialIcons name='delete' size={24} color='white' />
+              }>
+              <Text style={styles.buttonContent}>Delete</Text>
+            </Button>
+          </Box>
         </Box>
       </ScrollView>
     </Box>
