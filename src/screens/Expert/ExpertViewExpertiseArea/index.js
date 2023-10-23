@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native"; // Import ScrollView
-import { Box, Button, Card, VStack } from "native-base";
+import { Box, Button, Text, Image, ScrollView, VStack } from "native-base";
 import { styles } from "../../../styles/Expert/ExpertViewExpertiseArea";
 import {
   Availability,
@@ -25,7 +24,11 @@ const ExpertViewExpertiseArea = () => {
         flex={1}
         showsVerticalScrollIndicator={true}
         contentContainerStyle={styles.centeredContent}>
-        <Image source={slideImage} style={styles.photoSlider} />
+        <Image
+          source={slideImage}
+          alt='slideImage'
+          style={styles.photoSlider}
+        />
         <ExpertDiscription discription='sample discription' />
         <ExpertDetails
           name='John Doe'
@@ -35,24 +38,24 @@ const ExpertViewExpertiseArea = () => {
           phone='(123) 456-7890'
         />
         <Availability availability='Monday | Tuesday | Wednesday ' />
-        <View style={styles.buttonContainer}>
+        <Box style={styles.buttonContainer}>
           <Button
             style={{ ...styles.button, backgroundColor: "#149873" }}
             onPress={handleEdit}>
-            <View style={styles.buttonContent}>
+            <Box style={styles.buttonContent}>
               <Text style={{ color: "white", marginRight: 10 }}>Edit</Text>
               <MaterialIcons name='edit' size={30} color='white' />
-            </View>
+            </Box>
           </Button>
           <Button
             style={{ ...styles.button, backgroundColor: "red" }}
             onPress={handleDelete}>
-            <View style={styles.buttonContent}>
+            <Box style={styles.buttonContent}>
               <Text style={{ color: "white", marginRight: 10 }}>Delete</Text>
               <MaterialIcons name='delete' size={30} color='white' />
-            </View>
+            </Box>
           </Button>
-        </View>
+        </Box>
       </ScrollView>
     </Box>
   );
