@@ -9,11 +9,17 @@ import {
   Text,
 } from "native-base";
 import React from "react";
-import StepIndicator from "../../components/stepIndicators/stepIndicator";
+import StepIndicator from "../../../../components/common/StepIndicators";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-// import {} from "@expo/vector-icon";
+import { useNavigation } from "@react-navigation/native";
 
 const CreateTaskImage = () => {
+  const navigation = useNavigation();
+
+  const handleUpload = () => {
+    navigation.navigate("CreateTaskSuccessPage");
+  };
+
   return (
     <Box padding={3}>
       <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
@@ -59,7 +65,9 @@ const CreateTaskImage = () => {
                   as={<MaterialIcons name="image" />}
                   marginBottom={4}
                 />
-                <Button marginBottom={6}>Upload</Button>
+                <Button onPress={handleUpload} marginBottom={6}>
+                  Upload
+                </Button>
               </Stack>
             </Stack>
           </Box>
