@@ -11,6 +11,7 @@ import {
   Icon,
   ScrollView,
   Row,
+  Button,
 } from "native-base";
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -77,8 +78,7 @@ const CreateTaskCategory = () => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -117,8 +117,7 @@ const CreateTaskCategory = () => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -158,8 +157,7 @@ const CreateTaskCategory = () => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -198,8 +196,7 @@ const CreateTaskCategory = () => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -225,8 +222,7 @@ const CreateTaskCategory = () => {
             <TouchableOpacity
               key={"Computer Repair"}
               style={{ flex: 1 }}
-              onPress={handleClick()}
-            >
+              onPress={handleClick()}>
               <Box
                 maxW="100%"
                 rounded="lg"
@@ -243,8 +239,7 @@ const CreateTaskCategory = () => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -283,8 +278,7 @@ const CreateTaskCategory = () => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
