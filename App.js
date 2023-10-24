@@ -19,8 +19,10 @@ import CreateDetails from "./src/screens/User/CreateTaskDetails";
 import CreateTaskImage from "./src/screens/User/CreateTaskImage";
 
 import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
-import AddNewExpert from "./src/screens/Expert/AddNewExpert/AddNewExpert";
-import ViewSingleExpert from "./src/screens/User/ViewSingleExpert";
+import AddNewExpert from "./src/screens/Expert/AddNewExpert";
+import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
+import AddRatings from "./src/components/common/StarRatings";
+import AddFeedback from "./src/screens/User/AddFeedback";
 
 const DashStack = createNativeStackNavigator();
 const TaskStack = createNativeStackNavigator();
@@ -29,6 +31,8 @@ const CreateTaskSatck = createNativeStackNavigator();
 const CreateTaskImgStack = createNativeStackNavigator();
 const AddNewExpertStack = createNativeStackNavigator();
 const ViewSingleExpertStack = createNativeStackNavigator();
+const AddRatingsStack = createNativeStackNavigator();
+const AddFeedbackStack = createNativeStackNavigator();
 
 function DashStackScreen() {
   return (
@@ -96,6 +100,22 @@ function ViewSingleExpertStackScreen() {
   );
 }
 
+function AddRatingsStackScreen() {
+  return (
+    <AddRatingsStack.Navigator>
+      <AddRatingsStack.Screen name="AddRatings" component={AddRatings} />
+    </AddRatingsStack.Navigator>
+  );
+}
+
+function AddFeedbackStackScreen() {
+  return (
+    <AddFeedbackStack.Navigator>
+      <AddFeedbackStack.Screen name="AddFeedback" component={AddFeedback} />
+    </AddFeedbackStack.Navigator>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -147,23 +167,25 @@ export default function App() {
             name="ExpertProfile1"
             component={ExpertProfileStackScreen}
           />
-          {/* <Tab.Screen
-            name='CreateTaskImage'
-            component={CreateTaskImgStackScreen}
-          /> */}
           <Tab.Screen
             name="CreateTaskImage"
             component={CreateTaskImgStackScreen}
           />
-          <Tab.Screen name="AddNewExpert" component={AddNewExpertStackScreen} />
           <Tab.Screen
-            name="ViewSingleExpert"
+            name="AddNewExpertPage"
+            component={AddNewExpertStackScreen}
+          />
+          <Tab.Screen
+            name="ViewSingleExpertPage"
             component={ViewSingleExpertStackScreen}
+          />
+          <Tab.Screen name="AddRatingsPage" component={AddRatingsStackScreen} />
+          <Tab.Screen
+            name="AddFeedbackPage"
+            component={AddFeedbackStackScreen}
           />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({});

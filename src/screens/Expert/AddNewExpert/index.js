@@ -31,7 +31,7 @@ const AddNewExpert = () => {
   const [service, setService] = useState("");
   const [year, setYear] = useState("");
   const [location, setLocation] = useState("");
-  const [groupValue, setGroupValue] = useState("");
+  const [days, setDays] = useState("");
 
   const handleButtonClick = async () => {
     // Prepare data object
@@ -110,20 +110,23 @@ const AddNewExpert = () => {
           <Select.Item label="Gampaha" value="Gampaha" />
           <Select.Item label="Kalutara" value="Kalutara" />
         </Select>
-        <Radio.Group
-          defaultValue={setGroupValue}
-          name="exampleGroup"
-          accessibilityLabel="favorite colorscheme">
-          <Radio colorScheme="emerald" value="1" my={3}>
-            Weekdays
-          </Radio>
-          <Radio colorScheme="secondary" value="2" my={3}>
-            Weekend
-          </Radio>
-          <Radio colorScheme="warning" value="3" my={3}>
-            Weekdays & Weekend
-          </Radio>
-        </Radio.Group>
+        <Select
+          selectedValue={days}
+          minWidth="300"
+          variant="rounded"
+          accessibilityLabel="WorkingDays"
+          placeholder="Working Days"
+          _selectedItem={{
+            bg: "teal.600",
+            endIcon: <CheckIcon size="5" />,
+          }}
+          mt={1}
+          onValueChange={(itemValue) => setDays(itemValue)}>
+          <Select.Item label="Weekdays" value="Weekdays" />
+          <Select.Item label="Weekend" value="Weekend" />
+          <Select.Item label="Both" value="Both" />
+        </Select>
+
         <Pressable
           onPress={() => console.log("I'm Pressed")}
           rounded="8"
