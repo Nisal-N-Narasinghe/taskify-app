@@ -23,7 +23,7 @@ import CleaningJob from "../../../../assets/cleaning.jpg";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { JobHistoryItem } from "../../../components/Expert/ExpertJobHistory";
 
-const PastJobHistory = () => {
+const ExpertJobHistory = () => {
   const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
 
   const toggleFilterModal = () => {
@@ -69,10 +69,11 @@ const PastJobHistory = () => {
                 color='gray.500'
               />
               <Input
-                w={64}
+                w={"98%"}
                 placeholder='Search'
-                _focus={{ borderColor: "gray.200" }}
-                _light={{ borderColor: "gray.200" }}
+                borderRadius='full'
+                borderLeftWidth={0}
+                borderColor={"transparent"}
               />
             </Box>
             {/* Filter Icon */}
@@ -151,4 +152,4 @@ const PastJobHistory = () => {
   );
 };
 
-export default PastJobHistory;
+export default ExpertJobHistory;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Text, Image, ScrollView, VStack } from "native-base";
 import { styles } from "../../../styles/Expert/ExpertViewExpertiseArea";
 import {
@@ -7,9 +7,19 @@ import {
   ExpertDiscription,
 } from "../../../components/Expert/ExpertViewExpertiseArea";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-
+import StepIndicator from "../../../components/common/stepIndicators/stepIndicator";
+import Swiper from "react-native-swiper"; // Import Swiper component
+import ImageSlider from "../../../components/common/ImageSlider";
+import ImageSliderIndicator from "../../../components/common/ImageSliderIndicator";
 const ExpertViewExpertiseArea = () => {
-  const slideImage = require("../../../../assets/cleaning.jpg");
+  const images = [
+    require("../../../../assets/cleaning.jpg"),
+    require("../../../../assets/computer.jpg"),
+    require("../../../../assets/gardening.jpg"),
+    require("../../../../assets/plumber.jpg"),
+    require("../../../../assets/dog.jpg"),
+  ];
+  const [currentStep, setCurrentStep] = useState(0);
 
   const handleEdit = () => {
     //console.log("Edit button pressed");
@@ -17,17 +27,20 @@ const ExpertViewExpertiseArea = () => {
   const handleDelete = () => {
     //console.log("Delete button pressed");
   };
+  const handleSwiperIndexChanged = (index) => {
+    setCurrentStep(index + 1);
+  };
 
   return (
     <Box style={styles.container}>
       <ScrollView flex={1} showsVerticalScrollIndicator={true}>
         <Box safeArea flex={1}>
           <VStack>
-            <Image
-              source={slideImage}
-              alt='slideImage'
-              style={styles.photoSlider}
+            <ImageSlider
+              images={images}
+              onIndexChanged={handleSwiperIndexChanged}
             />
+            <ImageSliderIndicator currentStep={currentStep} />
             <ExpertDiscription discription='sample discription' />
             <ExpertDetails
               name='John Doe'

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-const stepIndicator = ({ currentStep }) => {
+const StepIndicator = ({ currentStep }) => {
   const totSteps = 5;
   const circles = [];
 
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default stepIndicator;
+export default StepIndicator;
