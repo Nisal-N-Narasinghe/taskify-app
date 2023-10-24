@@ -29,43 +29,37 @@ function CreateTaskDetails() {
   };
 
   return (
-    <Box padding={3}>
-      <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
-        <StepIndicator currentStep={2} />
-        <Heading marginBottom={3} marginTop={3} size="md">
-          Please fill the below details
-        </Heading>
-        <Box w="100%">
-          <FormControl isRequired marginBottom={3}>
-            <Stack mx="4">
-              <FormControl.Label fontSize={"lg"}>
-                Task Category
-              </FormControl.Label>
-              <Input type="text" defaultValue="" placeholder="Title" readOnly />
+    <ScrollView p={3}>
+      <StepIndicator currentStep={2} />
+      <Heading marginBottom={3} marginTop={3} size="md">
+        Please fill the below details
+      </Heading>
+      <Box w="full">
+        <FormControl isRequired marginBottom={3}>
+          <Stack>
+            <FormControl.Label fontSize={"lg"}>Task Category</FormControl.Label>
+            <Input type="text" defaultValue="" placeholder="Title" readOnly />
 
-              <FormControl.Label fontSize={"lg"}>Title</FormControl.Label>
-              <Input type="text" defaultValue="" placeholder="Title" />
+            <FormControl.Label fontSize={"lg"}>Title</FormControl.Label>
+            <Input type="text" defaultValue="" placeholder="Title" />
 
-              <FormControl.Label>Description</FormControl.Label>
-              <TextArea h={"32"} placeholder="Task Description" w="100%" />
+            <FormControl.Label>Description</FormControl.Label>
+            <TextArea h={"32"} placeholder="Task Description" w="100%" />
 
-              <FormControl.Label>Location</FormControl.Label>
-              <Input type="text" defaultValue="" placeholder="Location" />
+            <FormControl.Label>Location</FormControl.Label>
+            <Input type="text" defaultValue="" placeholder="Location" />
 
-              <FormControl.Label>Budget</FormControl.Label>
-              <Input type="text" defaultValue="" placeholder="Budget" />
+            <FormControl.Label>Budget</FormControl.Label>
+            <Input type="text" defaultValue="" placeholder="Budget" />
 
-              <FormControl.Label>Time Period</FormControl.Label>
-              <Input type="text" defaultValue="" placeholder="Time Period" />
-            </Stack>
-          </FormControl>
+            <FormControl.Label>Time Period</FormControl.Label>
+            <Input type="text" defaultValue="" placeholder="Time Period" />
+          </Stack>
+        </FormControl>
 
-          <Button mx={4} onPress={handleContinue}>
-            Continue
-          </Button>
-        </Box>
-      </ScrollView>
-    </Box>
+        <Button onPress={handleContinue}>Continue</Button>
+      </Box>
+    </ScrollView>
   );
 }
 
