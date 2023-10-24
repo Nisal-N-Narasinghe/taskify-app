@@ -1,13 +1,8 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
 import { useNavigation } from "@react-navigation/native";
+import { Box, Button, Text } from "native-base";
+import React from "react";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
 import AddFeedback from "./AddFeedback";
 
 const Dashboard = () => {

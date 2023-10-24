@@ -1,11 +1,10 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-const stepIndicator = ({ currentStep }) => {
-  const totSteps = 5;
+const stepIndicator = ({ currentStep, totalSteps }) => {
   const circles = [];
 
-  for (let i = 0; i < totSteps; i++) {
+  for (let i = 0; i < totalSteps; i++) {
     //add background color
     const circleStyle = {
       ...styles.circle,
