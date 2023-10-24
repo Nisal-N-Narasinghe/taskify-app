@@ -18,7 +18,7 @@ import Dashboard from "./src/screens/User/Dashboard";
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
 import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
-import CreateTaskSuccess from "./src/screens/User/CreateTask";
+import CreateTaskSuccess from "./src/screens/User/CreateTask/SuccessView";
 import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
 import AddNewExpert from "./src/screens/Expert/AddNewExpert";
 import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
