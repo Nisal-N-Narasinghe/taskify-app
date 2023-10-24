@@ -4,9 +4,7 @@ import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
 
-const Dashboard = () => {
-  const navigation = useNavigation();
-
+const Dashboard = ({ navigation }) => {
   const navigateToExpertProfile = () => {
     // Navigate to Expert profile component
     navigation.navigate("ExpertProfile1");
@@ -32,6 +30,10 @@ const Dashboard = () => {
     navigation.navigate("AddFeedbackPage");
   };
 
+  const navigateToUserChat = () => {
+    navigation.navigate("User Chat");
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -46,6 +48,10 @@ const Dashboard = () => {
           <TouchableOpacity onPress={navigateToCreateTask} style={styles.card}>
             <Icon name="plus-circle" size={40} color="#2ecc71" />
             <Text style={styles.cardTitle}>Create Task</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={navigateToUserChat} style={styles.card}>
+            <Icon name="plus-circle" size={40} color="#2ecc71" />
+            <Text style={styles.cardTitle}>User Chat</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

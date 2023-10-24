@@ -12,6 +12,7 @@ import TaskDashboard from "./src/screens/User/TaskDashboard";
 // Task Screens
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
+import UserChat from "./src/screens/User/Chat";
 
 //  STACK NAVIGATION CONFIG
 
@@ -23,6 +24,7 @@ function DashboardStackScreen() {
   return (
     <DashboardStack.Navigator>
       <DashboardStack.Screen name="Dashboard" component={Dashboard} />
+      <DashboardStack.Screen name="User Chat" component={UserChat} />
     </DashboardStack.Navigator>
   );
 }
