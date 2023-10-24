@@ -12,13 +12,22 @@ import {
   ScrollView,
   FormControl,
   TextArea,
+  Button,
 } from "native-base";
 import React from "react";
 import StepIndicator from "../../components/stepIndicators/stepIndicator";
 
 import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 function CreateTask() {
+  const navigation = useNavigation();
+
+  const navigateToCreateTaskDetails = () => {
+    // Navigate to Expert profile component
+    navigation.navigate("CreateTaskImage");
+  };
+
   return (
     <Box padding={3}>
       <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
@@ -46,6 +55,7 @@ function CreateTask() {
             </Stack>
           </FormControl>
         </Box>
+        <Button onPress={navigateToCreateTaskDetails}>Add Images</Button>
       </ScrollView>
     </Box>
   );

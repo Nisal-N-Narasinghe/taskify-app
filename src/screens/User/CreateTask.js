@@ -11,6 +11,7 @@ import {
   Icon,
   ScrollView,
   Row,
+  Button,
 } from "native-base";
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -23,8 +24,19 @@ import ComputerImg from "../../../assets/computer.jpg";
 import DogImg from "../../../assets/dog.jpg";
 import UpperImg from "../../../assets/upperWidget.png";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 
 function CreateTask() {
+  const navigation = useNavigation();
+
+  useEffect(() => {}, []);
+
+  const navigateToCreateTaskDetails = () => {
+    // Navigate to Expert profile component
+    navigation.navigate("CreateTaskDetails");
+  };
+
   return (
     <Box padding={3}>
       <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
@@ -67,7 +79,9 @@ function CreateTask() {
         <VStack space={3}>
           <HStack space={3}>
             {/* First Box */}
-            <TouchableOpacity style={{ flex: 1 }}>
+            <TouchableOpacity
+              style={{ flex: 1 }}
+              onPress={navigateToCreateTaskDetails}>
               <Box
                 id="clean"
                 maxW="100%"
@@ -85,8 +99,7 @@ function CreateTask() {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -126,8 +139,7 @@ function CreateTask() {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -167,8 +179,7 @@ function CreateTask() {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -207,8 +218,7 @@ function CreateTask() {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -248,8 +258,7 @@ function CreateTask() {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -288,8 +297,7 @@ function CreateTask() {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}
-              >
+                }}>
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
