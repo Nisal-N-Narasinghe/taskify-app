@@ -20,18 +20,26 @@ import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
 import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
 import CreateTaskSuccess from "./src/screens/User/CreateTask";
 import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
+import AddNewExpert from "./src/screens/Expert/AddNewExpert";
+import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
+import AddRatings from "./src/components/common/StarRatings";
+import AddFeedback from "./src/screens/User/AddFeedback";
 
 const DashStack = createNativeStackNavigator();
 const CreateTaskCategoryStack = createNativeStackNavigator();
 const ExpertProfileStack = createNativeStackNavigator();
 const CreateTaskDetailsSatck = createNativeStackNavigator();
 const CreateTaskImgStack = createNativeStackNavigator();
+const AddNewExpertStack = createNativeStackNavigator();
+const ViewSingleExpertStack = createNativeStackNavigator();
+const AddRatingsStack = createNativeStackNavigator();
+const AddFeedbackStack = createNativeStackNavigator();
 const CreateTaskSuccessStack = createNativeStackNavigator();
 
 function DashStackScreen() {
   return (
     <DashStack.Navigator>
-      <DashStack.Screen name='Dashboard' component={Dashboard} />
+      <DashStack.Screen name="Dashboard" component={Dashboard} />
     </DashStack.Navigator>
   );
 }
@@ -40,7 +48,7 @@ function CreateTaskCategoryStackScreen() {
   return (
     <CreateTaskCategoryStack.Navigator>
       <CreateTaskCategoryStack.Screen
-        name='CreateTaskCategory'
+        name="CreateTaskCategory"
         component={CreateTaskCategory}
       />
     </CreateTaskCategoryStack.Navigator>
@@ -51,7 +59,7 @@ function CreateTaskDetailsStackScreen() {
   return (
     <CreateTaskDetailsSatck.Navigator>
       <CreateTaskDetailsSatck.Screen
-        name='CreateTaskDetails'
+        name="CreateTaskDetails"
         component={CreateTaskDetails}
       />
     </CreateTaskDetailsSatck.Navigator>
@@ -62,7 +70,7 @@ function CreateTaskImgStackScreen() {
   return (
     <CreateTaskImgStack.Navigator>
       <CreateTaskImgStack.Screen
-        name='CreateTaskImage'
+        name="CreateTaskImage"
         component={CreateTaskImage}
       />
     </CreateTaskImgStack.Navigator>
@@ -72,7 +80,7 @@ function CreateTaskSuccessStackScreen() {
   return (
     <CreateTaskSuccessStack.Navigator>
       <CreateTaskSuccessStack.Screen
-        name='CreateTaskSUccess'
+        name="CreateTaskSUccess"
         component={CreateTaskSuccess}
       />
     </CreateTaskSuccessStack.Navigator>
@@ -83,10 +91,45 @@ function ExpertProfileStackScreen() {
   return (
     <ExpertProfileStack.Navigator>
       <ExpertProfileStack.Screen
-        name='ExpertProfile'
+        name="ExpertProfile"
         component={ExpertProfileScreen}
       />
     </ExpertProfileStack.Navigator>
+  );
+}
+
+function AddNewExpertStackScreen() {
+  return (
+    <AddNewExpertStack.Navigator>
+      <AddNewExpertStack.Screen name="AddNewExpert" component={AddNewExpert} />
+    </AddNewExpertStack.Navigator>
+  );
+}
+
+function ViewSingleExpertStackScreen() {
+  return (
+    <ViewSingleExpertStack.Navigator>
+      <ViewSingleExpertStack.Screen
+        name="ViewSingleExpert"
+        component={ViewSingleExpert}
+      />
+    </ViewSingleExpertStack.Navigator>
+  );
+}
+
+function AddRatingsStackScreen() {
+  return (
+    <AddRatingsStack.Navigator>
+      <AddRatingsStack.Screen name="AddRatings" component={AddRatings} />
+    </AddRatingsStack.Navigator>
+  );
+}
+
+function AddFeedbackStackScreen() {
+  return (
+    <AddFeedbackStack.Navigator>
+      <AddFeedbackStack.Screen name="AddFeedback" component={AddFeedback} />
+    </AddFeedbackStack.Navigator>
   );
 }
 
@@ -108,7 +151,7 @@ export default function App() {
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName='Dashboard'
+          initialRouteName="Dashboard"
           screenOptions={({ route }) => ({
             headerShown: false,
             tabBarIcon: ({ focused, color, size }) => {
@@ -133,35 +176,42 @@ export default function App() {
               );
             },
           })}>
-          <Tab.Screen name='DashboardPage' component={DashStackScreen} />
+          <Tab.Screen name="DashboardPage" component={DashStackScreen} />
           <Tab.Screen
-            name='CreateTaskCategoryPage'
+            name="CreateTaskCategoryPage"
             component={CreateTaskCategoryStackScreen}
           />
           <Tab.Screen
-            name='CreateTaskDetailsPage'
+            name="CreateTaskDetailsPage"
             component={CreateTaskDetailsStackScreen}
           />
           <Tab.Screen
-            name='CreateTaskImagePage'
+            name="CreateTaskImagePage"
             component={CreateTaskImgStackScreen}
           />
-          {/* <Tab.Screen
-            name='CreateTaskImage'
-            component={CreateTaskImgStackScreen}
-          /> */}
           <Tab.Screen
-            name='CreateTaskSuccessPage'
+            name="CreateTaskSuccessPage"
             component={CreateTaskSuccessStackScreen}
           />
           <Tab.Screen
-            name='ExpertProfile1'
+            name="ExpertProfile1"
             component={ExpertProfileStackScreen}
+          />
+          <Tab.Screen
+            name="AddNewExpertPage"
+            component={AddNewExpertStackScreen}
+          />
+          <Tab.Screen
+            name="ViewSingleExpertPage"
+            component={ViewSingleExpertStackScreen}
+          />
+          <Tab.Screen name="AddRatingsPage" component={AddRatingsStackScreen} />
+          <Tab.Screen
+            name="AddFeedbackPage"
+            component={AddFeedbackStackScreen}
           />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({});
