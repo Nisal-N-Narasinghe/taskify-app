@@ -20,6 +20,7 @@ import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
 import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
 import CreateTaskSuccess from "./src/screens/User/CreateTask";
 import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
+import ExpertViewExpertiseArea from "./src/screens/Expert/ExpertViewExpertiseArea";
 
 const DashStack = createNativeStackNavigator();
 const CreateTaskCategoryStack = createNativeStackNavigator();
@@ -154,9 +155,14 @@ export default function App() {
             name='CreateTaskSuccessPage'
             component={CreateTaskSuccessStackScreen}
           />
-          <Tab.Screen
+          {/* <Tab.Screen
             name='ExpertProfile1'
             component={ExpertProfileStackScreen}
+          /> */}
+
+          <Tab.Screen
+            name='ExpertViewExpertiseArea'
+            component={ExpertViewExpertiseArea}
           />
         </Tab.Navigator>
       </NavigationContainer>
