@@ -7,8 +7,6 @@ import {
   ExpertDiscription,
 } from "../../../components/Expert/ExpertViewExpertiseArea";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import StepIndicator from "../../../components/common/StepIndicators";
-import Swiper from "react-native-swiper"; // Import Swiper component
 import ImageSlider from "../../../components/common/ImageSlider";
 import ImageSliderIndicator from "../../../components/common/ImageSliderIndicator";
 const ExpertViewExpertiseArea = () => {
@@ -40,7 +38,10 @@ const ExpertViewExpertiseArea = () => {
               images={images}
               onIndexChanged={handleSwiperIndexChanged}
             />
-            <ImageSliderIndicator currentStep={currentStep} />
+            <ImageSliderIndicator
+              currentStep={currentStep}
+              totalStep={images.length}
+            />
             <ExpertDiscription discription='sample discription' />
             <ExpertDetails
               name='John Doe'
