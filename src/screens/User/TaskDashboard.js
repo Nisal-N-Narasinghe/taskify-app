@@ -1,49 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, Button, Stack, Text } from "native-base";
+import { Text } from "native-base";
 import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
 
-const Dashboard = () => {
-  const navigation = useNavigation();
-
-  const navigateToExpertProfile = () => {
-    // Navigate to Expert profile component
-    navigation.navigate("ExpertProfile1");
-  };
-
-  const navigateToCreateTask = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("Create Task");
-  };
-
-  const navigateToAddNewExpert = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("AddNewExpertPage");
-  };
-
-  const ViewSingleExpert = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("ViewSingleExpertPage");
-  };
-
-  const navigateToAddFeedback = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("AddFeedbackPage");
-  };
-
+const TaskDashboard = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Text style={styles.heading}>Task Dashboard</Text>
+
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <Text style={styles.heading}>Main Dashboard</Text>
         <View style={styles.cardContainer}>
           <TouchableOpacity
-            onPress={navigateToExpertProfile}
+            onPress={() => navigation.navigate("Create Task")}
             style={styles.card}>
-            <Icon name="user" size={40} color="#3498db" />
-            <Text style={styles.cardTitle}>Expert Profile</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToCreateTask} style={styles.card}>
             <Icon name="plus-circle" size={40} color="#2ecc71" />
             <Text style={styles.cardTitle}>Create Task</Text>
           </TouchableOpacity>
@@ -102,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dashboard;
+export default TaskDashboard;
