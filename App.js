@@ -1,152 +1,67 @@
-import {
-  Box,
-  Icon,
-  NativeBaseProvider,
-  Stack,
-  VStack,
-  extendTheme,
-} from "native-base";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { Footer } from "./src/components/common/Footer";
+import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { Ionicons } from "@expo/vector-icons";
+import { theme } from "./theme";
 
+// Dashboards
 import Dashboard from "./src/screens/User/Dashboard";
+import TaskDashboard from "./src/screens/User/TaskDashboard";
+
+// Task Screens
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
-import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
-import CreateTaskSuccess from "./src/screens/User/CreateTask/SuccessView";
-import ExpertProfileScreen from "./src/screens/Expert/ExpertProfile";
-import AddNewExpert from "./src/screens/Expert/AddNewExpert";
-import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
-import AddRatings from "./src/components/common/StarRatings";
-import AddFeedback from "./src/screens/User/AddFeedback";
 
-const DashStack = createNativeStackNavigator();
-const CreateTaskCategoryStack = createNativeStackNavigator();
-const ExpertProfileStack = createNativeStackNavigator();
-const CreateTaskDetailsSatck = createNativeStackNavigator();
-const CreateTaskImgStack = createNativeStackNavigator();
-const AddNewExpertStack = createNativeStackNavigator();
-const ViewSingleExpertStack = createNativeStackNavigator();
-const AddRatingsStack = createNativeStackNavigator();
-const AddFeedbackStack = createNativeStackNavigator();
-const CreateTaskSuccessStack = createNativeStackNavigator();
+//  STACK NAVIGATION CONFIG
 
-function DashStackScreen() {
+const DashboardStack = createNativeStackNavigator();
+const TaskDashboardStack = createNativeStackNavigator();
+const ProfileDashboardStack = createNativeStackNavigator();
+
+function DashboardStackScreen() {
   return (
-    <DashStack.Navigator>
-      <DashStack.Screen name="Dashboard" component={Dashboard} />
-    </DashStack.Navigator>
+    <DashboardStack.Navigator>
+      <DashboardStack.Screen name="Dashboard" component={Dashboard} />
+    </DashboardStack.Navigator>
   );
 }
 
-function CreateTaskCategoryStackScreen() {
+function TaskDashboardStackScreen() {
   return (
-    <CreateTaskCategoryStack.Navigator>
-      <CreateTaskCategoryStack.Screen
-        name="CreateTaskCategory"
+    <TaskDashboardStack.Navigator>
+      <TaskDashboardStack.Screen
+        name="Task Dashboard"
+        component={TaskDashboard}
+      />
+      <TaskDashboardStack.Screen
+        name="Create Task"
         component={CreateTaskCategory}
       />
-    </CreateTaskCategoryStack.Navigator>
-  );
-}
-
-function CreateTaskDetailsStackScreen() {
-  return (
-    <CreateTaskDetailsSatck.Navigator>
-      <CreateTaskDetailsSatck.Screen
-        name="CreateTaskDetails"
+      <TaskDashboardStack.Screen
+        name="Task Details"
         component={CreateTaskDetails}
       />
-    </CreateTaskDetailsSatck.Navigator>
+    </TaskDashboardStack.Navigator>
   );
 }
 
-function CreateTaskImgStackScreen() {
+function ProfileDashboardStackScreen() {
   return (
-    <CreateTaskImgStack.Navigator>
-      <CreateTaskImgStack.Screen
-        name="CreateTaskImage"
-        component={CreateTaskImage}
-      />
-    </CreateTaskImgStack.Navigator>
-  );
-}
-function CreateTaskSuccessStackScreen() {
-  return (
-    <CreateTaskSuccessStack.Navigator>
-      <CreateTaskSuccessStack.Screen
-        name="CreateTaskSUccess"
-        component={CreateTaskSuccess}
-      />
-    </CreateTaskSuccessStack.Navigator>
+    <ProfileDashboardStack.Navigator>
+      {/* <ProfileDashboardStack.Screen
+        name="Profile Dashboard"
+        component={ProfileDashboard}
+      /> */}
+    </ProfileDashboardStack.Navigator>
   );
 }
 
-function ExpertProfileStackScreen() {
-  return (
-    <ExpertProfileStack.Navigator>
-      <ExpertProfileStack.Screen
-        name="ExpertProfile"
-        component={ExpertProfileScreen}
-      />
-    </ExpertProfileStack.Navigator>
-  );
-}
-
-function AddNewExpertStackScreen() {
-  return (
-    <AddNewExpertStack.Navigator>
-      <AddNewExpertStack.Screen name="AddNewExpert" component={AddNewExpert} />
-    </AddNewExpertStack.Navigator>
-  );
-}
-
-function ViewSingleExpertStackScreen() {
-  return (
-    <ViewSingleExpertStack.Navigator>
-      <ViewSingleExpertStack.Screen
-        name="ViewSingleExpert"
-        component={ViewSingleExpert}
-      />
-    </ViewSingleExpertStack.Navigator>
-  );
-}
-
-function AddRatingsStackScreen() {
-  return (
-    <AddRatingsStack.Navigator>
-      <AddRatingsStack.Screen name="AddRatings" component={AddRatings} />
-    </AddRatingsStack.Navigator>
-  );
-}
-
-function AddFeedbackStackScreen() {
-  return (
-    <AddFeedbackStack.Navigator>
-      <AddFeedbackStack.Screen name="AddFeedback" component={AddFeedback} />
-    </AddFeedbackStack.Navigator>
-  );
-}
+// TAB NAVIGATION CONFIG
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const theme = extendTheme({
-    colors: {
-      primary: {
-        green: "#149873",
-      },
-    },
-    config: {
-      // initialColorMode: "dark",
-    },
-  });
-
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
@@ -154,62 +69,24 @@ export default function App() {
           initialRouteName="Dashboard"
           screenOptions={({ route }) => ({
             headerShown: false,
+            tabBarShowLabel: false,
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
-              if (route.name === "DashboardPage") {
-                iconName = "dashboard";
-              } else if (route.name === "CreateTaskCategoryPage") {
-                iconName = "playlist-add";
-              } else if (route.name === "ExpertProfile1") {
-                iconName = "person";
-              } else if (route.name === "CreateTaskDetailsPage") {
-                iconName = "playlist-add-check";
-              } else if (route.name === "CreateTaskImagePage") {
-                iconName = "image";
-              } else if (route.name === "CreateTaskSuccessPage") {
-                iconName = "image";
+              if (route.name === "Dashboard") {
+                iconName = "home-outline";
+              } else if (route.name === "Tasks") {
+                iconName = "hammer-outline";
+              } else if (route.name === "Profile") {
+                iconName = "person-outline";
               }
 
-              return (
-                <MaterialIcons name={iconName} size={size} color={color} />
-              );
+              return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}>
-          <Tab.Screen name="DashboardPage" component={DashStackScreen} />
-          <Tab.Screen
-            name="CreateTaskCategoryPage"
-            component={CreateTaskCategoryStackScreen}
-          />
-          <Tab.Screen
-            name="CreateTaskDetailsPage"
-            component={CreateTaskDetailsStackScreen}
-          />
-          <Tab.Screen
-            name="CreateTaskImagePage"
-            component={CreateTaskImgStackScreen}
-          />
-          <Tab.Screen
-            name="CreateTaskSuccessPage"
-            component={CreateTaskSuccessStackScreen}
-          />
-          <Tab.Screen
-            name="ExpertProfile1"
-            component={ExpertProfileStackScreen}
-          />
-          <Tab.Screen
-            name="AddNewExpertPage"
-            component={AddNewExpertStackScreen}
-          />
-          <Tab.Screen
-            name="ViewSingleExpertPage"
-            component={ViewSingleExpertStackScreen}
-          />
-          <Tab.Screen name="AddRatingsPage" component={AddRatingsStackScreen} />
-          <Tab.Screen
-            name="AddFeedbackPage"
-            component={AddFeedbackStackScreen}
-          />
+          <Tab.Screen name="Dashboard" component={DashboardStackScreen} />
+          <Tab.Screen name="Tasks" component={TaskDashboardStackScreen} />
+          <Tab.Screen name="Profile" component={ProfileDashboardStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

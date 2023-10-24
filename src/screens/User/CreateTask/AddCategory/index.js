@@ -14,7 +14,6 @@ import {
   Button,
 } from "native-base";
 import React from "react";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import StepIndicator from "../../../../components/common/StepIndicators";
 import CleanImg from "../../../../../assets/cleaning.jpg";
 import PlumberImg from "../../../../../assets/plumber.jpg";
@@ -23,17 +22,14 @@ import GardenImg from "../../../../../assets/gardening.jpg";
 import ComputerImg from "../../../../../assets/computer.jpg";
 import DogImg from "../../../../../assets/dog.jpg";
 import UpperImg from "../../../../../assets/upperWidget.png";
-import styles from "../../../../styles/User";
 import { TouchableOpacity } from "react-native";
 import SearchBar from "../../../../components/common/SearchBar";
-import { useNavigation } from "@react-navigation/native";
 
-const CreateTaskCategory = () => {
-  const navigation = useNavigation();
-
+const CreateTaskCategory = ({ navigation }) => {
   const handleClick = () => {
-    navigation.navigate("CreateTaskDetailsPage");
+    navigation.navigate("Task Details");
   };
+
   return (
     <Box padding={3}>
       <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
@@ -100,7 +96,7 @@ const CreateTaskCategory = () => {
             </TouchableOpacity>
 
             {/* second box*/}
-            <TouchableOpacity style={{ flex: 1 }} onPress={handleClick}>
+            <TouchableOpacity style={{ flex: 1 }}>
               <Box
                 maxW="100%"
                 rounded="lg"
@@ -222,7 +218,7 @@ const CreateTaskCategory = () => {
             <TouchableOpacity
               key={"Computer Repair"}
               style={{ flex: 1 }}
-              onPress={handleClick()}>
+              onPress={handleClick}>
               <Box
                 maxW="100%"
                 rounded="lg"
