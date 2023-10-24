@@ -8,7 +8,7 @@ const RatingIndicator = ({ rating }) => {
     stars.push(
       <Icon
         name={i <= rating ? "star" : "star-o"}
-        size={20}
+        size={16}
         color='gold'
         key={i}
       />
