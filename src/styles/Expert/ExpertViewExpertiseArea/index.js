@@ -7,9 +7,9 @@ export const styles = {
   },
 
   photoSlider: {
-    width: "100%",
+    width: "95%",
     height: 200,
-    borderRadius: 10,
+    borderRadius: 16,
   },
 
   ExpertDiscription: {
