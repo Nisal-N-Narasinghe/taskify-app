@@ -20,6 +20,7 @@ import AddFeedback from "./src/screens/User/AddFeedback";
 import ExpertProfile from "./src/screens/Expert/ExpertProfile";
 import ExpertJobHistory from "./src/screens/Expert/ExpertJobHistory";
 import ExpertViewExpertiseArea from "./src/screens/Expert/ExpertViewExpertiseArea";
+import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistory/ExpertViewSingleJobHistoryItem";
 //  STACK NAVIGATION CONFIG
 
 const DashboardStack = createNativeStackNavigator();
@@ -50,6 +51,10 @@ function ExpertDashboardStackScreen() {
       <ExpertDashboardStack.Screen
         name='Expert Area'
         component={ExpertViewExpertiseArea}
+      />
+      <ExpertDashboardStack.Screen
+        name='Completed Jobs'
+        component={ExpertViewSingleJobHistoryItem}
       />
     </ExpertDashboardStack.Navigator>
   );
