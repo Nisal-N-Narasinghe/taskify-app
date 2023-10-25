@@ -51,7 +51,7 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
             totalStep={images.length}
           />
         </Box>
-        <Box style={styles.ratingsFrame}>
+        <Box style={styles.ratingsFrame} shadow={2}>
           <Heading m={4} fontSize={18}>
             Ratings
           </Heading>

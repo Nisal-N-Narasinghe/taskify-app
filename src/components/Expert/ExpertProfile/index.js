@@ -31,7 +31,7 @@ export const RatingCards = ({ heading, rating }) => {
       style={styles.ratingCards}
       backgroundColor='white'
       borderRadius={8}
-      shadow={1}
+      shadow={3}
       p={2}
       mx={2}>
       <Stack alignItems='center' my={2}>
