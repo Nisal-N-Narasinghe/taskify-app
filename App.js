@@ -19,8 +19,6 @@ import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
 import AddFeedback from "./src/screens/User/AddFeedback";
 import ExpertProfile from "./src/screens/Expert/ExpertProfile";
 import ViewMyTasks from "./src/screens/User/ViewTasks/ViewMyTasks";
-import ExpertJobHistory from "./src/screens/Expert/ExpertJobHistory";
-
 //  STACK NAVIGATION CONFIG
 
 const DashboardStack = createNativeStackNavigator();
@@ -70,10 +68,6 @@ function TaskDashboardStackScreen() {
       />
       <TaskDashboardStack.Screen name="My Tasks" component={ViewMyTasks} />
       <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
-      <TaskDashboardStack.Screen
-        name="Job History"
-        component={ExpertJobHistory}
-      />
     </TaskDashboardStack.Navigator>
   );
 }
