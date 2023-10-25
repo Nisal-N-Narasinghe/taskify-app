@@ -59,7 +59,7 @@ function ExpertDashboardStackScreen() {
         component={ExpertViewSingleJobHistoryItem}
       />
       <ExpertDashboardStack.Screen
-        name='Upcomming Jobs'
+        name='Upcoming Jobs'
         component={ViewUpcomingJobs}
       />
     </ExpertDashboardStack.Navigator>

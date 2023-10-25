@@ -3,7 +3,7 @@ import { Box, ScrollView, VStack } from "native-base";
 import CleaningJob from "../../../../assets/cleaning.jpg";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
-import { ViewUpcommingJobItem } from "../../../components/Expert/ViewUpcommingJobs";
+import { ViewUpcomingJobItem } from "../../../components/Expert/ViewUpcomingJobs";
 
 const ViewUpcomingJobs = () => {
   const navigation = useNavigation();
@@ -17,7 +17,7 @@ const ViewUpcomingJobs = () => {
         <Box safeArea>
           <VStack paddingX={4}>
             <TouchableOpacity onPress={handleClick}>
-              <ViewUpcommingJobItem
+              <ViewUpcomingJobItem
                 title='Cleaning Job'
                 location='Malabe'
                 countFromPostedDate='In 2 days'
@@ -26,35 +26,35 @@ const ViewUpcomingJobs = () => {
               />
             </TouchableOpacity>
 
-            <ViewUpcommingJobItem
+            <ViewUpcomingJobItem
               title='Cleaning Job'
               location='Malabe'
               countFromPostedDate='In 2 days'
               image={CleaningJob}
               Amount='Rs. 5000'
             />
-            <ViewUpcommingJobItem
+            <ViewUpcomingJobItem
               title='Cleaning Job'
               location='Malabe'
               countFromPostedDate='In 2 days'
               image={CleaningJob}
               Amount='Rs. 5000'
             />
-            <ViewUpcommingJobItem
+            <ViewUpcomingJobItem
               title='Cleaning Job'
               location='Malabe'
               countFromPostedDate='In 2 days'
               image={CleaningJob}
               Amount='Rs. 5000'
             />
-            <ViewUpcommingJobItem
+            <ViewUpcomingJobItem
               title='Cleaning Job'
               location='Malabe'
               countFromPostedDate='In 2 days'
               image={CleaningJob}
               Amount='Rs. 5000'
             />
-            <ViewUpcommingJobItem
+            <ViewUpcomingJobItem
               title='Cleaning Job'
               location='Malabe'
               countFromPostedDate='In 2 days'
