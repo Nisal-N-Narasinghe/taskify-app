@@ -125,8 +125,7 @@ export const styles = {
     padding: 8,
     marginTop: 20,
     borderRadius: 16,
-    borderWidth: 1,
-    borderColor: "gray",
+    backgroundColor: "white",
   },
   ratingsFrameText: {
     fontSize: 14,
