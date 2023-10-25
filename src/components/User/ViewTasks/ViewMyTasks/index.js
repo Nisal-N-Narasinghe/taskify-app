@@ -72,9 +72,10 @@ export const ViewMyTaskItem = ({
       <Divider bg="gray.400" />
       <HStack justifyContent="space-between" padding={1}>
         <Text style={styles.Amount}>{Amount} LKR</Text>
-        <HStack />
-        <Feather name="edit" size={24} color="black" />
-        <Feather name="trash-2" size={24} color="black" />
+        <HStack space={4}>
+          <Feather name="edit" size={24} color="black" />
+          <Feather name="trash-2" size={24} color="black" />
+        </HStack>
       </HStack>
     </Box>
   );

@@ -12,12 +12,15 @@ import TaskDashboard from "./src/screens/User/TaskDashboard";
 // Task Screens
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
+import UserChat from "./src/screens/User/Chat";
 import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
 import CreateTaskSuccess from "./src/screens/User/CreateTask/SuccessView";
 import AddNewExpert from "./src/screens/Expert/AddNewExpert";
 import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
 import AddFeedback from "./src/screens/User/AddFeedback";
 import ExpertProfile from "./src/screens/Expert/ExpertProfile";
+import AllCompletedWorks from "./src/screens/User/AllCompletedWorks";
+//  STACK NAVIGATION CONFIG
 import ViewMyTasks from "./src/screens/User/ViewTasks/ViewMyTasks";
 import ExpertJobHistory from "./src/screens/Expert/ExpertJobHistory";
 import ExpertViewExpertiseArea from "./src/screens/Expert/ExpertViewExpertiseArea";
@@ -25,7 +28,6 @@ import ViewTask from "./src/screens/User/ViewTasks/ViewMyTasks/ViewMyTask";
 import ViewPastTasks from "./src/screens/User/ViewTasks/ViewPastTasks";
 import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistory/ExpertViewSingleJobHistoryItem";
 import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
-
 
 //  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
@@ -41,6 +43,7 @@ function ExpertDashboardStackScreen() {
         name="Add New Expert"
         component={AddNewExpert}
       />
+      <ExpertDashboardStack.Screen name="User Chat" component={UserChat} />
       <ExpertDashboardStack.Screen
         name="Expert Profile"
         component={ExpertProfile}
@@ -58,11 +61,11 @@ function ExpertDashboardStackScreen() {
         component={ExpertViewExpertiseArea}
       />
       <ExpertDashboardStack.Screen
-        name='Completed Jobs'
+        name="Completed Jobs"
         component={ExpertViewSingleJobHistoryItem}
       />
       <ExpertDashboardStack.Screen
-        name='Upcoming Jobs'
+        name="Upcoming Jobs"
         component={ViewUpcomingJobs}
       />
     </ExpertDashboardStack.Navigator>
@@ -83,6 +86,10 @@ function TaskDashboardStackScreen() {
       <TaskDashboardStack.Screen
         name="Task Details"
         component={CreateTaskDetails}
+      />
+      <TaskDashboardStack.Screen
+        name="All Completed Tasks"
+        component={AllCompletedWorks}
       />
       <TaskDashboardStack.Screen
         name="Task Image"
@@ -140,8 +147,7 @@ export default function App() {
 
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-          })}
-        >
+          })}>
           <Tab.Screen name="Dashboard" component={ExpertDashboardStackScreen} />
           <Tab.Screen name="Tasks" component={TaskDashboardStackScreen} />
           <Tab.Screen name="Profile" component={ProfileDashboardStackScreen} />
