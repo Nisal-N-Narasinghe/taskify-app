@@ -28,7 +28,7 @@ import { ViewMyTaskItem } from "../../../../components/User/ViewTasks/ViewMyTask
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
-const ViewMyTasks = () => {
+const ViewPastTasks = () => {
   const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
 
   const navigation = useNavigation();
@@ -135,4 +135,4 @@ const ViewMyTasks = () => {
   );
 };
 
-export default ViewMyTasks;
+export default ViewPastTasks;
