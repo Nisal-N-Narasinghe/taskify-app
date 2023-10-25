@@ -75,7 +75,7 @@ const ExpertProfileScreen = ({ navigation }) => {
           </Heading>
         </Center>
       </Box>
-      <Box flexDirection='row'>
+      <Box flexDirection='row' backgroundColor='white'>
         <Heading pl={3} fontSize={18} pr={4} pt={2}>
           History & Ratings
         </Heading>
@@ -88,7 +88,7 @@ const ExpertProfileScreen = ({ navigation }) => {
         </Box>
       </Box>
 
-      <Box>
+      <Box backgroundColor='white'>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -101,10 +101,11 @@ const ExpertProfileScreen = ({ navigation }) => {
           </Flex>
         </ScrollView>
       </Box>
-      <Heading pl={4} pb={4}>
-        Expertise Areas
-      </Heading>
-      <Box flex={1}>
+      <Box flex={1} background={"white"}>
+        <Heading pl={4} pb={4}>
+          Expertise Areas
+        </Heading>
+
         <VStack paddingX={4} paddingY={2}>
           {expertiseAreas.map((area, index) => (
             <TouchableOpacity
