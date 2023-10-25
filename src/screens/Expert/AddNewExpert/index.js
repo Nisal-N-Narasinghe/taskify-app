@@ -22,10 +22,14 @@ import {
   Flex,
   Spacer,
   Badge,
+  Alert,
 } from "native-base";
 import React, { useState } from "react";
 
-const AddNewExpert = () => {
+const AddNewExpert = ({ navigation }) => {
+  const handleClick = () => {
+    navigation.navigate("View Single Expert");
+  };
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [service, setService] = useState("");
@@ -34,17 +38,31 @@ const AddNewExpert = () => {
   const [days, setDays] = useState("");
 
   const handleButtonClick = async () => {
-    // Prepare data object
-    const data = {
-      name,
-      phone,
-      service,
-      year,
-      location,
-      groupValue,
-    };
-    // Log the data to check if it's correct
-    console.log("Data to be submitted:", data);
+    try {
+      // Prepare data object
+      const data = {
+        name,
+        phone,
+        service,
+        year,
+        location,
+        days,
+      };
+
+      // Save data to Firebase
+      await database().ref("experts").push(data);
+
+      // Log the data to check if it's correct
+      console.log("Data submitted to Firebase:", data);
+
+      // Optionally show an alert or navigate to the next screen
+      Alert.alert("Success", "Expert added successfully");
+      navigation.navigate("View Single Expert");
+    } catch (error) {
+      console.error("Error saving data to Firebase:", error.message);
+      // Optionally show an error alert
+      Alert.alert("Error", "Failed to add expert. Please try again.");
+    }
   };
 
   return (
@@ -143,7 +161,7 @@ const AddNewExpert = () => {
             </Text>
           </Center>
         </Pressable>
-        <Button marginBottom={5} onPress={handleButtonClick}>
+        <Button marginBottom={5} onPress={handleClick}>
           Next
         </Button>
       </Stack>

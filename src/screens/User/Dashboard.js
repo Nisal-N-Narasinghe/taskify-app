@@ -1,59 +1,46 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, Button, Stack, Text } from "native-base";
+import { Box, Button, Stack, Text, VStack } from "native-base";
 import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
+import { Ionicons } from "@expo/vector-icons";
 
 const Dashboard = ({ navigation }) => {
-  const navigateToExpertProfile = () => {
-    // Navigate to Expert profile component
-    navigation.navigate("ExpertProfile1");
-  };
-
-  const navigateToCreateTask = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("Create Task");
-  };
-
-  const navigateToAddNewExpert = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("AddNewExpertPage");
-  };
-
-  const ViewSingleExpert = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("ViewSingleExpertPage");
-  };
-
-  const navigateToAddFeedback = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("AddFeedbackPage");
-  };
-
-  const navigateToUserChat = () => {
-    navigation.navigate("User Chat");
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.heading}>Main Dashboard</Text>
-        <View style={styles.cardContainer}>
-          <TouchableOpacity
-            onPress={navigateToExpertProfile}
-            style={styles.card}>
-            <Icon name="user" size={40} color="#3498db" />
-            <Text style={styles.cardTitle}>Expert Profile</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToCreateTask} style={styles.card}>
-            <Icon name="plus-circle" size={40} color="#2ecc71" />
-            <Text style={styles.cardTitle}>Create Task</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToUserChat} style={styles.card}>
-            <Icon name="plus-circle" size={40} color="#2ecc71" />
-            <Text style={styles.cardTitle}>User Chat</Text>
-          </TouchableOpacity>
-        </View>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Add New Expert")}
+              style={styles.card}>
+              <Ionicons name="person-add" size={40} color="#3498db" />
+              <Text style={styles.cardTitle}>Add New Expert</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("Expert Profile")}>
+              <Ionicons name="person-circle" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Expert Profile</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("Upcoming Jobs")}>
+              <Ionicons name="calendar" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Upcoming Jobs</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("User Chat")}>
+              <Ionicons name="chatbubble-sharp" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>User Chat</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
       </ScrollView>
     </View>
   );

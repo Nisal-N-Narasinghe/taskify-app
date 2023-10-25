@@ -25,12 +25,12 @@ function CreateTaskDetails() {
   const navigation = useNavigation();
 
   const handleContinue = () => {
-    navigation.navigate("CreateTaskImagePage");
+    navigation.navigate("Task Image");
   };
 
   return (
     <ScrollView p={3}>
-      <StepIndicator currentStep={2} />
+      <StepIndicator totalSteps={5} currentStep={2} />
       <Heading marginBottom={3} marginTop={3} size="md">
         Please fill the below details
       </Heading>
