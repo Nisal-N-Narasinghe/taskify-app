@@ -27,6 +27,34 @@ const ExpertProfileScreen = ({ navigation }) => {
   const handleAddExpertiseArea = () => {
     navigation.navigate("Add New Expert");
   };
+
+  const expertiseAreas = [
+    {
+      title: "Electrician",
+      description: "Description for Electrician",
+      jobsDone: 3,
+      experience: 5,
+    },
+    {
+      title: "Electrician",
+      description: "Description for Electrician",
+      jobsDone: 3,
+      experience: 5,
+    },
+    {
+      title: "Electrician",
+      description: "Description for Electrician",
+      jobsDone: 3,
+      experience: 5,
+    },
+    {
+      title: "Electrician",
+      description: "Description for Electrician",
+      jobsDone: 3,
+      experience: 5,
+    },
+  ];
+
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
       <Box backgroundColor='white' pb={10}>
@@ -78,33 +106,19 @@ const ExpertProfileScreen = ({ navigation }) => {
       </Heading>
       <Box flex={1}>
         <VStack paddingX={4} paddingY={2}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Expert Area", { id })}>
-            <ExpertCard
-              title='Electrician'
-              JobDiscription='Description expert area'
-              jobcount='Jobs Done : 3'
-              experience='Experience : 5 years'
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Expert Area", { id })}>
-            <ExpertCard
-              title='Electrician'
-              JobDiscription='Description expert area'
-              jobcount='Jobs Done : 3'
-              experience='Experience : 5 years'
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Expert Area", { id })}>
-            <ExpertCard
-              title='Electrician'
-              JobDiscription='Description expert area'
-              jobcount='Jobs Done : 3'
-              experience='Experience : 5 years'
-            />
-          </TouchableOpacity>
+          {expertiseAreas.map((area, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => navigation.navigate("Expert Area", { id })}>
+              <ExpertCard
+                title={area.title}
+                JobDiscription={area.description}
+                jobcount={`Jobs Done : ${area.jobsDone}`}
+                experience={`Experience : ${area.experience} years`}
+              />
+            </TouchableOpacity>
+          ))}
+
           <Center>
             <Button style={styles.buttonAdd} onPress={handleAddExpertiseArea}>
               <Icon
