@@ -18,7 +18,15 @@ import {
   ExpertCard,
   RatingCard,
 } from "../../../components/Expert/ExpertProfile";
-const ExpertProfileScreen = () => {
+import { TouchableOpacity } from "react-native";
+const ExpertProfileScreen = ({ navigation }) => {
+  const id = 123;
+  const handleHistoryButton = () => {
+    navigation.navigate("Expert Job History");
+  };
+  const handleAddExpertiseArea = () => {
+    navigation.navigate("Add New Expert");
+  };
   return (
     <Box safeArea flex={1}>
       <Box backgroundColor='white' pb={10}>
@@ -43,7 +51,9 @@ const ExpertProfileScreen = () => {
           History & Ratings
         </Heading>
         <Box style={styles.buttonHistoryContainer} pl='16'>
-          <Button style={styles.buttonHistory}>View History</Button>
+          <Button style={styles.buttonHistory} onPress={handleHistoryButton}>
+            View History
+          </Button>
         </Box>
       </Box>
 
@@ -67,32 +77,40 @@ const ExpertProfileScreen = () => {
       <Box flex={1}>
         <ScrollView flex={1} showsVerticalScrollIndicator={true}>
           <VStack paddingX={4} paddingY={2}>
-            <ExpertCard
-              title='Electrician'
-              JobDiscription='Description expert area'
-              jobcount='Jobs Done : 3'
-              experience='Experience : 5 years'
-            />
-            <ExpertCard
-              title='Electrician'
-              JobDiscription='Description expert area'
-              jobcount='Jobs Done : 3'
-              experience='Experience : 5 years'
-            />
-            <ExpertCard
-              title='Electrician'
-              JobDiscription='Description expert area'
-              jobcount='Jobs Done : 3'
-              experience='Experience : 5 years'
-            />
-
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Expert Area", { id })}>
+              <ExpertCard
+                title='Electrician'
+                JobDiscription='Description expert area'
+                jobcount='Jobs Done : 3'
+                experience='Experience : 5 years'
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Expert Area", { id })}>
+              <ExpertCard
+                title='Electrician'
+                JobDiscription='Description expert area'
+                jobcount='Jobs Done : 3'
+                experience='Experience : 5 years'
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Expert Area", { id })}>
+              <ExpertCard
+                title='Electrician'
+                JobDiscription='Description expert area'
+                jobcount='Jobs Done : 3'
+                experience='Experience : 5 years'
+              />
+            </TouchableOpacity>
             <Center>
-              <Button style={styles.buttonAdd}>
+              <Button style={styles.buttonAdd} onPress={handleAddExpertiseArea}>
                 <Icon
                   m='2'
                   ml='3'
                   size='16'
-                  color='#149873' // Change the color to green
+                  color='primary.green'
                   as={<MaterialIcons name='add' />}
                 />
               </Button>
