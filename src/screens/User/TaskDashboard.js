@@ -19,7 +19,7 @@ const TaskDashboard = ({ navigation }) => {
             <Text style={styles.cardTitle}>Create Task</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("")}
+            onPress={() => navigation.navigate("My Tasks")}
             style={styles.card}
           >
             <Icon name="plus-circle" size={40} color="#2ecc71" />
