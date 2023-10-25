@@ -64,21 +64,24 @@ const AllCompletedWorks = ({ navigation }) => {
         title: "Residential Electric Work",
         location: "Colombo",
         category: "ELECTRIC",
-        image: "https://example.com/image1.jpg",
+        image:
+          "https://engineering-jobs.theiet.org/getasset/85bead92-2e44-4692-b579-3ddf03a9a84b/",
       },
       {
         id: 2,
         title: "Residential Electric Work",
         location: "Colombo",
         category: "ELECTRIC",
-        image: "https://example.com/image1.jpg",
+        image:
+          "https://engineering-jobs.theiet.org/getasset/85bead92-2e44-4692-b579-3ddf03a9a84b/",
       },
       {
         id: 3,
         title: "Residential Electric Work",
         location: "Colombo",
         category: "ELECTRIC",
-        image: "https://example.com/image1.jpg",
+        image:
+          "https://engineering-jobs.theiet.org/getasset/85bead92-2e44-4692-b579-3ddf03a9a84b/",
       },
     ];
 
@@ -112,7 +115,8 @@ const AllCompletedWorks = ({ navigation }) => {
                 <VStack space={4} flex={1}>
                   {/* Replace the following line with the actual URL or source for the image */}
                   <Image
-                    source={{ uri: work.image }}
+                    /* source={{ uri: work.image }} */
+                    src={work.image}
                     alt="image"
                     size="lg"
                     rounded="lg"

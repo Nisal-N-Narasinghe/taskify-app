@@ -9,9 +9,13 @@ import {
   Card,
 } from "native-base";
 import { View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import CleaningJob from "../../../assets/cleaning.jpg";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import React, { useState } from "react";
 import AddRatings from "../../components/common/StarRatings";
 import UpperImg from "../../../assets/upperWidget.png";
+import { FeedbackTopCard } from "../../components/User/FeedbackPageTopCard";
 /* import {
   getDatabase,
   ref,
@@ -59,13 +63,13 @@ const AddFeedback = () => {
   return (
     <ScrollView>
       <Box padding={3}>
-        <Image
-          source={UpperImg}
-          alt="image"
-          width="100%"
-          height={200}
-          roundedTop="lg"
-          opacity={0.7}
+        <FeedbackTopCard
+          title="Need to get my garden lawn mowed"
+          location="Malabe"
+          countFromPostedDate="2 days ago"
+          category="Gardening"
+          image={UpperImg}
+          Amount="Rs. 5000"
         />
       </Box>
       <Card
