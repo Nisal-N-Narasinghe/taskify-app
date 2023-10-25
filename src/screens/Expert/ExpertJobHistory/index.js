@@ -32,18 +32,18 @@ const ExpertJobHistory = () => {
   return (
     <Box>
       {/* Top Section */}
-      <Box backgroundColor='white' pb={10} pt={12}>
+      <Box backgroundColor="white" pb={10} pt={12}>
         <InputLeftAddon>
           <Heading>Job History</Heading>
         </InputLeftAddon>
         <Center>
           <Image
             source={PROImg}
-            alt='Profile Picture'
-            size='100px'
-            borderRadius='full'
+            alt="Profile Picture"
+            size="100px"
+            borderRadius="full"
             borderWidth={2}
-            borderColor='gray.200'
+            borderColor="gray.200"
             mt={2}
           />
         </Center>
@@ -53,32 +53,33 @@ const ExpertJobHistory = () => {
           </Heading>
         </Center>
         <Center>
-          <Flex flexDirection='row' alignItems='center'>
+          <Flex flexDirection="row" alignItems="center">
             {/* Search Bar */}
             <Box
-              flexDirection='row'
-              alignItems='center'
-              borderRadius='full'
-              background='gray.200'
+              flexDirection="row"
+              alignItems="center"
+              borderRadius="full"
+              background="gray.200"
               w={"70%"}
-              px={3}>
+              px={3}
+            >
               <Icon
                 as={Ionicons}
-                name='search-outline'
+                name="search-outline"
                 size={5}
-                color='gray.500'
+                color="gray.500"
               />
               <Input
                 w={"98%"}
-                placeholder='Search'
-                borderRadius='full'
+                placeholder="Search"
+                borderRadius="full"
                 borderLeftWidth={0}
                 borderColor={"transparent"}
               />
             </Box>
             {/* Filter Icon */}
-            <Button variant='unstyled' onPress={toggleFilterModal}>
-              <MaterialIcons name='tune' size={32} ml={2} />
+            <Button variant="unstyled" onPress={toggleFilterModal}>
+              <MaterialIcons name="tune" size={32} ml={2} />
             </Button>
           </Flex>
         </Center>
@@ -89,53 +90,53 @@ const ExpertJobHistory = () => {
           <VStack paddingX={4} paddingY={2}>
             {/* Render your job history items here */}
             <JobHistoryItem
-              title='Cleaning'
-              location='Arangala'
-              startTime='8:00 AM'
+              title="Cleaning"
+              location="Arangala"
+              startTime="8:00 AM"
               startDate={new Date().toDateString()}
-              endTime='12:00 PM'
+              endTime="12:00 PM"
               endDate={new Date().toDateString()}
               rating={4.5}
               image={CleaningJob}
-              countFromEndDate='2 days ago'
-              Amount='Rs. 5000'
+              countFromEndDate="2 days ago"
+              Amount="Rs. 5000"
             />
 
             <JobHistoryItem
-              title='Cleaning'
-              location='Arangala'
-              startTime='8:00 AM'
+              title="Cleaning"
+              location="Arangala"
+              startTime="8:00 AM"
               startDate={new Date().toDateString()}
-              endTime='12:00 PM'
+              endTime="12:00 PM"
               endDate={new Date().toDateString()}
               rating={4.5}
               image={CleaningJob}
-              countFromEndDate='2 days ago'
-              Amount='Rs. 5000'
+              countFromEndDate="2 days ago"
+              Amount="Rs. 5000"
             />
             <JobHistoryItem
-              title='Cleaning'
-              location='Arangala'
-              startTime='8:00 AM'
+              title="Cleaning"
+              location="Arangala"
+              startTime="8:00 AM"
               startDate={new Date().toDateString()}
-              endTime='12:00 PM'
+              endTime="12:00 PM"
               endDate={new Date().toDateString()}
               rating={4.5}
               image={CleaningJob}
-              countFromEndDate='2 days ago'
-              Amount='Rs. 5000'
+              countFromEndDate="2 days ago"
+              Amount="Rs. 5000"
             />
             <JobHistoryItem
-              title='Cleaning'
-              location='Arangala'
-              startTime='8:00 AM'
+              title="Cleaning"
+              location="Arangala"
+              startTime="8:00 AM"
               startDate={new Date().toDateString()}
-              endTime='12:00 PM'
+              endTime="12:00 PM"
               endDate={new Date().toDateString()}
               rating={4.5}
               image={CleaningJob}
-              countFromEndDate='2 days ago'
-              Amount='Rs. 5000'
+              countFromEndDate="2 days ago"
+              Amount="Rs. 5000"
             />
           </VStack>
         </Box>

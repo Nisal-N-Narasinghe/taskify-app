@@ -12,8 +12,14 @@ import React from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const CreateTaskSuccess = () => {
+  const navigation = useNavigation();
+
+  const handleContinue = () => {
+    navigation.navigate("Task Dashboard");
+  };
   return (
     <Box alignItems="center" padding={3}>
       <StepIndicator currentStep={5} />
@@ -46,7 +52,9 @@ const CreateTaskSuccess = () => {
           <Text fontWeight="500" marginBottom={"4"}>
             Click here to view the task
           </Text>
-          <Button w={"48"}>Continue</Button>
+          <Button w={"48"} onPress={handleContinue}>
+            Continue
+          </Button>
         </Stack>
       </Box>
       {/* </Box> */}

@@ -12,6 +12,8 @@ import TaskDashboard from "./src/screens/User/TaskDashboard";
 // Task Screens
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
+import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
+import CreateTaskSuccess from "./src/screens/User/CreateTask/SuccessView";
 import AddNewExpert from "./src/screens/Expert/AddNewExpert";
 import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
 import AddFeedback from "./src/screens/User/AddFeedback";
@@ -55,6 +57,14 @@ function TaskDashboardStackScreen() {
         name="Task Details"
         component={CreateTaskDetails}
       />
+      <TaskDashboardStack.Screen
+        name="Task Image"
+        component={CreateTaskImage}
+      />
+      <TaskDashboardStack.Screen
+        name="Task Success"
+        component={CreateTaskSuccess}
+      />
       <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
     </TaskDashboardStack.Navigator>
   );
@@ -97,7 +107,8 @@ export default function App() {
 
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-          })}>
+          })}
+        >
           <Tab.Screen name="Dashboard" component={DashboardStackScreen} />
           <Tab.Screen name="Tasks" component={TaskDashboardStackScreen} />
           <Tab.Screen name="Profile" component={ProfileDashboardStackScreen} />
