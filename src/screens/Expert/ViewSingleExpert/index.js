@@ -30,7 +30,7 @@ import { View } from "react-native";
 import React, { useEffect, useState, useRef } from "react";
 import UpperImg from "../../../../assets/upperWidget.png";
 
-const ViewSingleExpert = () => {
+const ViewSingleExpert = ({ navigation }) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef(null);
