@@ -25,7 +25,7 @@ function CreateTaskDetails() {
   const navigation = useNavigation();
 
   const handleContinue = () => {
-    navigation.navigate("CreateTaskImagePage");
+    navigation.navigate("Task Image");
   };
 
   return (

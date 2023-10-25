@@ -13,9 +13,17 @@ const TaskDashboard = ({ navigation }) => {
         <View style={styles.cardContainer}>
           <TouchableOpacity
             onPress={() => navigation.navigate("Create Task")}
-            style={styles.card}>
+            style={styles.card}
+          >
             <Icon name="plus-circle" size={40} color="#2ecc71" />
             <Text style={styles.cardTitle}>Create Task</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("")}
+            style={styles.card}
+          >
+            <Icon name="plus-circle" size={40} color="#2ecc71" />
+            <Text style={styles.cardTitle}>View My Tasks</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

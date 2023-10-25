@@ -17,7 +17,7 @@ const CreateTaskImage = () => {
   const navigation = useNavigation();
 
   const handleUpload = () => {
-    navigation.navigate("CreateTaskSuccessPage");
+    navigation.navigate("Task Success");
   };
 
   return (
