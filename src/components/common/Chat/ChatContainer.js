@@ -38,12 +38,12 @@ const ChatContainer = () => {
             taskStartDate="22 September 2023"
           />
         </TouchableOpacity>
-        <ChatBubble message={message} alignLeft={true} />
-        <ChatBubble message={message1} alignLeft={false} />
+        <ChatBubble message={message} alignLeft={false} />
+        <ChatBubble message={message1} alignLeft={true} />
         <ChatBubble message={message} alignLeft={true} />
         <ChatBubble message={message} alignLeft={true} />
         <ChatBubble message={message} alignLeft={false} />
-        {/* <ChatBubble message={message1} alignLeft={true} /> */}
+        <ChatBubble message={message1} alignLeft={true} />
         <ChatBubble message={message1} alignLeft={true} />
         <HStack></HStack>
       </VStack>

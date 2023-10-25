@@ -1,18 +1,30 @@
-import { View } from "react-native";
-import React from "react";
+// import { View } from "react-native";
+import React, { useState } from "react";
 import ChatContainer from "../../../components/common/Chat/ChatContainer";
 import {
+  Actionsheet,
   Box,
   Button,
   HStack,
-  Icon,
   Input,
+  PresenceTransition,
   ScrollView,
   Text,
+  VStack,
+  View,
+  useDisclose,
 } from "native-base";
 import { Feather } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
+import ChatOptionsActionSheet from "../../../components/common/Chat/ChatOptionsActionSheet";
+import SendOfferPopup from "../../../components/Offer/SendOfferPopup";
 
 const UserChat = () => {
+  const [showChatOptions, setShowChatOptions] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclose();
+
+  const [showOfferPopup, setShowOfferPopup] = useState(false);
+
   return (
     <>
       <ScrollView
@@ -26,27 +38,56 @@ const UserChat = () => {
         }>
         <ChatContainer />
       </ScrollView>
-      <HStack bg="primary.white" p={3} justifyContent="space-between">
+
+      <HStack bg="primary.white" p={3} space={2}>
         <Input
+          flex={1}
           placeholder="Enter a message"
           placeholderTextColor="primary.black"
           bgColor="primary.grey"
-          outlineColor="transparent"
+          outlineStyle="solid"
           rounded={100}
           fontSize={16}
-          py={2.5}
+          pl={4}
+          pr={4}
           focusOutlineColor="transparent"
-          w={"80%"}
         />
-        <Button
-          width=""
-          variant="solid"
-          bgColor="primary.green"
-          rounded={100}
-          w={10}>
-          <Feather name="send" size={20} color="white" />
-        </Button>
+        <TouchableOpacity
+          _pressed={{ backgroundColor: "#404040" }}
+          onPress={() => {
+            setShowChatOptions(!showChatOptions);
+            onOpen();
+          }}>
+          <Box bgColor="primary.green" p={2.5} rounded={100}>
+            <Feather name="plus" size={20} color="white" />
+          </Box>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Box bgColor="primary.green" p={2.5} rounded={100}>
+            <Feather name="send" size={20} color="white" />
+          </Box>
+        </TouchableOpacity>
       </HStack>
+
+      <ChatOptionsActionSheet
+        isOpen={isOpen}
+        onClose={() => {
+          onClose();
+        }}
+        sendOfferPopup={() => {
+          setShowOfferPopup(true);
+        }}
+        attachImagePopup={() => {
+          alert("attach image");
+        }}
+      />
+
+      <SendOfferPopup
+        isOpen={showOfferPopup}
+        onClose={() => {
+          setShowOfferPopup(false);
+        }}
+      />
     </>
   );
 };

@@ -11,6 +11,12 @@ export const theme = extendTheme({
     secondary: {
       grey: "#787878",
     },
+    emerald: {
+      100: "#149873",
+    },
+    darkBlack: {
+      100: "#000000",
+    },
   },
   config: {
     // initialColorMode: "dark",
