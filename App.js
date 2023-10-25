@@ -16,6 +16,7 @@ import AddNewExpert from "./src/screens/Expert/AddNewExpert";
 import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
 import AddFeedback from "./src/screens/User/AddFeedback";
 import ExpertProfile from "./src/screens/Expert/ExpertProfile";
+import AllCompletedWorks from "./src/screens/User/AllCompletedWorks";
 //  STACK NAVIGATION CONFIG
 
 const DashboardStack = createNativeStackNavigator();
@@ -54,6 +55,10 @@ function TaskDashboardStackScreen() {
       <TaskDashboardStack.Screen
         name="Task Details"
         component={CreateTaskDetails}
+      />
+      <TaskDashboardStack.Screen
+        name="All Completed Tasks"
+        component={AllCompletedWorks}
       />
       <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
     </TaskDashboardStack.Navigator>

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { View, Text } from "react-native";
 import StarRating from "react-native-star-rating-widget";
 
-const AddRatings = () => {
+const AddRatings = ({ onRatingChange }) => {
   const [starCount, setStarCount] = useState(0);
 
   const onStarRatingPress = (rating) => {
     setStarCount(rating);
+    onRatingChange(rating);
   };
 
   return (

@@ -1,37 +1,61 @@
 import {
-  AspectRatio,
   Box,
   Image,
   Text,
-  Stack,
   HStack,
-  Heading,
   VStack,
-  Input,
-  Icon,
   ScrollView,
-  Center,
-  Select,
-  CheckIcon,
-  Radio,
-  NativeBaseProvider,
-  extendTheme,
-  StackDivider,
   Button,
-  FlatList,
-  Avatar,
-  Spacer,
   Card,
-  AlertDialog,
-  Modal,
-  FormControl,
 } from "native-base";
 import { View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import AddRatings from "../../components/common/StarRatings";
 import UpperImg from "../../../assets/upperWidget.png";
+/* import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  child,
+} from '@react-native-firebase/database'; */
 
 const AddFeedback = () => {
+  const [qualityRating, setQualityRating] = useState(0);
+  const [cleanlinessRating, setCleanlinessRating] = useState(0);
+  const [timelinessRating, setTimelinessRating] = useState(0);
+  const [communicationRating, setCommunicationRating] = useState(0);
+  const [satisfactionRating, setSatisfactionRating] = useState(0);
+
+  const submitFeedback = () => {
+    const database = getDatabase();
+    const feedbackRef = ref(database, "feedback"); // Change 'feedback' to your desired path
+
+    // Create a new feedback object
+    const newFeedback = {
+      quality: qualityRating,
+      cleanliness: cleanlinessRating,
+      timeliness: timelinessRating,
+      communication: communicationRating,
+      satisfaction: satisfactionRating,
+    };
+
+    // Push the new feedback to the database
+    push(feedbackRef, newFeedback)
+      .then(() => {
+        console.log("Feedback submitted successfully");
+        // Optionally, you can reset the ratings here
+        setQualityRating(0);
+        setCleanlinessRating(0);
+        setTimelinessRating(0);
+        setCommunicationRating(0);
+        setSatisfactionRating(0);
+      })
+      .catch((error) => {
+        console.error("Error submitting feedback:", error);
+      });
+  };
+
   return (
     <ScrollView>
       <Box padding={3}>
@@ -48,7 +72,7 @@ const AddFeedback = () => {
         w="90%"
         maxW="400px"
         mx="auto"
-        marginTop={3} // Adjust this value based on your design
+        marginTop={3}
         borderColor="coolGray.200"
         borderRadius={15}
         borderWidth={1}
@@ -66,7 +90,9 @@ const AddFeedback = () => {
               {/*  <Heading size="md">Details</Heading> */}
             </VStack>
             <VStack flex={1} marginRight={15}>
-              <AddRatings />
+              <AddRatings
+                onRatingChange={(rating) => setQualityRating(rating)}
+              />
             </VStack>
           </HStack>
         </Box>
@@ -93,7 +119,9 @@ const AddFeedback = () => {
               {/*  <Heading size="md">Details</Heading> */}
             </VStack>
             <VStack flex={1} marginRight={15}>
-              <AddRatings />
+              <AddRatings
+                onRatingChange={(rating) => setCleanlinessRating(rating)}
+              />
             </VStack>
           </HStack>
         </Box>
@@ -120,7 +148,9 @@ const AddFeedback = () => {
               {/*  <Heading size="md">Details</Heading> */}
             </VStack>
             <VStack flex={1} marginRight={15}>
-              <AddRatings />
+              <AddRatings
+                onRatingChange={(rating) => setTimelinessRating(rating)}
+              />
             </VStack>
           </HStack>
         </Box>
@@ -147,7 +177,9 @@ const AddFeedback = () => {
               {/*  <Heading size="md">Details</Heading> */}
             </VStack>
             <VStack flex={1} marginRight={15}>
-              <AddRatings />
+              <AddRatings
+                onRatingChange={(rating) => setCommunicationRating(rating)}
+              />
             </VStack>
           </HStack>
         </Box>
@@ -174,12 +206,20 @@ const AddFeedback = () => {
               {/*  <Heading size="md">Details</Heading> */}
             </VStack>
             <VStack flex={1} marginRight={15}>
-              <AddRatings />
+              <AddRatings
+                onRatingChange={(rating) => setSatisfactionRating(rating)}
+              />
             </VStack>
           </HStack>
         </Box>
       </Card>
-      <Button margin={5}>Publish Feedback</Button>
+      <Button
+        onPress={submitFeedback}
+        margin={5}
+        borderRadius={25}
+        color={"green"}>
+        Publish Feedback
+      </Button>
     </ScrollView>
   );
 };

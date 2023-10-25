@@ -18,10 +18,10 @@ const TaskDashboard = ({ navigation }) => {
             <Text style={styles.cardTitle}>Create Task</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Add Feedback")}
+            onPress={() => navigation.navigate("All Completed Tasks")}
             style={styles.card}>
             <Icon name="plus-circle" size={40} color="#2ecc71" />
-            <Text style={styles.cardTitle}>Add Feedback</Text>
+            <Text style={styles.cardTitle}>Completed Task</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
