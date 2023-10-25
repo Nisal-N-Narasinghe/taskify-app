@@ -9,6 +9,16 @@ const styles = {
     borderWidth: 1,
     borderColor: "gray.200",
   },
+  ratingCards: {
+    backgroundColor: "white",
+    borderRadius: 16,
+    padding: 2,
+    shadow: 1,
+    width: 150,
+    height: 75,
+    borderWidth: 2,
+    borderColor: "gray",
+  },
   ratintext: {
     fontSize: 16,
     paddingBottom: 4,
