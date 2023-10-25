@@ -23,6 +23,9 @@ import ExpertJobHistory from "./src/screens/Expert/ExpertJobHistory";
 import ExpertViewExpertiseArea from "./src/screens/Expert/ExpertViewExpertiseArea";
 import ViewTask from "./src/screens/User/ViewTasks/ViewMyTasks/ViewMyTask";
 import ViewPastTasks from "./src/screens/User/ViewTasks/ViewPastTasks";
+import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistory/ExpertViewSingleJobHistoryItem";
+import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
+
 
 //  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
@@ -53,6 +56,14 @@ function ExpertDashboardStackScreen() {
       <ExpertDashboardStack.Screen
         name="Expert Area"
         component={ExpertViewExpertiseArea}
+      />
+      <ExpertDashboardStack.Screen
+        name='Completed Jobs'
+        component={ExpertViewSingleJobHistoryItem}
+      />
+      <ExpertDashboardStack.Screen
+        name='Upcoming Jobs'
+        component={ViewUpcomingJobs}
       />
     </ExpertDashboardStack.Navigator>
   );

@@ -13,14 +13,20 @@ const Dashboard = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => navigation.navigate("Add New Expert")}
             style={styles.card}>
-            <Icon name="user" size={40} color="#3498db" />
+            <Icon name='user' size={40} color='#3498db' />
             <Text style={styles.cardTitle}>Add New Expert</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.card}
             onPress={() => navigation.navigate("Expert Profile")}>
-            <Icon name="plus-circle" size={40} color="#2ecc71" />
+            <Icon name='plus-circle' size={40} color='#2ecc71' />
             <Text style={styles.cardTitle}>Expert Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => navigation.navigate("Upcoming Jobs")}>
+            <Icon name='plus-circle' size={40} color='#2ecc71' />
+            <Text style={styles.cardTitle}>Upcoming Jobs</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
