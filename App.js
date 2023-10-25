@@ -12,17 +12,30 @@ import TaskDashboard from "./src/screens/User/TaskDashboard";
 // Task Screens
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
-
+import AddNewExpert from "./src/screens/Expert/AddNewExpert";
+import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
+import AddFeedback from "./src/screens/User/AddFeedback";
+import ExpertProfile from "./src/screens/Expert/ExpertProfile";
 //  STACK NAVIGATION CONFIG
 
 const DashboardStack = createNativeStackNavigator();
 const TaskDashboardStack = createNativeStackNavigator();
 const ProfileDashboardStack = createNativeStackNavigator();
+const ExpertDashboardStack = createNativeStackNavigator();
 
 function DashboardStackScreen() {
   return (
     <DashboardStack.Navigator>
       <DashboardStack.Screen name="Dashboard" component={Dashboard} />
+      <DashboardStack.Screen name="Add New Expert" component={AddNewExpert} />
+      <ExpertDashboardStack.Screen
+        name="Expert Profile"
+        component={ExpertProfile}
+      />
+      <ExpertDashboardStack.Screen
+        name="View Single Expert"
+        component={ViewSingleExpert}
+      />
     </DashboardStack.Navigator>
   );
 }
@@ -42,6 +55,7 @@ function TaskDashboardStackScreen() {
         name="Task Details"
         component={CreateTaskDetails}
       />
+      <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
     </TaskDashboardStack.Navigator>
   );
 }

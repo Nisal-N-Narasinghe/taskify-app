@@ -4,48 +4,23 @@ import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
 
-const Dashboard = () => {
-  const navigation = useNavigation();
-
-  const navigateToExpertProfile = () => {
-    // Navigate to Expert profile component
-    navigation.navigate("ExpertProfile1");
-  };
-
-  const navigateToCreateTask = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("Create Task");
-  };
-
-  const navigateToAddNewExpert = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("AddNewExpertPage");
-  };
-
-  const ViewSingleExpert = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("ViewSingleExpertPage");
-  };
-
-  const navigateToAddFeedback = () => {
-    // Navigate to ApproveOrders component
-    navigation.navigate("AddFeedbackPage");
-  };
-
+const Dashboard = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.heading}>Main Dashboard</Text>
         <View style={styles.cardContainer}>
           <TouchableOpacity
-            onPress={navigateToExpertProfile}
+            onPress={() => navigation.navigate("Add New Expert")}
             style={styles.card}>
             <Icon name="user" size={40} color="#3498db" />
-            <Text style={styles.cardTitle}>Expert Profile</Text>
+            <Text style={styles.cardTitle}>Add New Expert</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToCreateTask} style={styles.card}>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => navigation.navigate("Expert Profile")}>
             <Icon name="plus-circle" size={40} color="#2ecc71" />
-            <Text style={styles.cardTitle}>Create Task</Text>
+            <Text style={styles.cardTitle}>Expert Profile</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

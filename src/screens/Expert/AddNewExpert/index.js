@@ -25,7 +25,10 @@ import {
 } from "native-base";
 import React, { useState } from "react";
 
-const AddNewExpert = () => {
+const AddNewExpert = ({ navigation }) => {
+  const handleClick = () => {
+    navigation.navigate("View Single Expert");
+  };
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [service, setService] = useState("");
@@ -143,7 +146,7 @@ const AddNewExpert = () => {
             </Text>
           </Center>
         </Pressable>
-        <Button marginBottom={5} onPress={handleButtonClick}>
+        <Button marginBottom={5} onPress={handleClick}>
           Next
         </Button>
       </Stack>
