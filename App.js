@@ -88,13 +88,6 @@ function TaskDashboardStackScreen() {
         component={ViewPastTasks}
       />
       <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
-
-      {/* REMOVE */}
-      {/* <TaskDashboardStack.Screen
-        name="HEHE"
-        component={ExpertViewExpertiseArea}
-      /> */}
-      {/* REMOVE */}
     </TaskDashboardStack.Navigator>
   );
 }
