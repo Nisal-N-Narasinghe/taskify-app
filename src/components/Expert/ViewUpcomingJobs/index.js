@@ -9,10 +9,10 @@ import {
   Divider,
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
-import { styles } from "../../../styles/Expert/ViewUpcommingJobs";
+import { styles } from "../../../styles/Expert/ViewUpcomingJobs";
 import { Feather } from "@expo/vector-icons";
 
-export const ViewUpcommingJobItem = ({
+export const ViewUpcomingJobItem = ({
   title,
   location,
   image,

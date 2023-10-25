@@ -24,9 +24,9 @@ const Dashboard = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate("Upcomming Jobs")}>
+            onPress={() => navigation.navigate("Upcoming Jobs")}>
             <Icon name='plus-circle' size={40} color='#2ecc71' />
-            <Text style={styles.cardTitle}>Upcomming Jobs</Text>
+            <Text style={styles.cardTitle}>Upcoming Jobs</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
