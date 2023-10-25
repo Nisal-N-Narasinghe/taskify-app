@@ -18,15 +18,11 @@ import {
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import PROImg from "../../../../../assets/Expertimages/expertPRO.jpg";
-// import PROImg from "../../../../../assets/Expertimages";
 import CleaningJob from "../../../../../assets/cleaning.jpg";
-
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-// import { JobHistoryItem } from "../../../components/Expert/ExpertJobHistory";
-// import { JobHistoryItem } from "../../../../components/Expert/ExpertJobHistory";
-import { ViewMyTaskItem } from "../../../../components/User/ViewTasks/ViewMyTasks";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
+import { ViewPastTaskItem } from "../../../../components/User/ViewTasks/ViewPastTasks";
 
 const ViewPastTasks = () => {
   const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
@@ -43,94 +39,58 @@ const ViewPastTasks = () => {
   return (
     <Box>
       {/* Top Section */}
-      <Box backgroundColor="white" pb={4} pt={4}>
-        <Center>
-          <Flex flexDirection="row" alignItems="center">
-            {/* Search Bar */}
-            <Box
-              flexDirection="row"
-              alignItems="center"
-              borderRadius="full"
-              background="gray.200"
-              w={"70%"}
-              px={3}
-            >
-              <Icon
-                as={Ionicons}
-                name="search-outline"
-                size={5}
-                color="gray.500"
-              />
-              <Input
-                w={"98%"}
-                placeholder="Search"
-                borderRadius="full"
-                borderLeftWidth={0}
-                borderColor={"transparent"}
-              />
-            </Box>
-            {/* Filter Icon */}
-            <Button variant="unstyled" onPress={toggleFilterModal}>
-              <MaterialIcons name="tune" size={32} ml={2} />
-            </Button>
-          </Flex>
-        </Center>
-      </Box>
 
       <ScrollView>
-        <Box safeArea>
-          <VStack paddingX={4}>
+        <Box padding={3}>
+          <Heading paddingX={2}>Past Tasks</Heading>
+          <VStack>
             {/* Render your job history items here */}
             <TouchableOpacity onPress={handleClick}>
-              <ViewMyTaskItem
-                title="Need to get my garden lawn mowed"
+              <ViewPastTaskItem
+                title="Need to get my garden lawn mowed "
                 location="Malabe"
-                countFromPostedDate="2 days ago"
                 category="Gardening"
-                countFromEndDate="1 day"
-                image={CleaningJob}
-                Amount="Rs. 5000"
+                postedTime="3 pm"
+                postedDate="postttttttttttttttt"
+                completedTime="4 pm"
+                completedDate="comp"
+                amount="Rs. 5000"
               />
             </TouchableOpacity>
 
-            <ViewMyTaskItem
-              title="I need to clean my home"
-              location="Malabe"
-              countFromPostedDate="2 days ago"
+            <ViewPastTaskItem
+              title="Need to get my garden lawn mowed"
+              location="Colombo"
               category="Cleaning"
-              countFromEndDate="3 days"
-              image={CleaningJob}
-              Amount="Rs. 5000"
+              postedTime="3 pm"
+              postedDate="post"
+              completedTime="4 pm"
+              completedDate="comp"
+              amount="Rs. 5000"
             />
-            <ViewMyTaskItem
-              title="I need to clean my home"
+            <ViewPastTaskItem
+              title="Need to get my garden lawn mowed"
               location="Malabe"
-              countFromPostedDate="2 days ago"
-              category="Cleaning"
-              countFromEndDate="3 days"
-              image={CleaningJob}
-              Amount="Rs. 5000"
+              category="Gardening"
+              postedTime="3 pm"
+              postedDate="post"
+              completedTime="4 pm"
+              completedDate="comp"
+              amount="Rs. 5000"
             />
-            <ViewMyTaskItem
-              title="I need to clean my home"
+            <ViewPastTaskItem
+              title="Need to get my garden lawn mowed"
               location="Malabe"
-              countFromPostedDate="2 days ago"
-              category="Cleaning"
-              countFromEndDate="3 days"
-              image={CleaningJob}
-              Amount="Rs. 5000"
+              category="Gardening"
+              postedTime="3 pm"
+              postedDate="post"
+              completedTime="4 pm"
+              completedDate="comp"
+              amount="Rs. 5000"
             />
           </VStack>
         </Box>
       </ScrollView>
-
-      <Modal isOpen={isFilterModalVisible} onClose={toggleFilterModal}>
-        <Modal.Content>
-          <Modal.CloseButton />
-          <Modal.Header>Filter</Modal.Header>
-          <Modal.Body>{/* Add your filter options here */}</Modal.Body>
-        </Modal.Content>
-      </Modal>
     </Box>
   );
 };
