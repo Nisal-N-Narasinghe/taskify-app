@@ -14,15 +14,13 @@ const TaskDashboard = ({ navigation }) => {
           <View style={styles.cardContainer}>
             <TouchableOpacity
               onPress={() => navigation.navigate("Create Task")}
-              style={styles.card}
-            >
+              style={styles.card}>
               <Icon name="plus-circle" size={40} color="#2ecc71" />
               <Text style={styles.cardTitle}>Create Task</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("My Tasks")}
-              style={styles.card}
-            >
+              style={styles.card}>
               <Icon name="plus-circle" size={40} color="#2ecc71" />
               <Text style={styles.cardTitle}>View My Tasks</Text>
             </TouchableOpacity>
@@ -32,17 +30,25 @@ const TaskDashboard = ({ navigation }) => {
           <View style={styles.cardContainer}>
             <TouchableOpacity
               onPress={() => navigation.navigate("View Past Tasks")}
-              style={styles.card}
-            >
+              style={styles.card}>
               <Icon name="plus-circle" size={40} color="#2ecc71" />
               <Text style={styles.cardTitle}>View Past Tasks</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("Add Feedback")}
-              style={styles.card}
-            >
+              style={styles.card}>
               <Icon name="plus-circle" size={40} color="#2ecc71" />
               <Text style={styles.cardTitle}>Add Feedback</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("All Completed Tasks")}
+              style={styles.card}>
+              <Icon name="plus-circle" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Completed Task</Text>
             </TouchableOpacity>
           </View>
         </VStack>
