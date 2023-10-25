@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, Button, Stack, Text } from "native-base";
+import { Box, Button, Stack, Text, VStack } from "native-base";
 import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
@@ -9,20 +9,32 @@ const Dashboard = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.heading}>Main Dashboard</Text>
-        <View style={styles.cardContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Add New Expert")}
-            style={styles.card}>
-            <Icon name="user" size={40} color="#3498db" />
-            <Text style={styles.cardTitle}>Add New Expert</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => navigation.navigate("Expert Profile")}>
-            <Icon name="plus-circle" size={40} color="#2ecc71" />
-            <Text style={styles.cardTitle}>Expert Profile</Text>
-          </TouchableOpacity>
-        </View>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Add New Expert")}
+              style={styles.card}>
+              <Icon name='user' size={40} color='#3498db' />
+              <Text style={styles.cardTitle}>Add New Expert</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("Expert Profile")}>
+              <Icon name='plus-circle' size={40} color='#2ecc71' />
+              <Text style={styles.cardTitle}>Expert Profile</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("Upcoming Jobs")}>
+              <Icon name='plus-circle' size={40} color='#2ecc71' />
+              <Text style={styles.cardTitle}>Upcoming Jobs</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
       </ScrollView>
     </View>
   );

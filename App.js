@@ -12,23 +12,36 @@ import TaskDashboard from "./src/screens/User/TaskDashboard";
 // Task Screens
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
+import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
+import CreateTaskSuccess from "./src/screens/User/CreateTask/SuccessView";
 import AddNewExpert from "./src/screens/Expert/AddNewExpert";
 import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
 import AddFeedback from "./src/screens/User/AddFeedback";
 import ExpertProfile from "./src/screens/Expert/ExpertProfile";
 import AllCompletedWorks from "./src/screens/User/AllCompletedWorks";
 //  STACK NAVIGATION CONFIG
+import ViewMyTasks from "./src/screens/User/ViewTasks/ViewMyTasks";
+import ExpertJobHistory from "./src/screens/Expert/ExpertJobHistory";
+import ExpertViewExpertiseArea from "./src/screens/Expert/ExpertViewExpertiseArea";
+import ViewTask from "./src/screens/User/ViewTasks/ViewMyTasks/ViewMyTask";
+import ViewPastTasks from "./src/screens/User/ViewTasks/ViewPastTasks";
+import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistory/ExpertViewSingleJobHistoryItem";
+import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
 
+//  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
 const TaskDashboardStack = createNativeStackNavigator();
 const ProfileDashboardStack = createNativeStackNavigator();
 const ExpertDashboardStack = createNativeStackNavigator();
 
-function DashboardStackScreen() {
+function ExpertDashboardStackScreen() {
   return (
-    <DashboardStack.Navigator>
-      <DashboardStack.Screen name="Dashboard" component={Dashboard} />
-      <DashboardStack.Screen name="Add New Expert" component={AddNewExpert} />
+    <ExpertDashboardStack.Navigator>
+      <ExpertDashboardStack.Screen name="Dashboard" component={Dashboard} />
+      <ExpertDashboardStack.Screen
+        name="Add New Expert"
+        component={AddNewExpert}
+      />
       <ExpertDashboardStack.Screen
         name="Expert Profile"
         component={ExpertProfile}
@@ -37,7 +50,23 @@ function DashboardStackScreen() {
         name="View Single Expert"
         component={ViewSingleExpert}
       />
-    </DashboardStack.Navigator>
+      <ExpertDashboardStack.Screen
+        name="Expert Job History"
+        component={ExpertJobHistory}
+      />
+      <ExpertDashboardStack.Screen
+        name="Expert Area"
+        component={ExpertViewExpertiseArea}
+      />
+      <ExpertDashboardStack.Screen
+        name="Completed Jobs"
+        component={ExpertViewSingleJobHistoryItem}
+      />
+      <ExpertDashboardStack.Screen
+        name="Upcoming Jobs"
+        component={ViewUpcomingJobs}
+      />
+    </ExpertDashboardStack.Navigator>
   );
 }
 
@@ -59,6 +88,20 @@ function TaskDashboardStackScreen() {
       <TaskDashboardStack.Screen
         name="All Completed Tasks"
         component={AllCompletedWorks}
+      />
+      <TaskDashboardStack.Screen
+        name="Task Image"
+        component={CreateTaskImage}
+      />
+      <TaskDashboardStack.Screen
+        name="Task Success"
+        component={CreateTaskSuccess}
+      />
+      <TaskDashboardStack.Screen name="My Tasks" component={ViewMyTasks} />
+      <TaskDashboardStack.Screen name="View Task" component={ViewTask} />
+      <TaskDashboardStack.Screen
+        name="View Past Tasks"
+        component={ViewPastTasks}
       />
       <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
     </TaskDashboardStack.Navigator>
@@ -103,7 +146,7 @@ export default function App() {
               return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}>
-          <Tab.Screen name="Dashboard" component={DashboardStackScreen} />
+          <Tab.Screen name="Dashboard" component={ExpertDashboardStackScreen} />
           <Tab.Screen name="Tasks" component={TaskDashboardStackScreen} />
           <Tab.Screen name="Profile" component={ProfileDashboardStackScreen} />
         </Tab.Navigator>

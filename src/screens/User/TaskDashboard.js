@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Text } from "native-base";
+import { HStack, Text, VStack } from "native-base";
 import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
@@ -10,20 +10,48 @@ const TaskDashboard = ({ navigation }) => {
       <Text style={styles.heading}>Task Dashboard</Text>
 
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View style={styles.cardContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Create Task")}
-            style={styles.card}>
-            <Icon name="plus-circle" size={40} color="#2ecc71" />
-            <Text style={styles.cardTitle}>Create Task</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("All Completed Tasks")}
-            style={styles.card}>
-            <Icon name="plus-circle" size={40} color="#2ecc71" />
-            <Text style={styles.cardTitle}>Completed Task</Text>
-          </TouchableOpacity>
-        </View>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Create Task")}
+              style={styles.card}>
+              <Icon name="plus-circle" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Create Task</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("My Tasks")}
+              style={styles.card}>
+              <Icon name="plus-circle" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>View My Tasks</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("View Past Tasks")}
+              style={styles.card}>
+              <Icon name="plus-circle" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>View Past Tasks</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Add Feedback")}
+              style={styles.card}>
+              <Icon name="plus-circle" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Add Feedback</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("All Completed Tasks")}
+              style={styles.card}>
+              <Icon name="plus-circle" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Completed Task</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
       </ScrollView>
     </View>
   );

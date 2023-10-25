@@ -32,8 +32,8 @@ const CreateTaskCategory = ({ navigation }) => {
 
   return (
     <Box padding={3}>
-      <ScrollView w={["100vw", "100vw"]} minHeight="100vw">
-        <StepIndicator currentStep={1} />
+      <ScrollView>
+        <StepIndicator totalSteps={5} currentStep={1} />
         <Heading marginTop={3} size="md">
           Create Your Task Now
         </Heading>
@@ -74,7 +74,8 @@ const CreateTaskCategory = ({ navigation }) => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}>
+                }}
+              >
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -96,7 +97,7 @@ const CreateTaskCategory = ({ navigation }) => {
             </TouchableOpacity>
 
             {/* second box*/}
-            <TouchableOpacity style={{ flex: 1 }}>
+            <TouchableOpacity style={{ flex: 1 }} onPress={handleClick}>
               <Box
                 maxW="100%"
                 rounded="lg"
@@ -113,7 +114,8 @@ const CreateTaskCategory = ({ navigation }) => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}>
+                }}
+              >
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -153,7 +155,8 @@ const CreateTaskCategory = ({ navigation }) => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}>
+                }}
+              >
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -192,7 +195,8 @@ const CreateTaskCategory = ({ navigation }) => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}>
+                }}
+              >
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -218,7 +222,8 @@ const CreateTaskCategory = ({ navigation }) => {
             <TouchableOpacity
               key={"Computer Repair"}
               style={{ flex: 1 }}
-              onPress={handleClick}>
+              onPress={handleClick}
+            >
               <Box
                 maxW="100%"
                 rounded="lg"
@@ -235,7 +240,8 @@ const CreateTaskCategory = ({ navigation }) => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}>
+                }}
+              >
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
@@ -274,7 +280,8 @@ const CreateTaskCategory = ({ navigation }) => {
                 }}
                 _light={{
                   backgroundColor: "gray.50",
-                }}>
+                }}
+              >
                 <Box>
                   <AspectRatio w="100%" ratio={16 / 9}>
                     <Image
