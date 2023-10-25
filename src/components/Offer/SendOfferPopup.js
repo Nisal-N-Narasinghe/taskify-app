@@ -18,8 +18,6 @@ const SendOfferPopup = ({ isOpen, onClose }) => {
         onClose();
       }}>
       <Modal.Content maxWidth="400px" rounded={24}>
-        {/* <Modal.CloseButton /> */}
-        {/* <Modal.Header></Modal.Header> */}
         <Modal.Body>
           <VStack space={2}>
             <HStack alignItems="center">
