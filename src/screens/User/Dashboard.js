@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Box, Button, Stack, Text, VStack } from "native-base";
 import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
+import { Ionicons } from "@expo/vector-icons";
 
 const Dashboard = ({ navigation }) => {
   return (
@@ -14,13 +14,13 @@ const Dashboard = ({ navigation }) => {
             <TouchableOpacity
               onPress={() => navigation.navigate("Add New Expert")}
               style={styles.card}>
-              <Icon name='user' size={40} color='#3498db' />
+              <Ionicons name="person-add" size={40} color="#3498db" />
               <Text style={styles.cardTitle}>Add New Expert</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.card}
               onPress={() => navigation.navigate("Expert Profile")}>
-              <Icon name='plus-circle' size={40} color='#2ecc71' />
+              <Ionicons name="person-circle" size={40} color="#2ecc71" />
               <Text style={styles.cardTitle}>Expert Profile</Text>
             </TouchableOpacity>
           </View>
@@ -30,8 +30,14 @@ const Dashboard = ({ navigation }) => {
             <TouchableOpacity
               style={styles.card}
               onPress={() => navigation.navigate("Upcoming Jobs")}>
-              <Icon name='plus-circle' size={40} color='#2ecc71' />
+              <Ionicons name="calendar" size={40} color="#2ecc71" />
               <Text style={styles.cardTitle}>Upcoming Jobs</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("User Chat")}>
+              <Ionicons name="chatbubble-sharp" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>User Chat</Text>
             </TouchableOpacity>
           </View>
         </VStack>
