@@ -12,6 +12,7 @@ import TaskDashboard from "./src/screens/User/TaskDashboard";
 // Task Screens
 import CreateTaskCategory from "./src/screens/User/CreateTask/AddCategory";
 import CreateTaskDetails from "./src/screens/User/CreateTask/AddDetails";
+import UserChat from "./src/screens/User/Chat";
 import CreateTaskImage from "./src/screens/User/CreateTask/AddImages";
 import CreateTaskSuccess from "./src/screens/User/CreateTask/SuccessView";
 import AddNewExpert from "./src/screens/Expert/AddNewExpert";
@@ -42,6 +43,7 @@ function ExpertDashboardStackScreen() {
         name="Add New Expert"
         component={AddNewExpert}
       />
+      <ExpertDashboardStack.Screen name="User Chat" component={UserChat} />
       <ExpertDashboardStack.Screen
         name="Expert Profile"
         component={ExpertProfile}
