@@ -37,6 +37,14 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
   const handleSwiperIndexChanged = (index) => {
     setCurrentStep(index + 1);
   };
+  const ratingData = [
+    { heading: "Quality Of Work", rating: 4.5 },
+    { heading: "Organization", rating: 3.8 },
+    { heading: "Time", rating: 5.0 },
+    { heading: "Communication", rating: 4.0 },
+    { heading: "Price", rating: 4.5 },
+  ];
+
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
       <Box safeArea flex={1} style={styles.container}>
@@ -57,9 +65,13 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
           </Heading>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <Flex flex={1} flexDirection='row' width='auto'>
-              <RatingCards heading={"Quality Of Work"} rating={4.5} />
-              <RatingCards heading={"Organization"} rating={3.8} />
-              <RatingCards heading={"Time"} rating={5.0} />
+              {ratingData.map((data, index) => (
+                <RatingCards
+                  key={index}
+                  heading={data.heading}
+                  rating={data.rating}
+                />
+              ))}
             </Flex>
           </ScrollView>
 

@@ -28,6 +28,13 @@ const ExpertProfileScreen = ({ navigation }) => {
     navigation.navigate("Add New Expert");
   };
 
+  const ratingsData = [
+    { review: "Sample Review", rating: 4.5 },
+    { review: "Sample Review", rating: 4.5 },
+    { review: "Sample Review", rating: 4.5 },
+    { review: "Sample Review", rating: 4.5 },
+    { review: "Sample Review", rating: 4.5 },
+  ];
   const expertiseAreas = [
     {
       title: "Electrician",
@@ -95,9 +102,13 @@ const ExpertProfileScreen = ({ navigation }) => {
           pt={4}
           mb={4}>
           <Flex flexDirection='row' width='auto' pl={1}>
-            <RatingCard review='Review given by clients' rating={4.5} />
-            <RatingCard review='Review given by clients' rating={3.8} />
-            <RatingCard review='Review given by clients' rating={5.0} />
+            {ratingsData.map((ratingData, index) => (
+              <RatingCard
+                key={index}
+                review={ratingData.review}
+                rating={ratingData.rating}
+              />
+            ))}
           </Flex>
         </ScrollView>
       </Box>
