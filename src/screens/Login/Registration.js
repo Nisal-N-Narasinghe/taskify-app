@@ -15,6 +15,7 @@ import {
 import { View, TouchableOpacity, TextInput, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { firebase } from "../../../config";
+import { Ionicons } from "@expo/vector-icons";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
@@ -61,8 +62,8 @@ const Registration = () => {
   };
 
   return (
-    <Center w="100%">
-      <Box safeArea p="2" w="90%" maxW="290" py="8">
+    <Center w="full">
+      <Box safeArea p="2" w="full" padding={3}>
         <Heading
           size="lg"
           color="coolGray.800"
@@ -121,8 +122,14 @@ const Registration = () => {
             />
           </FormControl>
           <Button
-            mt="2"
-            colorScheme="indigo"
+            // justifyContent={"left"}
+            mt={6}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            colorScheme={"emerald"}
+            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
             onPress={() => registerUser(email, password, firstName, lastName)}>
             Sign up
           </Button>

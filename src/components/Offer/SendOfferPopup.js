@@ -38,7 +38,7 @@ const SendOfferPopup = ({ isOpen, onClose }) => {
               fontWeight="bold"
               color="primary.green"
               backgroundColor="primary.grey"
-              outlineColor="transparent"
+              // outlineColor="transparent"
               focusOutlineColor="transparent"
               justifyContent="center"
               alignItems="center"
