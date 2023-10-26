@@ -32,6 +32,7 @@ import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistor
 import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
 import Login from "./src/screens/Login/Login";
 import Registration from "./src/screens/Login/Registration";
+import ViewSingleUpcommingJob from "./src/screens/Expert/ViewUpcomingJobs/ViewSingleUpcommingJob";
 
 //  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
@@ -42,35 +43,39 @@ const ExpertDashboardStack = createNativeStackNavigator();
 function ExpertDashboardStackScreen() {
   return (
     <ExpertDashboardStack.Navigator>
-      <ExpertDashboardStack.Screen name="Dashboard" component={Dashboard} />
+      <ExpertDashboardStack.Screen name='Dashboard' component={Dashboard} />
       <ExpertDashboardStack.Screen
-        name="Add New Expert"
+        name='Add New Expert'
         component={AddNewExpert}
       />
-      <ExpertDashboardStack.Screen name="User Chat" component={UserChat} />
+      <ExpertDashboardStack.Screen name='User Chat' component={UserChat} />
       <ExpertDashboardStack.Screen
-        name="Expert Profile"
+        name='Expert Profile'
         component={ExpertProfile}
       />
       <ExpertDashboardStack.Screen
-        name="View Single Expert"
+        name='View Single Expert'
         component={ViewSingleExpert}
       />
       <ExpertDashboardStack.Screen
-        name="Expert Job History"
+        name='Expert Job History'
         component={ExpertJobHistory}
       />
       <ExpertDashboardStack.Screen
-        name="Expert Area"
+        name='Expert Area'
         component={ExpertViewExpertiseArea}
       />
       <ExpertDashboardStack.Screen
-        name="Completed Jobs"
+        name='Completed Jobs'
         component={ExpertViewSingleJobHistoryItem}
       />
       <ExpertDashboardStack.Screen
-        name="Upcoming Jobs"
+        name='Upcoming Jobs'
         component={ViewUpcomingJobs}
+      />
+      <ExpertDashboardStack.Screen
+        name='Upcoming Job'
+        component={ViewSingleUpcommingJob}
       />
     </ExpertDashboardStack.Navigator>
   );
@@ -80,36 +85,36 @@ function TaskDashboardStackScreen() {
   return (
     <TaskDashboardStack.Navigator>
       <TaskDashboardStack.Screen
-        name="Task Dashboard"
+        name='Task Dashboard'
         component={TaskDashboard}
       />
       <TaskDashboardStack.Screen
-        name="Create Task"
+        name='Create Task'
         component={CreateTaskCategory}
       />
       <TaskDashboardStack.Screen
-        name="Task Details"
+        name='Task Details'
         component={CreateTaskDetails}
       />
       <TaskDashboardStack.Screen
-        name="All Completed Tasks"
+        name='All Completed Tasks'
         component={AllCompletedWorks}
       />
       <TaskDashboardStack.Screen
-        name="Task Image"
+        name='Task Image'
         component={CreateTaskImage}
       />
       <TaskDashboardStack.Screen
-        name="Task Success"
+        name='Task Success'
         component={CreateTaskSuccess}
       />
-      <TaskDashboardStack.Screen name="My Tasks" component={ViewMyTasks} />
-      <TaskDashboardStack.Screen name="View Task" component={ViewTask} />
+      <TaskDashboardStack.Screen name='My Tasks' component={ViewMyTasks} />
+      <TaskDashboardStack.Screen name='View Task' component={ViewTask} />
       <TaskDashboardStack.Screen
-        name="View Past Tasks"
+        name='View Past Tasks'
         component={ViewPastTasks}
       />
-      <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
+      <TaskDashboardStack.Screen name='Add Feedback' component={AddFeedback} />
     </TaskDashboardStack.Navigator>
   );
 }
@@ -151,9 +156,9 @@ export default function App() {
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <ExpertDashboardStack.Navigator>
-            <ExpertDashboardStack.Screen name="Login" component={Login} />
+            <ExpertDashboardStack.Screen name='Login' component={Login} />
             <ExpertDashboardStack.Screen
-              name="Registration"
+              name='Registration'
               component={Registration}
             />
           </ExpertDashboardStack.Navigator>
@@ -166,7 +171,7 @@ export default function App() {
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Dashboard"
+          initialRouteName='Dashboard'
           screenOptions={({ route }) => ({
             headerShown: false,
             tabBarShowLabel: false,
@@ -184,9 +189,9 @@ export default function App() {
               return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}>
-          <Tab.Screen name="Dashboard" component={ExpertDashboardStackScreen} />
-          <Tab.Screen name="Tasks" component={TaskDashboardStackScreen} />
-          <Tab.Screen name="Profile" component={ProfileDashboardStackScreen} />
+          <Tab.Screen name='Dashboard' component={ExpertDashboardStackScreen} />
+          <Tab.Screen name='Tasks' component={TaskDashboardStackScreen} />
+          <Tab.Screen name='Profile' component={ProfileDashboardStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
