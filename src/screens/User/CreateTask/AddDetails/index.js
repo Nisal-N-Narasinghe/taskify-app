@@ -41,24 +41,55 @@ const CreateTaskDetails = ({ selectedCategory }) => {
             <Input
               type="text"
               defaultValue={selectedCategory}
-              // placeholder="Title"
+              placeholder="Title"
+              bgColor="#E0E0E0"
               readOnly
+              borderRadius={10}
             />
 
             <FormControl.Label fontSize={"lg"}>Title</FormControl.Label>
-            <Input type="text" defaultValue="" placeholder="Title" />
+            <Input
+              type="text"
+              defaultValue=""
+              placeholder="Title"
+              bgColor="#E0E0E0"
+              borderRadius={10}
+            />
 
             <FormControl.Label>Description</FormControl.Label>
-            <TextArea h={"32"} placeholder="Task Description" w="100%" />
+            <TextArea
+              h={"32"}
+              placeholder="Task Description"
+              bgColor="#E0E0E0"
+              borderRadius={10}
+            />
 
             <FormControl.Label>Location</FormControl.Label>
-            <Input type="text" defaultValue="" placeholder="Location" />
+            <Input
+              type="text"
+              defaultValue=""
+              placeholder="Location"
+              bgColor="#E0E0E0"
+              borderRadius={10}
+            />
 
             <FormControl.Label>Budget</FormControl.Label>
-            <Input type="text" defaultValue="" placeholder="Budget" />
+            <Input
+              type="text"
+              defaultValue=""
+              placeholder="Budget"
+              bgColor="#E0E0E0"
+              borderRadius={10}
+            />
 
             <FormControl.Label>Time Period</FormControl.Label>
-            <Input type="text" defaultValue="" placeholder="Time Period" />
+            <Input
+              type="text"
+              defaultValue=""
+              placeholder="Time Period"
+              bgColor="#E0E0E0"
+              borderRadius={10}
+            />
           </Stack>
         </FormControl>
 
@@ -72,9 +103,9 @@ const CreateTaskDetails = ({ selectedCategory }) => {
           colorScheme={"emerald"}
           endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
           onPress={() => {
-            sendOfferPopup();
-            onClose();
+            handleContinue();
           }}
+          marginTop={1}
         >
           <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
             Next

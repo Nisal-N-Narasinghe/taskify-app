@@ -12,6 +12,7 @@ import React from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 const CreateTaskImage = () => {
   const navigation = useNavigation();
@@ -46,7 +47,8 @@ const CreateTaskImage = () => {
             borderWidth: 0,
           }}
           _light={{
-            backgroundColor: "gray.50",
+            // backgroundColor: "gray.50",
+            backgroundColor: "#E0E0E0",
           }}
         >
           <Stack alignItems="center">
@@ -63,13 +65,28 @@ const CreateTaskImage = () => {
                 as={<MaterialIcons name="image" />}
                 marginBottom={4}
               />
-              <Button onPress={handleUpload} marginBottom={6}>
+              <Button marginBottom={6} bgColor={"#272727"} rounded={100}>
                 Upload
               </Button>
             </Stack>
           </Stack>
         </Box>
       </Box>
+      <Button
+        justifyContent={"center"}
+        h={10}
+        rounded={100}
+        p={0}
+        px={6}
+        colorScheme={"emerald"}
+        endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
+        onPress={handleUpload}
+        marginTop={300}
+      >
+        <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+          Next
+        </Text>
+      </Button>
     </Box>
   );
 };
