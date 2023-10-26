@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "./theme";
+import { firebase } from "./config";
+import React, { useState, useEffect } from "react";
 
 // Dashboards
 import Dashboard from "./src/screens/User/Dashboard";
@@ -28,6 +30,8 @@ import ViewTask from "./src/screens/User/ViewTasks/ViewMyTasks/ViewMyTask";
 import ViewPastTasks from "./src/screens/User/ViewTasks/ViewPastTasks";
 import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistory/ExpertViewSingleJobHistoryItem";
 import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
+import Login from "./src/screens/Login/Login";
+import Registration from "./src/screens/Login/Registration";
 
 //  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
@@ -126,6 +130,38 @@ function ProfileDashboardStackScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [user, setUser] = useState();
+  const [initializeing, setInitializeing] = useState(true);
+
+  //Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializeing) setInitializeing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
+  if (initializeing) return null;
+
+  if (!user) {
+    return (
+      <NativeBaseProvider theme={theme}>
+        <NavigationContainer>
+          <ExpertDashboardStack.Navigator>
+            <ExpertDashboardStack.Screen name="Login" component={Login} />
+            <ExpertDashboardStack.Screen
+              name="Registration"
+              component={Registration}
+            />
+          </ExpertDashboardStack.Navigator>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    );
+  }
+
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
