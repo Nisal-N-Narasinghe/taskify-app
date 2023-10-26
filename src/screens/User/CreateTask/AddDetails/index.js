@@ -16,12 +16,12 @@ import {
 } from "native-base";
 import React from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
-// components/common/stepIndicators/index";
+import { Ionicons } from "@expo/vector-icons";
 
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-function CreateTaskDetails() {
+function CreateTaskDetails({ selectedCategory }) {
   const navigation = useNavigation();
 
   const handleContinue = () => {
@@ -38,7 +38,12 @@ function CreateTaskDetails() {
         <FormControl isRequired marginBottom={3}>
           <Stack>
             <FormControl.Label fontSize={"lg"}>Task Category</FormControl.Label>
-            <Input type="text" defaultValue="" placeholder="Title" readOnly />
+            <Input
+              type="text"
+              defaultValue={selectedCategory}
+              placeholder="Title"
+              readOnly
+            />
 
             <FormControl.Label fontSize={"lg"}>Title</FormControl.Label>
             <Input type="text" defaultValue="" placeholder="Title" />
@@ -57,7 +62,24 @@ function CreateTaskDetails() {
           </Stack>
         </FormControl>
 
-        <Button onPress={handleContinue}>Continue</Button>
+        {/* <Button onPress={handleContinue}>Continue</Button> */}
+        <Button
+          justifyContent={"center"}
+          h={10}
+          rounded={100}
+          p={0}
+          px={6}
+          colorScheme={"emerald"}
+          endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
+          onPress={() => {
+            sendOfferPopup();
+            onClose();
+          }}
+        >
+          <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+            Next
+          </Text>
+        </Button>
       </Box>
     </ScrollView>
   );
