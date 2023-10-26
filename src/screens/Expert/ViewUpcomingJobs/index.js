@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, ScrollView, VStack } from "native-base";
 import CleaningJob from "../../../../assets/cleaning.jpg";
+import ComputerJob from "../../../../assets/computer.jpg";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import { ViewUpcomingJobItem } from "../../../components/Expert/ViewUpcomingJobs";
@@ -11,56 +12,39 @@ const ViewUpcomingJobs = () => {
   const handleClick = () => {
     navigation.navigate("");
   };
+  const upcomingJobItems = [
+    {
+      title: "Cleaning Job",
+      location: "Malabe",
+      countFromPostedDate: "In 2 days",
+      image: [CleaningJob, ComputerJob, CleaningJob],
+      Amount: "Rs. 5000",
+    },
+    {
+      title: "Computer Job",
+      location: "Malabe",
+      countFromPostedDate: "In 2 days",
+      image: [ComputerJob, CleaningJob, CleaningJob],
+      Amount: "Rs. 5000",
+    },
+  ];
+
   return (
     <Box>
       <ScrollView>
         <Box safeArea>
           <VStack paddingX={4}>
-            <TouchableOpacity onPress={handleClick}>
-              <ViewUpcomingJobItem
-                title='Cleaning Job'
-                location='Malabe'
-                countFromPostedDate='In 2 days'
-                image={CleaningJob}
-                Amount='Rs. 5000'
-              />
-            </TouchableOpacity>
-
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
+            {upcomingJobItems.map((item, index) => (
+              <TouchableOpacity key={index} onPress={handleClick}>
+                <ViewUpcomingJobItem
+                  title={item.title}
+                  location={item.location}
+                  countFromPostedDate={item.countFromPostedDate}
+                  image={item.image[0]}
+                  Amount={item.Amount}
+                />
+              </TouchableOpacity>
+            ))}
           </VStack>
         </Box>
       </ScrollView>
