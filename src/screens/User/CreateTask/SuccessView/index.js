@@ -25,7 +25,7 @@ const CreateTaskSuccess = () => {
       <StepIndicator totalSteps={5} currentStep={5} />
       <Box
         w="full"
-        h={"lg"}
+        h={"xl"}
         rounded="lg"
         borderColor="coolGray.200"
         borderWidth="2"
@@ -52,8 +52,23 @@ const CreateTaskSuccess = () => {
           <Text fontWeight="500" marginBottom={"4"}>
             Click here to view the task
           </Text>
-          <Button w={"48"} onPress={handleContinue}>
-            Continue
+          <Button
+            justifyContent={"center"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            colorScheme={"emerald"}
+            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
+            onPress={() => {
+              handleContinue();
+            }}
+            marginTop={1}
+            w={"xs"}
+          >
+            <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+              Next
+            </Text>
           </Button>
         </Stack>
       </Box>

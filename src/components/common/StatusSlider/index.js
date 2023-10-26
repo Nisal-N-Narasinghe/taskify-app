@@ -16,6 +16,7 @@ const StatusSlider = ({ disableStatus, statusValue }) => {
         accessibilityLabel="hello world"
         step={10}
         isDisabled={disableStatus}
+        colorScheme="orange"
       >
         <Slider.Track>
           <Slider.FilledTrack />

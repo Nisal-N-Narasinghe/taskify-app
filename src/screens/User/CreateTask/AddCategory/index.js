@@ -63,7 +63,7 @@ const CreateTaskCategory = ({ navigation }) => {
                 handleClick("Cleaning");
               }}
             >
-              <CategoryItem image={CleanImg} category={"Cleaning"} />
+              <CategoryItem image={CleanImg} category="Cleaning" />
             </TouchableOpacity>
 
             {/* second box*/}

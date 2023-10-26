@@ -129,7 +129,23 @@ const ViewTask = () =>
             <StatusSlider disableStatus={false} statusValue={0} />
           </HStack>
           <Box>
-            <Button onPress={handleViewOffer}>View Offers</Button>
+            <Button
+              justifyContent={"center"}
+              h={10}
+              rounded={100}
+              p={0}
+              px={6}
+              colorScheme={"emerald"}
+              endIcon={
+                <Ionicons name="arrow-forward" size={24} color="white" />
+              }
+              onPress={handleViewOffer}
+              marginTop={1}
+            >
+              <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+                Next
+              </Text>
+            </Button>
           </Box>
         </Box>
       </ScrollView>
