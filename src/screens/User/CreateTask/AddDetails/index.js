@@ -21,7 +21,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-function CreateTaskDetails({ selectedCategory }) {
+const CreateTaskDetails = ({ selectedCategory }) => {
   const navigation = useNavigation();
 
   const handleContinue = () => {
@@ -41,7 +41,7 @@ function CreateTaskDetails({ selectedCategory }) {
             <Input
               type="text"
               defaultValue={selectedCategory}
-              placeholder="Title"
+              // placeholder="Title"
               readOnly
             />
 
@@ -83,7 +83,7 @@ function CreateTaskDetails({ selectedCategory }) {
       </Box>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   imgCard: {
