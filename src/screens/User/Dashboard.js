@@ -1,12 +1,79 @@
+import {
+  AspectRatio,
+  Box,
+  Image,
+  Text,
+  Stack,
+  HStack,
+  Heading,
+  VStack,
+  Input,
+  Icon,
+  Center,
+  Select,
+  CheckIcon,
+  Radio,
+  NativeBaseProvider,
+  extendTheme,
+  StackDivider,
+  Button,
+  Pressable,
+  Flex,
+  Spacer,
+  Badge,
+  Alert,
+  Menu,
+  HamburgerIcon,
+} from "native-base";
 import { useNavigation } from "@react-navigation/native";
-import { Box, Button, Stack, Text, VStack } from "native-base";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { firebase } from "../../../config";
 
 const Dashboard = ({ navigation }) => {
+  const [firstName, setFirstName] = useState("");
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists) {
+          setFirstName(snapshot.data());
+        } else {
+          console.log("User does not exist");
+        }
+      });
+  }, []);
+
   return (
     <View style={styles.container}>
+      <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+        Hello {firstName.firstName}
+      </Text>
+      <Box w="90%" alignItems="flex-start">
+        <Menu
+          w="190"
+          trigger={(triggerProps) => {
+            return (
+              <Pressable
+                accessibilityLabel="More options menu"
+                {...triggerProps}>
+                <HamburgerIcon />
+              </Pressable>
+            );
+          }}>
+          <Button
+            onPress={() => {
+              firebase.auth().signOut();
+            }}>
+            Sign Out
+          </Button>
+        </Menu>
+      </Box>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.heading}>Main Dashboard</Text>
         <VStack>
@@ -42,6 +109,13 @@ const Dashboard = ({ navigation }) => {
           </View>
         </VStack>
       </ScrollView>
+      {/*       <TouchableOpacity
+        onPress={() => {
+          firebase.auth().signOut();
+        }}
+        style={styles.button}>
+        <Text style={{ fontSize: 22, fontWeight: "bold" }}>Sign Out</Text>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -92,6 +166,25 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     color: "#3498db",
+  },
+  Textinput: {
+    paddingTop: 20,
+    paddingBottom: 10,
+    width: 400,
+    fontSize: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#000",
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  button: {
+    marginTop: 50,
+    width: 250,
+    height: 70,
+    backgroundColor: "#026efd",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50,
   },
 });
 
