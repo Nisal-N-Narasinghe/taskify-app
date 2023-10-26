@@ -55,13 +55,6 @@ const TaskDashboard = ({ navigation }) => {
               <Icon name="plus-circle" size={40} color="#2ecc71" />
               <Text style={styles.cardTitle}>Completed Task</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("View Ongoing Task")}
-              style={styles.card}
-            >
-              <Icon name="plus-circle" size={40} color="#2ecc71" />
-              <Text style={styles.cardTitle}>Ongoing Task</Text>
-            </TouchableOpacity>
           </View>
         </VStack>
       </ScrollView>

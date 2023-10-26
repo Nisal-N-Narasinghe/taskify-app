@@ -23,6 +23,7 @@ import AddFeedback from "./src/screens/User/AddFeedback";
 import ExpertProfile from "./src/screens/Expert/ExpertProfile";
 import AllCompletedWorks from "./src/screens/User/AllCompletedWorks";
 import ViewOngoingTask from "./src/screens/User/ViewTasks/ViewOngoingTasks/ViewOngoingTask";
+import ViewOngoingJob from "./src/screens/Expert/ViewOngoingJobs/ViewOngoingJob";
 import ViewPastTask from "./src/screens/User/ViewTasks/ViewPastTasks/ViewPastTask";
 
 //  STACK NAVIGATION CONFIG
@@ -79,6 +80,10 @@ function ExpertDashboardStackScreen() {
       <ExpertDashboardStack.Screen
         name="Upcoming Job"
         component={ViewSingleUpcommingJob}
+      />
+      <ExpertDashboardStack.Screen
+        name="Ongoing Job"
+        component={ViewOngoingJob}
       />
     </ExpertDashboardStack.Navigator>
   );
