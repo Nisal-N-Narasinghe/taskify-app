@@ -49,7 +49,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 placeholder="Title"
                 bgColor="#E0E0E0"
                 readOnly
-                borderRadius={10}
+                rounded={"100"}
                 marginBottom={3}
               />
 
@@ -59,7 +59,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 defaultValue=""
                 placeholder="Title"
                 bgColor="#E0E0E0"
-                borderRadius={10}
+                rounded={"100"}
                 marginBottom={3}
               />
 
@@ -68,7 +68,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 h={"32"}
                 placeholder="Task Description"
                 bgColor="#E0E0E0"
-                borderRadius={10}
+                borderRadius={"25"}
                 marginBottom={3}
               />
 
@@ -80,7 +80,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 placeholder="Choose Location"
                 bgColor="#E0E0E0"
                 marginBottom={3}
-                borderRadius={10}
+                rounded={"100"}
                 _selectedItem={
                   {
                     // bg: "teal.600",
@@ -116,7 +116,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                     defaultValue=""
                     placeholder="LKR"
                     bgColor="#E0E0E0"
-                    borderRadius={10}
+                    rounded={"100"}
                     w={"190"}
                   />
                 </VStack>
@@ -127,7 +127,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                     defaultValue=""
                     placeholder="LKR"
                     bgColor="#E0E0E0"
-                    borderRadius={10}
+                    rounded={"100"}
                     w={"190"}
                   />
                 </VStack>
@@ -138,7 +138,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 defaultValue=""
                 placeholder="Time Period"
                 bgColor="#E0E0E0"
-                borderRadius={10}
+                rounded={"100"}
                 marginBottom={3}
               />
             </Stack>
