@@ -15,12 +15,13 @@ import ImageSliderIndicator from "../../../../../components/common/ImageSliderIn
 import { Ionicons } from "@expo/vector-icons";
 import StatusSlider from "../../../../../components/common/StatusSlider";
 
-const ViewTask = () =>
+const ViewOngoingTask = () =>
   // taskTitle,
   // location
   // postedDate
   // description
-  // budget
+  // minBudget
+  // maxBudget
   // amount
   // timePeriod
 
@@ -36,8 +37,8 @@ const ViewTask = () =>
       require("../../../../../../assets/dog.jpg"),
     ];
 
-    const handleViewOffer = () => {
-      navigation.navigate("Expert Area");
+    const handleChat = () => {
+      navigation.navigate("User Chat");
     };
 
     const handleSwiperIndexChanged = (index) => {
@@ -132,7 +133,7 @@ const ViewTask = () =>
             </VStack>
           </HStack>
           <HStack marginTop={4} marginBottom={4}>
-            <StatusSlider disableStatus={true} statusValue={0} />
+            <StatusSlider disableStatus={false} statusValue={30} />
           </HStack>
           <Box>
             <Button
@@ -141,16 +142,16 @@ const ViewTask = () =>
               rounded={100}
               p={0}
               px={6}
-              colorScheme={"emerald"}
+              //   colorScheme={"emerald"}
               endIcon={
                 <Ionicons name="arrow-forward" size={24} color="white" />
               }
-              onPress={handleViewOffer}
+              onPress={handleChat}
               marginTop={1}
+              bgColor={"#272727"}
             >
-              {/* Navigate to offers list sent by Experts */}
               <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
-                View Offers
+                Chat with Expert
               </Text>
             </Button>
           </Box>
@@ -159,4 +160,4 @@ const ViewTask = () =>
     );
   };
 
-export default ViewTask;
+export default ViewOngoingTask;

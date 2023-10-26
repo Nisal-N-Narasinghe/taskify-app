@@ -22,6 +22,8 @@ import ViewSingleExpert from "./src/screens/Expert/ViewSingleExpert";
 import AddFeedback from "./src/screens/User/AddFeedback";
 import ExpertProfile from "./src/screens/Expert/ExpertProfile";
 import AllCompletedWorks from "./src/screens/User/AllCompletedWorks";
+import ViewOngoingTask from "./src/screens/User/ViewTasks/ViewOngoingTasks/ViewOngoingTask";
+
 //  STACK NAVIGATION CONFIG
 import ViewMyTasks from "./src/screens/User/ViewTasks/ViewMyTasks";
 import ExpertJobHistory from "./src/screens/Expert/ExpertJobHistory";
@@ -109,6 +111,10 @@ function TaskDashboardStackScreen() {
         name="View Past Tasks"
         component={ViewPastTasks}
       />
+      <TaskDashboardStack.Screen
+        name="View Ongoing Task"
+        component={ViewOngoingTask}
+      />
       <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
     </TaskDashboardStack.Navigator>
   );
@@ -183,7 +189,8 @@ export default function App() {
 
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-          })}>
+          })}
+        >
           <Tab.Screen name="Dashboard" component={ExpertDashboardStackScreen} />
           <Tab.Screen name="Tasks" component={TaskDashboardStackScreen} />
           <Tab.Screen name="Profile" component={ProfileDashboardStackScreen} />
