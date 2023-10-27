@@ -37,6 +37,7 @@ import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistor
 import ViewJobs from "./src/screens/Expert/ViewJobs";
 import Login from "./src/screens/Login/Login";
 import Registration from "./src/screens/Login/Registration";
+import AllExpertArea from "./src/screens/Expert/AllExpertArea";
 import ViewSingleUpcommingJob from "./src/screens/Expert/ViewJobs/ViewSingleUpcommingJob";
 import ExpertDashboard from "./src/screens/Expert/ExpertDashboard";
 import UserDashboard from "./src/screens/User/UserDashboard";
@@ -115,6 +116,10 @@ function ExpertProfileStackScreen() {
       <ExpertProfileStack.Screen
         name="View Single Expert"
         component={ViewSingleExpert}
+      />
+      <ExpertProfileStack.Screen
+        name="All Expert Area"
+        component={AllExpertArea}
       />
     </ExpertProfileStack.Navigator>
   );

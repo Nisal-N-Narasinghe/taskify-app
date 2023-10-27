@@ -4,6 +4,7 @@ import UpperImg from "../../../assets/upperWidget.png";
 //import { getDatabase, ref, onValue } from '@react-native-firebase/database';
 
 import React, { useState, useEffect } from "react";
+import { styles } from "../../styles/User/ViewTasks/ViewMyTasks";
 
 const AllCompletedWorks = ({ navigation }) => {
   const [completedWorks, setCompletedWorks] = useState([]);
@@ -69,19 +70,19 @@ const AllCompletedWorks = ({ navigation }) => {
       },
       {
         id: 2,
-        title: "Residential Electric Work",
-        location: "Colombo",
-        category: "ELECTRIC",
+        title: "Garden Interlocking",
+        location: "Kalutara",
+        category: "Gardening",
         image:
-          "https://engineering-jobs.theiet.org/getasset/85bead92-2e44-4692-b579-3ddf03a9a84b/",
+          "https://i.pinimg.com/550x/24/87/c1/2487c194deace5b685e7e2681f1975e9.jpg",
       },
       {
         id: 3,
-        title: "Residential Electric Work",
+        title: "Plumbing System Work",
         location: "Colombo",
         category: "ELECTRIC",
         image:
-          "https://engineering-jobs.theiet.org/getasset/85bead92-2e44-4692-b579-3ddf03a9a84b/",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcbPgIyDg2DrE1StdmJUUUtk28fE4eqbg1SA&usqp=CAU",
       },
     ];
 
@@ -129,9 +130,9 @@ const AllCompletedWorks = ({ navigation }) => {
                     </Text>
                     <Text fontSize="sm">{work.location}</Text>
                     <Text bold fontSize="lg">
-                      <Badge colorScheme="success" variant={key}>
-                        {work.category}
-                      </Badge>
+                      <Box style={styles.categoryLabel}>
+                        <Text style={styles.categoryText}>Category</Text>
+                      </Box>
                     </Text>
                   </VStack>
                 ))}

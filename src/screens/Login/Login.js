@@ -56,7 +56,7 @@ const Login = () => {
           Sign in to continue!
         </Heading>
 
-        <VStack space={3} mt="5">
+        <VStack space={5} mt="5">
           <FormControl>
             <FormControl.Label>Email ID</FormControl.Label>
             <Input

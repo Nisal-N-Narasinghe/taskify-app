@@ -8,7 +8,7 @@ import {
   Button,
   Card,
 } from "native-base";
-import { View } from "react-native";
+import { View, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CleaningJob from "../../../assets/cleaning.jpg";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -24,7 +24,7 @@ import { FeedbackTopCard } from "../../components/User/FeedbackPageTopCard";
   child,
 } from '@react-native-firebase/database'; */
 
-const AddFeedback = () => {
+const AddFeedback = ({ navigation }) => {
   const [qualityRating, setQualityRating] = useState(0);
   const [cleanlinessRating, setCleanlinessRating] = useState(0);
   const [timelinessRating, setTimelinessRating] = useState(0);
@@ -32,10 +32,22 @@ const AddFeedback = () => {
   const [satisfactionRating, setSatisfactionRating] = useState(0);
 
   const submitFeedback = () => {
-    const database = getDatabase();
-    const feedbackRef = ref(database, "feedback"); // Change 'feedback' to your desired path
+    // Change 'feedback' to your desired path
 
     // Create a new feedback object
+    Alert.alert(
+      "Feedback Submitted",
+      "Thank you for your feedback!",
+      [
+        {
+          text: "OK",
+          onPress: () => {
+            navigation.navigate("User Dashboard");
+          },
+        },
+      ],
+      { cancelable: false }
+    );
     const newFeedback = {
       quality: qualityRating,
       cleanliness: cleanlinessRating,
@@ -43,21 +55,6 @@ const AddFeedback = () => {
       communication: communicationRating,
       satisfaction: satisfactionRating,
     };
-
-    // Push the new feedback to the database
-    push(feedbackRef, newFeedback)
-      .then(() => {
-        console.log("Feedback submitted successfully");
-        // Optionally, you can reset the ratings here
-        setQualityRating(0);
-        setCleanlinessRating(0);
-        setTimelinessRating(0);
-        setCommunicationRating(0);
-        setSatisfactionRating(0);
-      })
-      .catch((error) => {
-        console.error("Error submitting feedback:", error);
-      });
   };
 
   return (
@@ -221,7 +218,7 @@ const AddFeedback = () => {
         onPress={submitFeedback}
         margin={5}
         borderRadius={25}
-        color={"green"}>
+        colorScheme={"emerald"}>
         Publish Feedback
       </Button>
     </ScrollView>

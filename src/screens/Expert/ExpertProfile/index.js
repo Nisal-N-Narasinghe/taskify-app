@@ -10,17 +10,19 @@ import {
   Heading,
   Image,
 } from "native-base";
-import { firebase } from "../../../../config";
 
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import PROImg from "../../../../assets/Expertimages/expertPRO.jpg";
 import styles from "../../../styles/Expert/ExpertProfile";
+import "firebase/firestore";
+import { firebase } from "../../../../config";
 import {
   ExpertCard,
   RatingCard,
 } from "../../../components/Expert/ExpertProfile";
 import { TouchableOpacity } from "react-native";
 const ExpertProfileScreen = ({ navigation }) => {
+  const [completedWorks, setCompletedWorks] = useState([]);
   const id = 123;
   const [userData, setUserData] = useState("");
 
@@ -55,7 +57,7 @@ const ExpertProfileScreen = ({ navigation }) => {
     { review: "Sample Review", rating: 4.5 },
     { review: "Sample Review", rating: 4.5 },
   ];
-  const expertiseAreas = [
+  /* const expertiseAreas = [
     {
       title: "Electrician",
       description: "Description for Electrician",
@@ -80,19 +82,37 @@ const ExpertProfileScreen = ({ navigation }) => {
       jobsDone: 3,
       experience: 5,
     },
-  ];
+  ]; */
+  useEffect(() => {
+    const expertCollection = firebase.firestore().collection("experts");
+
+    const fetchData = async () => {
+      try {
+        const snapshot = await expertCollection.get();
+        const works = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCompletedWorks(works);
+      } catch (error) {
+        console.error("Error fetching data from Firebase:", error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
-      <Box backgroundColor='white' pb={10}>
+      <Box backgroundColor="white" pb={10}>
         <Center>
           <Image
             source={PROImg}
-            alt='Profile Picture'
-            size='100px'
-            borderRadius='full'
+            alt="Profile Picture"
+            size="100px"
+            borderRadius="full"
             borderWidth={2}
-            borderColor='gray.200'
+            borderColor="gray.200"
             mt={4}
           />
         </Center>
@@ -102,11 +122,11 @@ const ExpertProfileScreen = ({ navigation }) => {
           </Heading>
         </Center>
       </Box>
-      <Box flexDirection='row' backgroundColor='white'>
+      <Box flexDirection="row" backgroundColor="white">
         <Heading pl={3} fontSize={18} pr={4} pt={2}>
           History & Ratings
         </Heading>
-        <Box style={styles.buttonHistoryContainer} pl='16'>
+        <Box style={styles.buttonHistoryContainer} pl="16">
           <TouchableOpacity onPress={handleHistoryButton}>
             <Button style={styles.buttonHistory} onPress={handleHistoryButton}>
               View History
@@ -115,13 +135,13 @@ const ExpertProfileScreen = ({ navigation }) => {
         </Box>
       </Box>
 
-      <Box backgroundColor='white'>
+      <Box backgroundColor="white">
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           pt={4}
           mb={4}>
-          <Flex flexDirection='row' width='auto' pl={1}>
+          <Flex flexDirection="row" width="auto" pl={1}>
             {ratingsData.map((ratingData, index) => (
               <RatingCard
                 key={index}
@@ -138,15 +158,17 @@ const ExpertProfileScreen = ({ navigation }) => {
         </Heading>
 
         <VStack paddingX={4} paddingY={2}>
-          {expertiseAreas.map((area, index) => (
+          {completedWorks.map((work) => (
             <TouchableOpacity
-              key={index}
-              onPress={() => navigation.navigate("Expert Area", { id })}>
+              key={work.id}
+              onPress={() =>
+                navigation.navigate("Expert Area", { expertId: work.id })
+              }>
               <ExpertCard
-                title={area.title}
-                JobDiscription={area.description}
-                jobcount={`Jobs Done : ${area.jobsDone}`}
-                experience={`Experience : ${area.experience} years`}
+                title={work.service}
+                JobDiscription={work.location}
+                jobcount={`Working Days : ${work.days}`}
+                experience={`Description : ${work.name}`}
               />
             </TouchableOpacity>
           ))}
@@ -154,11 +176,11 @@ const ExpertProfileScreen = ({ navigation }) => {
           <Center>
             <Button style={styles.buttonAdd} onPress={handleAddExpertiseArea}>
               <Icon
-                m='2'
-                ml='3'
-                size='16'
-                color='primary.green'
-                as={<MaterialIcons name='add' />}
+                m="2"
+                ml="3"
+                size="16"
+                color="primary.green"
+                as={<MaterialIcons name="add" />}
               />
             </Button>
           </Center>
