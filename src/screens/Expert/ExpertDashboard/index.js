@@ -12,12 +12,14 @@ import {
   HStack,
   Text,
 } from "native-base";
-import { Ionicons } from "@expo/vector-icons";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import PROImg from "../../../../assets/Expertimages/expertPRO.jpg";
+
 import styles from "../../../styles/Expert/ExpertDashboard";
-import CleaningJob from "../../../../assets/cleaning.jpg";
-import ComputerJob from "../../../../assets/computer.jpg";
+import housePlane3d from "../../../../assets/Expertimages/HousePlanning/housePlane3D.jpg";
+import shopPlane from "../../../../assets/Expertimages/ShopPlanning/shopPlanning1.jpeg";
+import gradenPlane from "../../../../assets/Expertimages/GardenPlanning/gardenPlanning.jpeg";
+import gradenPlane1 from "../../../../assets/Expertimages/GardenPlanning/gardenPlanning1.jpeg";
+import gradenPlane2 from "../../../../assets/Expertimages/GardenPlanning/gardenPlanning2.jpeg";
+
 import { JobHistoryItem } from "../../../components/Expert/ExpertJobHistory";
 import { firebase } from "../../../../config";
 import { TouchableOpacity } from "react-native";
@@ -27,49 +29,47 @@ const ExpertDashboard = ({ navigation }) => {
   const id = 123;
   const jobHistoryItems = [
     {
-      title: "Cleaning",
+      title: "House Planning Job",
       location: "Arangala",
       startTime: "9:00 AM",
-      startDate: "2023-10-25",
-      endTime: "12:00 PM",
-      endDate: "2023-10-25",
-      rating: 4.5,
-      images: [CleaningJob, ComputerJob, CleaningJob],
-      countFromEndDate: "2 days ago",
-      Amount: "Rs.5000",
+      startDate: "26-10-2023",
+      endTime: "12:10 PM",
+      endDate: "27-10-2023",
+      rating: 3.8,
+      images: [housePlane3d],
+      countFromEndDate: "1 days ago",
+      Amount: "Rs.8000",
     },
     {
-      title: "Computing",
-      location: "Kuliyapitiya",
+      title: "Backyard Planning Job",
+      location: "Kaduwela",
       startTime: "8:30 AM",
-      startDate: "2023-10-24",
-      endTime: "11:45 AM",
-      endDate: "2023-10-24",
+      startDate: "25-10-2023",
+      endTime: "2:45 PM",
+      endDate: "25-10-2023",
       rating: 4.5,
-      images: [ComputerJob, CleaningJob, CleaningJob],
+      images: [gradenPlane2],
       countFromEndDate: "3 days ago",
-      Amount: "Rs.4000",
+      Amount: "Rs.6000",
     },
     {
-      title: "Computing",
+      title: "Frontyard Planning Job",
       location: "Malabe",
-      startTime: "10:15 AM",
-      startDate: "2023-10-23",
+      startTime: "8:15 AM",
+      startDate: "20-10-2023",
       endTime: "1:30 PM",
-      endDate: "2023-10-23",
-      rating: 4.5,
-      images: [ComputerJob, CleaningJob, CleaningJob],
-      countFromEndDate: "4 days ago",
+      endDate: "20-10-2023",
+      rating: 50,
+      images: [gradenPlane1],
+      countFromEndDate: "7 days ago",
       Amount: "Rs. 4000",
     },
   ];
 
   const findAJobData = [
-    { jobText: "Cleaning", image: CleaningJob },
-    { jobText: "Cleaning", image: CleaningJob },
-    { jobText: "Cleaning", image: CleaningJob },
-    { jobText: "Cleaning", image: CleaningJob },
-    { jobText: "Computer", image: ComputerJob },
+    { jobText: "Garden Planning", image: gradenPlane },
+    { jobText: "House Planning", image: housePlane3d },
+    { jobText: "Shop Planning", image: shopPlane },
   ];
 
   return (
