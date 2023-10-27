@@ -251,7 +251,7 @@ export default function App() {
                 };
                 let iconName;
 
-                if (route.name === "Dashboard") {
+                if (route.name === "Expert Dashboard Screen") {
                   iconName = "home-outline";
                 } else if (route.name === "chats") {
                   iconName = "chatbubbles-outline";
@@ -272,7 +272,7 @@ export default function App() {
               },
             })}>
             <Tab.Screen
-              name='Dashboard'
+              name='Expert Dashboard Screen'
               component={ExpertDashboardStackScreen}
             />
             <Tab.Screen name='chats' component={ExpertChatStackScreen} />
