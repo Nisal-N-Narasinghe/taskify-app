@@ -378,9 +378,9 @@ export default function App() {
                   iconName = "home-outline";
                 } else if (route.name === "chats") {
                   iconName = "chatbubbles-outline";
+                } else if (route.name === "Create Task") {
+                  iconName = "create-outline";
                 } else if (route.name === "Tasks") {
-                  iconName = "md-calendar-outline";
-                } else if (route.name === "Create a Task") {
                   iconName = "hammer-outline";
                 }
                 return (
@@ -400,8 +400,8 @@ export default function App() {
               component={UserDashboardStackScreen}
             />
             <Tab.Screen name="chats" component={UserChatStackScreen} />
+            <Tab.Screen name="Create Task" component={CreateTaskCategory} />
             <Tab.Screen name="Tasks" component={UserTaskStackScreen} />
-            <Tab.Screen name="Create a Task" component={UserTaskStackScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>

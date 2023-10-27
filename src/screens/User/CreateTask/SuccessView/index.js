@@ -22,7 +22,7 @@ const CreateTaskSuccess = () => {
   };
   return (
     <Box alignItems="center" padding={3}>
-      <StepIndicator totalSteps={5} currentStep={5} />
+      <StepIndicator totalSteps={4} currentStep={4} />
       <Box
         w="full"
         h={"xl"}
