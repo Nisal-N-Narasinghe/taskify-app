@@ -103,16 +103,19 @@ const ExpertProfileScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <ScrollView flex={1} showsVerticalScrollIndicator={true}>
-      <Box backgroundColor="white" pb={10}>
+    <ScrollView
+      flex={1}
+      showsVerticalScrollIndicator={true}
+      background={"white"}>
+      <Box backgroundColor='white' pb={10}>
         <Center>
           <Image
             source={PROImg}
-            alt="Profile Picture"
-            size="100px"
-            borderRadius="full"
+            alt='Profile Picture'
+            size='100px'
+            borderRadius='full'
             borderWidth={2}
-            borderColor="gray.200"
+            borderColor='gray.200'
             mt={4}
           />
         </Center>
@@ -122,11 +125,11 @@ const ExpertProfileScreen = ({ navigation }) => {
           </Heading>
         </Center>
       </Box>
-      <Box flexDirection="row" backgroundColor="white">
+      <Box flexDirection='row' backgroundColor='white'>
         <Heading pl={3} fontSize={18} pr={4} pt={2}>
           History & Ratings
         </Heading>
-        <Box style={styles.buttonHistoryContainer} pl="16">
+        <Box style={styles.buttonHistoryContainer} pl='16'>
           <TouchableOpacity onPress={handleHistoryButton}>
             <Button style={styles.buttonHistory} onPress={handleHistoryButton}>
               View History
@@ -135,13 +138,13 @@ const ExpertProfileScreen = ({ navigation }) => {
         </Box>
       </Box>
 
-      <Box backgroundColor="white">
+      <Box backgroundColor='white'>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           pt={4}
           mb={4}>
-          <Flex flexDirection="row" width="auto" pl={1}>
+          <Flex flexDirection='row' width='auto' pl={1}>
             {ratingsData.map((ratingData, index) => (
               <RatingCard
                 key={index}
@@ -176,11 +179,11 @@ const ExpertProfileScreen = ({ navigation }) => {
           <Center>
             <Button style={styles.buttonAdd} onPress={handleAddExpertiseArea}>
               <Icon
-                m="2"
-                ml="3"
-                size="16"
-                color="primary.green"
-                as={<MaterialIcons name="add" />}
+                m='2'
+                ml='3'
+                size='16'
+                color='primary.green'
+                as={<MaterialIcons name='add' />}
               />
             </Button>
           </Center>
