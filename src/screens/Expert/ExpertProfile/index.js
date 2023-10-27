@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   ScrollView,
@@ -14,13 +14,35 @@ import {
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import PROImg from "../../../../assets/Expertimages/expertPRO.jpg";
 import styles from "../../../styles/Expert/ExpertProfile";
+import "firebase/firestore";
+import { firebase } from "../../../../config";
 import {
   ExpertCard,
   RatingCard,
 } from "../../../components/Expert/ExpertProfile";
 import { TouchableOpacity } from "react-native";
 const ExpertProfileScreen = ({ navigation }) => {
+  const [completedWorks, setCompletedWorks] = useState([]);
   const id = 123;
+  const [userData, setUserData] = useState("");
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists) {
+          setUserData(snapshot.data());
+        } else {
+          console.log("User does not exist");
+        }
+      });
+  }, []);
+
+  console.log(userData);
+
   const handleHistoryButton = () => {
     navigation.navigate("Expert Job History");
   };
@@ -35,7 +57,7 @@ const ExpertProfileScreen = ({ navigation }) => {
     { review: "Sample Review", rating: 4.5 },
     { review: "Sample Review", rating: 4.5 },
   ];
-  const expertiseAreas = [
+  /* const expertiseAreas = [
     {
       title: "Electrician",
       description: "Description for Electrician",
@@ -60,10 +82,31 @@ const ExpertProfileScreen = ({ navigation }) => {
       jobsDone: 3,
       experience: 5,
     },
-  ];
+  ]; */
+  useEffect(() => {
+    const expertCollection = firebase.firestore().collection("experts");
+
+    const fetchData = async () => {
+      try {
+        const snapshot = await expertCollection.get();
+        const works = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCompletedWorks(works);
+      } catch (error) {
+        console.error("Error fetching data from Firebase:", error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <ScrollView flex={1} showsVerticalScrollIndicator={true}>
+    <ScrollView
+      flex={1}
+      showsVerticalScrollIndicator={true}
+      background={"white"}>
       <Box backgroundColor='white' pb={10}>
         <Center>
           <Image
@@ -78,7 +121,7 @@ const ExpertProfileScreen = ({ navigation }) => {
         </Center>
         <Center>
           <Heading pt={4} pb={2} fontSize={16}>
-            Jone Doe
+            {userData.firstName} {userData.lastName}
           </Heading>
         </Center>
       </Box>
@@ -118,15 +161,17 @@ const ExpertProfileScreen = ({ navigation }) => {
         </Heading>
 
         <VStack paddingX={4} paddingY={2}>
-          {expertiseAreas.map((area, index) => (
+          {completedWorks.map((work) => (
             <TouchableOpacity
-              key={index}
-              onPress={() => navigation.navigate("Expert Area", { id })}>
+              key={work.id}
+              onPress={() =>
+                navigation.navigate("Expert Area", { expertId: work.id })
+              }>
               <ExpertCard
-                title={area.title}
-                JobDiscription={area.description}
-                jobcount={`Jobs Done : ${area.jobsDone}`}
-                experience={`Experience : ${area.experience} years`}
+                title={work.service}
+                JobDiscription={work.location}
+                jobcount={`Working Days : ${work.days}`}
+                experience={`Description : ${work.name}`}
               />
             </TouchableOpacity>
           ))}

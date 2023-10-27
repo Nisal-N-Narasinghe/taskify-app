@@ -13,9 +13,10 @@ import {
   Link,
   Radio,
 } from "native-base";
-import { View, TouchableOpacity, TextInput, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { firebase } from "../../../config";
+import { Ionicons } from "@expo/vector-icons";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
@@ -63,38 +64,38 @@ const Registration = () => {
   };
 
   return (
-    <Center w='100%'>
-      <Box safeArea p='2' w='90%' maxW='290' py='8'>
+    <Center w="full">
+      <Box safeArea p="2" w="full" padding={3}>
         <Heading
-          size='lg'
-          color='coolGray.800'
+          size="lg"
+          color="coolGray.800"
           _dark={{
             color: "warmGray.50",
           }}
-          fontWeight='semibold'>
+          fontWeight="semibold">
           Welcome
         </Heading>
         <Heading
-          mt='1'
-          color='coolGray.600'
+          mt="1"
+          color="coolGray.600"
           _dark={{
             color: "warmGray.200",
           }}
-          fontWeight='medium'
-          size='xs'>
+          fontWeight="medium"
+          size="xs">
           Sign up to continue!
         </Heading>
-        <VStack space={3} mt='5'>
+        <VStack space={3} mt="5">
           <FormControl>
             <FormControl.Label>Role</FormControl.Label>
             <VStack space={2}>
               <Radio.Group
-                name='role'
+                name="role"
                 value={role}
                 onChange={(value) => setRole(value)}>
-                <HStack space={5} alignItems='center'>
-                  <Radio value='expert'>Expert</Radio>
-                  <Radio value='client'>Client</Radio>
+                <HStack space={5} alignItems="center">
+                  <Radio value="expert">Expert</Radio>
+                  <Radio value="client">Client</Radio>
                 </HStack>
               </Radio.Group>
             </VStack>
@@ -102,7 +103,7 @@ const Registration = () => {
           <FormControl>
             <FormControl.Label>First Name</FormControl.Label>
             <Input
-              placeholder='First Name'
+              placeholder="First Name"
               onChangeText={(firstName) => setFirstName(firstName)}
               autoCorrect={false}
             />
@@ -110,7 +111,7 @@ const Registration = () => {
           <FormControl>
             <FormControl.Label>Last Name</FormControl.Label>
             <Input
-              placeholder='Last Name'
+              placeholder="Last Name"
               onChangeText={(lastName) => setLastName(lastName)}
               autoCorrect={false}
             />
@@ -118,31 +119,35 @@ const Registration = () => {
           <FormControl>
             <FormControl.Label>Email</FormControl.Label>
             <Input
-              placeholder='Email'
+              placeholder="Email"
               onChangeText={(email) => setEmail(email)}
-              autoCapitalize='none'
+              autoCapitalize="none"
               autoCorrect={false}
-              keyboardType='email-address'
+              keyboardType="email-address"
             />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
             <Input
-              type='password'
-              placeholder='Password'
+              type="password"
+              placeholder="Password"
               onChangeText={(password) => setPassword(password)}
-              autoCapitalize='none'
+              autoCapitalize="none"
               autoCorrect={false}
               secureTextEntry={true}
             />
           </FormControl>
 
           <Button
-            mt='2'
-            colorScheme='indigo'
-            onPress={() =>
-              registerUser(email, password, firstName, lastName, role)
-            }>
+            // justifyContent={"left"}
+            mt={6}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            colorScheme={"emerald"}
+            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
+            onPress={() => registerUser(email, password, firstName, lastName)}>
             Sign up
           </Button>
         </VStack>

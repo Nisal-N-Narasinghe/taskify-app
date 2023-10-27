@@ -27,7 +27,7 @@ export const styles = {
   button: {
     padding: 10,
     width: "60%",
-    height: 60,
+    height: 40,
     justifyContent: "center",
     borderRadius: 34,
     margin: 10,
