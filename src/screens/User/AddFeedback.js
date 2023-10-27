@@ -7,9 +7,6 @@ import {
   ScrollView,
   Button,
   Card,
-  Heading,
-  IconButton,
-  CloseIcon,
 } from "native-base";
 import { View, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,7 +16,6 @@ import React, { useState } from "react";
 import AddRatings from "../../components/common/StarRatings";
 import UpperImg from "../../../assets/upperWidget.png";
 import { FeedbackTopCard } from "../../components/User/FeedbackPageTopCard";
-import { FontAwesome } from "@expo/vector-icons";
 /* import {
   getDatabase,
   ref,
@@ -36,7 +32,22 @@ const AddFeedback = ({ navigation }) => {
   const [satisfactionRating, setSatisfactionRating] = useState(0);
 
   const submitFeedback = () => {
+    // Change 'feedback' to your desired path
+
     // Create a new feedback object
+    Alert.alert(
+      "Feedback Submitted",
+      "Thank you for your feedback!",
+      [
+        {
+          text: "OK",
+          onPress: () => {
+            navigation.navigate("User Dashboard");
+          },
+        },
+      ],
+      { cancelable: false }
+    );
     const newFeedback = {
       quality: qualityRating,
       cleanliness: cleanlinessRating,
@@ -44,10 +55,6 @@ const AddFeedback = ({ navigation }) => {
       communication: communicationRating,
       satisfaction: satisfactionRating,
     };
-    // Display an alert message
-    Alert.alert("Feedback Submitted", "Thank you for your feedback!", [
-      { text: "OK", onPress: () => navigation.navigate("Dashboard") },
-    ]);
   };
 
   return (
@@ -207,19 +214,11 @@ const AddFeedback = ({ navigation }) => {
           </HStack>
         </Box>
       </Card>
-
       <Button
         onPress={submitFeedback}
         margin={5}
-        justifyContent={"center"}
-        h={10}
-        rounded={100}
-        p={0}
-        px={6}
-        colorScheme={"emerald"}
-        endIcon={
-          <FontAwesome name="pencil-square-o" size={24} color="white" />
-        }>
+        borderRadius={25}
+        colorScheme={"emerald"}>
         Publish Feedback
       </Button>
     </ScrollView>

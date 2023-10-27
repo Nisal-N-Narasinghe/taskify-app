@@ -75,7 +75,7 @@ const AllExpertArea = ({ navigation }) => {
         <TouchableOpacity
           key={work.id} // Replace 'id' with the actual unique identifier of your work
           onPress={() =>
-            navigation.navigate("View Single Expert", { expertId: work.id })
+            navigation.navigate("Expert Area", { expertId: work.id })
           }>
           <Card
             w="90%"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Text, Image, ScrollView, VStack } from "native-base";
 import Modal from "react-native-modal";
 import { styles } from "../../../styles/Expert/ExpertViewExpertiseArea";
@@ -10,8 +10,11 @@ import {
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import ImageSlider from "../../../components/common/ImageSlider";
 import ImageSliderIndicator from "../../../components/common/ImageSliderIndicator";
+import "firebase/firestore";
+import { firebase } from "../../../../config";
 
-const ExpertViewExpertiseArea = () => {
+const ExpertViewExpertiseArea = ({ route }) => {
+  const [completedWorks, setCompletedWorks] = useState([]);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const images = [
     require("../../../../assets/cleaning.jpg"),
@@ -20,6 +23,10 @@ const ExpertViewExpertiseArea = () => {
     require("../../../../assets/plumber.jpg"),
     require("../../../../assets/dog.jpg"),
   ];
+  const expertId = route.params ? route.params.expertId : null;
+  console.log("Expert ID:", expertId);
+  console.log("Completed Works:", completedWorks);
+  const expertDetails = completedWorks.find((work) => work.id === expertId);
   const [currentStep, setCurrentStep] = useState(0);
   const toggleDeleteModal = () => {
     setDeleteModalVisible(!isDeleteModalVisible);
@@ -40,6 +47,24 @@ const ExpertViewExpertiseArea = () => {
   const handleSwiperIndexChanged = (index) => {
     setCurrentStep(index + 1);
   };
+  useEffect(() => {
+    const expertCollection = firebase.firestore().collection("experts");
+
+    const fetchData = async () => {
+      try {
+        const snapshot = await expertCollection.get();
+        const works = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCompletedWorks(works);
+      } catch (error) {
+        console.error("Error fetching data from Firebase:", error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box style={styles.container}>
@@ -54,30 +79,32 @@ const ExpertViewExpertiseArea = () => {
               currentStep={currentStep}
               totalStep={images.length}
             />
-            <ExpertDiscription discription='sample discription' />
-            <ExpertDetails
-              name='John Doe'
-              field='Developer'
-              experience={5}
-              location='New York'
-              phone='(123) 456-7890'
-            />
-            <Availability availability='Monday | Tuesday | Wednesday ' />
+            <ExpertDiscription discription="Detail Description" />
+            {expertDetails && (
+              <ExpertDetails
+                name={expertDetails.name}
+                field={expertDetails.service}
+                experience={5}
+                location={expertDetails.location}
+                phone={expertDetails.phone}
+              />
+            )}
+            <Availability availability="Weekdays" />
           </VStack>
 
-          <Box justifyContent='center' alignItems='center'>
+          <Box justifyContent="center" alignItems="center">
             <Button
               style={styles.button}
               onPress={handleEdit}
               background={"#149873"}
-              endIcon={<MaterialIcons name='edit' size={24} color='white' />}>
+              endIcon={<MaterialIcons name="edit" size={24} color="white" />}>
               <Text style={styles.buttonContent}>Edit</Text>
             </Button>
             <Button
               style={styles.button}
               onPress={handleDelete}
               background={"red.500"}
-              endIcon={<MaterialIcons name='delete' size={24} color='white' />}>
+              endIcon={<MaterialIcons name="delete" size={24} color="white" />}>
               <Text style={styles.buttonContent}>Delete</Text>
             </Button>
           </Box>

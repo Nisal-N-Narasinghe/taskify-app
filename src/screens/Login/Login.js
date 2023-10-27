@@ -59,7 +59,7 @@ const Login = () => {
           Sign in to continue!
         </Heading>
 
-        <VStack space={3} mt="5">
+        <VStack space={5} mt="5">
           <FormControl>
             <FormControl.Label>Email ID</FormControl.Label>
             <Input
@@ -91,8 +91,14 @@ const Login = () => {
             </Link>
           </FormControl>
           <Button
+            justifyContent={"center"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            colorScheme={"emerald"}
+            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
             mt="2"
-            colorScheme="indigo"
             onPress={() => loginUser(email, password)}>
             Sign in
           </Button>
@@ -105,19 +111,9 @@ const Login = () => {
               }}>
               I'm a new user.{" "}
             </Text>
-            <Button
-              onPress={() => navigation.navigate("Registration")}
-              justifyContent={"left"}
-              h={10}
-              rounded={100}
-              p={0}
-              px={6}
-              colorScheme={"emerald"}
-              endIcon={
-                <Ionicons name="arrow-forward" size={24} color="white" />
-              }>
+            <Link onPress={() => navigation.navigate("Registration")}>
               Sign Up
-            </Button>
+            </Link>
           </HStack>
         </VStack>
       </Box>
