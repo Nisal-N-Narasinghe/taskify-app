@@ -40,6 +40,7 @@ import Registration from "./src/screens/Login/Registration";
 import ViewSingleUpcommingJob from "./src/screens/Expert/ViewUpcomingJobs/ViewSingleUpcommingJob";
 import ExpertDashboard from "./src/screens/Expert/ExpertDashboard";
 import UserDashboard from "./src/screens/User/UserDashboard";
+import ViewSingleOngoingJob from "./src/screens/Expert/ViewUpcomingJobs/ViewSingleOngoingJob";
 
 //  STACK NAVIGATION CONFIG
 const TaskDashboardStack = createNativeStackNavigator();
@@ -76,7 +77,11 @@ function ExpertJobStackScreen() {
         name='Upcoming Job'
         component={ViewSingleUpcommingJob}
       />
-      <ExpertJobStack.Screen name='Ongoing Job' component={ViewOngoingJob} />
+      <ExpertJobStack.Screen name='Ongoing Jobs' component={ViewOngoingJob} />
+      <ExpertJobStack.Screen
+        name='Ongoing Job'
+        component={ViewSingleOngoingJob}
+      />
     </ExpertJobStack.Navigator>
   );
 }
