@@ -133,7 +133,7 @@ const ExpertJobHistory = ({ navigation }) => {
     timeSortingOrder,
     locationFilter
   );
-  console.log("Sorted Job History Items:", sortedJobHistoryItems);
+  // console.log("Sorted Job History Items:", sortedJobHistoryItems);
 
   return (
     <Box>
