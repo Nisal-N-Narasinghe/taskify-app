@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, ScrollView, VStack, Flex, Heading } from "native-base";
+import { Box, ScrollView, VStack, Flex, Heading, Button } from "native-base";
 
 import CleaningJob from "../../../../assets/cleaning.jpg";
 import GardenPlannerJob from "../../../../assets/gardening.jpg";
@@ -10,7 +10,7 @@ import { ViewMyTaskItem } from "../../../components/User/ViewTasks/ViewMyTasks";
 import { TouchableOpacity } from "react-native";
 
 import { FindAnExpertCard } from "../../../components/User/UserDashboard";
-
+import { firebase } from "../../../../config";
 const UserDashboard = ({ navigation }) => {
   const id = 123;
 
@@ -52,6 +52,15 @@ const UserDashboard = ({ navigation }) => {
 
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
+      <Box backgroundColor='white' pt={2} pr={2}>
+        <Button
+          alignSelf={"flex-end"}
+          onPress={() => {
+            firebase.auth().signOut();
+          }}>
+          Sign Out
+        </Button>
+      </Box>
       <Box backgroundColor='white'>
         <Heading pl={4} pb={2} pt={4}>
           Find An Expert
