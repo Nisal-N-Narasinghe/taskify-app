@@ -10,6 +10,7 @@ import {
   Heading,
   Image,
 } from "native-base";
+import { firebase } from "../../../../config";
 
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import PROImg from "../../../../assets/Expertimages/expertPRO.jpg";
@@ -24,6 +25,25 @@ import { TouchableOpacity } from "react-native";
 const ExpertProfileScreen = ({ navigation }) => {
   const [completedWorks, setCompletedWorks] = useState([]);
   const id = 123;
+  const [userData, setUserData] = useState("");
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists) {
+          setUserData(snapshot.data());
+        } else {
+          console.log("User does not exist");
+        }
+      });
+  }, []);
+
+  console.log(userData);
+
   const handleHistoryButton = () => {
     navigation.navigate("Expert Job History");
   };
@@ -99,7 +119,7 @@ const ExpertProfileScreen = ({ navigation }) => {
         </Center>
         <Center>
           <Heading pt={4} pb={2} fontSize={16}>
-            Jone Doe
+            {userData.firstName} {userData.lastName}
           </Heading>
         </Center>
       </Box>

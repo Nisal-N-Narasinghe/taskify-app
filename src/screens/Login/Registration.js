@@ -13,7 +13,7 @@ import {
   Link,
   Radio,
 } from "native-base";
-import { View, TouchableOpacity, TextInput, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { firebase } from "../../../config";
 import { Ionicons } from "@expo/vector-icons";
@@ -64,8 +64,8 @@ const Registration = () => {
   };
 
   return (
-    <Center w="100%">
-      <Box safeArea p="2" w="90%" maxW="290" py="8">
+    <Center w="full">
+      <Box safeArea p="2" w="full" padding={3}>
         <Heading
           size="lg"
           color="coolGray.800"
@@ -139,17 +139,15 @@ const Registration = () => {
           </FormControl>
 
           <Button
-            justifyContent={"center"}
+            // justifyContent={"left"}
+            mt={6}
             h={10}
             rounded={100}
             p={0}
             px={6}
             colorScheme={"emerald"}
             endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
-            mt="2"
-            onPress={() =>
-              registerUser(email, password, firstName, lastName, role)
-            }>
+            onPress={() => registerUser(email, password, firstName, lastName)}>
             Sign up
           </Button>
         </VStack>
