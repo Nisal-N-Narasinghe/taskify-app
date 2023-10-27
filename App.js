@@ -38,6 +38,7 @@ import Login from "./src/screens/Login/Login";
 import Registration from "./src/screens/Login/Registration";
 import ViewSingleUpcommingJob from "./src/screens/Expert/ViewUpcomingJobs/ViewSingleUpcommingJob";
 import ExpertDashboard from "./src/screens/Expert/ExpertDashboard";
+import UserDashboard from "./src/screens/User/UserDashboard";
 
 //  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
@@ -136,6 +137,10 @@ function TaskDashboardStackScreen() {
         component={ViewOngoingTask}
       />
       <TaskDashboardStack.Screen name='Add Feedback' component={AddFeedback} />
+      <TaskDashboardStack.Screen
+        name='User Dashboard'
+        component={UserDashboard}
+      />
     </TaskDashboardStack.Navigator>
   );
 }

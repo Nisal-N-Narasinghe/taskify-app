@@ -96,7 +96,7 @@ const ExpertDashboard = ({ navigation }) => {
                 pt={4}
                 pr={4}
                 style={styles.weeklyEarningText}>
-                Rs. 5000
+                7500 LKR
               </Text>
             </Box>
             <Box style={styles.totalJobsCountBox}>
