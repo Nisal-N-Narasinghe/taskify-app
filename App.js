@@ -34,12 +34,13 @@ import ExpertViewExpertiseArea from "./src/screens/Expert/ExpertViewExpertiseAre
 import ViewTask from "./src/screens/User/ViewTasks/ViewMyTasks/ViewMyTask";
 import ViewPastTasks from "./src/screens/User/ViewTasks/ViewPastTasks";
 import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistory/ExpertViewSingleJobHistoryItem";
-import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
+import ViewJobs from "./src/screens/Expert/ViewJobs";
 import Login from "./src/screens/Login/Login";
 import Registration from "./src/screens/Login/Registration";
-import ViewSingleUpcommingJob from "./src/screens/Expert/ViewUpcomingJobs/ViewSingleUpcommingJob";
+import ViewSingleUpcommingJob from "./src/screens/Expert/ViewJobs/ViewSingleUpcommingJob";
 import ExpertDashboard from "./src/screens/Expert/ExpertDashboard";
 import UserDashboard from "./src/screens/User/UserDashboard";
+import ViewSingleOngoingJob from "./src/screens/Expert/ViewJobs/ViewSingleOngoingJob";
 
 // Expert screens
 import ExpertChat from "./src/screens/Expert/Chat";
@@ -74,12 +75,16 @@ function ExpertDashboardStackScreen() {
 function ExpertJobStackScreen() {
   return (
     <ExpertJobStack.Navigator>
-      <ExpertJobStack.Screen name="All Jobs" component={ViewUpcomingJobs} />
+      <ExpertJobStack.Screen name="All Jobs" component={ViewJobs} />
       <ExpertJobStack.Screen
         name="Upcoming Job"
         component={ViewSingleUpcommingJob}
       />
-      <ExpertJobStack.Screen name="Ongoing Job" component={ViewOngoingJob} />
+      <ExpertJobStack.Screen name="Ongoing Jobs" component={ViewOngoingJob} />
+      <ExpertJobStack.Screen
+        name="Ongoing Job"
+        component={ViewSingleOngoingJob}
+      />
     </ExpertJobStack.Navigator>
   );
 }
@@ -289,7 +294,7 @@ export default function App() {
               tabBarShowLabel: false,
               tabBarIcon: ({ focused, color, size }) => {
                 const tabStyle = {
-                  marginBottom: 10,
+                  marginBottom: 12,
                   borderRadius: 12,
                   width: 46,
                   height: 46,

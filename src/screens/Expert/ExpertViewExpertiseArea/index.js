@@ -42,9 +42,12 @@ const ExpertViewExpertiseArea = () => {
   };
 
   return (
-    <Box style={styles.container}>
-      <ScrollView flex={1} showsVerticalScrollIndicator={true}>
-        <Box safeArea flex={1}>
+    <Box style={styles.container} background={"white"}>
+      <ScrollView
+        flex={1}
+        showsVerticalScrollIndicator={true}
+        background={"white"}>
+        <Box safeArea flex={1} background={"white"}>
           <VStack>
             <ImageSlider
               images={images}
