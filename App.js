@@ -37,6 +37,7 @@ import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
 import Login from "./src/screens/Login/Login";
 import Registration from "./src/screens/Login/Registration";
 import ViewSingleUpcommingJob from "./src/screens/Expert/ViewUpcomingJobs/ViewSingleUpcommingJob";
+import ExpertDashboard from "./src/screens/Expert/ExpertDashboard";
 
 //  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
@@ -84,6 +85,10 @@ function ExpertDashboardStackScreen() {
       <ExpertDashboardStack.Screen
         name='Ongoing Job'
         component={ViewOngoingJob}
+      />
+      <ExpertDashboardStack.Screen
+        name='Expert Dashboard'
+        component={ExpertDashboard}
       />
     </ExpertDashboardStack.Navigator>
   );

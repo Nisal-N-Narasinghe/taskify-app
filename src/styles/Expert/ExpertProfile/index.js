@@ -7,7 +7,7 @@ const styles = {
     width: 150,
     height: 100,
     borderWidth: 1,
-    borderColor: "gray.200",
+    borderColor: "grey",
   },
   ratingCards: {
     backgroundColor: "white",
@@ -17,7 +17,7 @@ const styles = {
     width: 150,
     height: 75,
     borderWidth: 2,
-    borderColor: "gray",
+    borderColor: "grey",
   },
   ratintext: {
     fontSize: 16,
