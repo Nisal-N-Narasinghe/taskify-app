@@ -21,11 +21,7 @@ const ViewSingleUpcommingJob = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const images = [
-    require("../../../../../assets/cleaning.jpg"),
-    require("../../../../../assets/computer.jpg"),
-    require("../../../../../assets/gardening.jpg"),
-    require("../../../../../assets/plumber.jpg"),
-    require("../../../../../assets/dog.jpg"),
+    require("../../../../../assets/Expertimages/GardenPlanning/gardenPlanning1.jpeg"),
   ];
 
   const handleSwiperIndexChanged = (index) => {
@@ -33,10 +29,14 @@ const ViewSingleUpcommingJob = () => {
   };
 
   return (
-    <ScrollView padding={3} flex={1} showsVerticalScrollIndicator={true}>
-      <Box safeArea>
+    <ScrollView
+      padding={3}
+      flex={1}
+      showsVerticalScrollIndicator={true}
+      background={"white"}>
+      <Box safeArea background={"white"}>
         <Heading size='md'>
-          Cleaning Job
+          Garden Planning Job
           {/* {taskTitle} */}
         </Heading>
 
@@ -62,7 +62,7 @@ const ViewSingleUpcommingJob = () => {
                 marginRight={4}
               />
               <Text>
-                12/12/2023
+                30/10/2023
                 {/* {postedDate} */}
               </Text>
             </HStack>
@@ -81,9 +81,8 @@ const ViewSingleUpcommingJob = () => {
         </Box>
         <HStack marginTop={6}>
           <Text style={styles.ratingsFrameText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Vivamus
-            at augue eget arcu.
+            I have a vision for my outdoor space and am seeking professional
+            assistance to turn it into a beautiful and functional garden.{" "}
           </Text>
         </HStack>
         <Box style={styles.bottomBox}>

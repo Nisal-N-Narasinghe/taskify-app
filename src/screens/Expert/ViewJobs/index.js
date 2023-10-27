@@ -2,25 +2,39 @@ import React, { useState } from "react";
 import { Box, Heading, ScrollView, VStack } from "native-base";
 import CleaningJob from "../../../../assets/cleaning.jpg";
 import ComputerJob from "../../../../assets/computer.jpg";
+import housePlan from "../../../../assets/Expertimages/HousePlanning/housePlane3D2.jpg";
+import gardenPlan1 from "../../../../assets/Expertimages/GardenPlanning/gardenPlanning1.jpeg";
+import gardenPlan2 from "../../../../assets/Expertimages/GardenPlanning/gardenPlanning2.jpeg";
 import { TouchableOpacity } from "react-native";
 import { ViewUpcomingJobItem } from "../../../components/Expert/ViewUpcomingJobs";
 
-const ViewUpcomingJobs = ({ navigation }) => {
+const ViewJobs = ({ navigation }) => {
   const id = 123;
+
+  const onGoingJobItems = [
+    {
+      title: "House Planning",
+      location: "Battaaramulla",
+      countFromPostedDate: "Today",
+      image: [housePlan],
+      Amount: "Rs. 6500",
+    },
+  ];
+
   const upcomingJobItems = [
     {
-      title: "Cleaning Job",
-      location: "Malabe",
+      title: "Garden Planning",
+      location: "Kottawa",
       countFromPostedDate: "In 2 days",
-      image: [CleaningJob, ComputerJob, CleaningJob],
+      image: [gardenPlan1],
       Amount: "Rs. 5000",
     },
     {
-      title: "Computer Job",
+      title: "Garden Planning",
       location: "Malabe",
-      countFromPostedDate: "In 2 days",
-      image: [ComputerJob, CleaningJob, CleaningJob],
-      Amount: "Rs. 5000",
+      countFromPostedDate: "In 4 days",
+      image: [gardenPlan2],
+      Amount: "Rs. 3000",
     },
   ];
 
@@ -32,10 +46,10 @@ const ViewUpcomingJobs = ({ navigation }) => {
             Ongoing Jobs
           </Heading>
           <VStack paddingX={4}>
-            {upcomingJobItems.map((item, index) => (
+            {onGoingJobItems.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                onPress={() => navigation.navigate("Upcoming Job", { id })}>
+                onPress={() => navigation.navigate("Ongoing Job", { id })}>
                 <ViewUpcomingJobItem
                   title={item.title}
                   location={item.location}
@@ -55,8 +69,7 @@ const ViewUpcomingJobs = ({ navigation }) => {
             {upcomingJobItems.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                onPress={() => navigation.navigate("Upcoming Job", { id })}
-              >
+                onPress={() => navigation.navigate("Upcoming Job", { id })}>
                 <ViewUpcomingJobItem
                   title={item.title}
                   location={item.location}
@@ -73,4 +86,4 @@ const ViewUpcomingJobs = ({ navigation }) => {
   );
 };
 
-export default ViewUpcomingJobs;
+export default ViewJobs;

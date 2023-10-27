@@ -76,7 +76,7 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
           </ScrollView>
 
           <Text style={styles.ratingsFrameText}>
-            Outstanding house planning service! Mr Kamal exceeded expectations
+            Outstanding house planning service! Mr Nisal exceeded expectations
             with their professionalism, innovative designs, on-time completion,
             and budget adherence. Highly recommended for turning dreams into
             reality.
