@@ -32,7 +32,8 @@ const ViewUpcomingJobs = ({ navigation }) => {
             {upcomingJobItems.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                onPress={() => navigation.navigate("Upcoming Job", { id })}>
+                onPress={() => navigation.navigate("Upcoming Job", { id })}
+              >
                 <ViewUpcomingJobItem
                   title={item.title}
                   location={item.location}

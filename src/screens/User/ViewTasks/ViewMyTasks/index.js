@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import {
   Box,
   Center,
-  Heading,
-  Image,
   ScrollView,
   VStack,
   Input,
@@ -11,35 +9,65 @@ import {
   Flex,
   Modal,
   Button,
-  HStack,
-  Text,
-  Divider,
-  InputLeftAddon,
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
-import PROImg from "../../../../../assets/Expertimages/expertPRO.jpg";
-// import PROImg from "../../../../../assets/Expertimages";
 import CleaningJob from "../../../../../assets/cleaning.jpg";
-
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-// import { JobHistoryItem } from "../../../components/Expert/ExpertJobHistory";
-// import { JobHistoryItem } from "../../../../components/Expert/ExpertJobHistory";
 import { ViewMyTaskItem } from "../../../../components/User/ViewTasks/ViewMyTasks";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
+import { firebase } from "../../../../../config";
+import { useEffect } from "react";
 
 const ViewMyTasks = () => {
   const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
 
   const navigation = useNavigation();
 
+  const [category, setCategory] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [dueDate, setDueDate] = useState("");
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const taskCollection = await firebase
+          .firestore()
+          .collection("tasks")
+          .get();
+        const tasksArray = [];
+
+        taskCollection.forEach((doc) => {
+          tasksArray.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+
+        setTasks(tasksArray);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleClick = () => {
+    // navigation.navigate("My Tasks");
     navigation.navigate("View Task");
   };
 
   const toggleFilterModal = () => {
     setIsFilterModalVisible(!isFilterModalVisible);
   };
+
   return (
     <Box>
       {/* Top Section */}
@@ -80,46 +108,20 @@ const ViewMyTasks = () => {
       <ScrollView>
         <Box safeArea>
           <VStack paddingX={4}>
-            {/* Render your job history items here */}
-            <TouchableOpacity onPress={handleClick}>
-              <ViewMyTaskItem
-                title="Need to get my garden lawn mowed"
-                location="Malabe"
-                countFromPostedDate="2 days ago"
-                category="Gardening"
-                countFromEndDate="1 day"
-                image={CleaningJob}
-                Amount="Rs. 5000"
-              />
-            </TouchableOpacity>
-
-            <ViewMyTaskItem
-              title="I need to clean my home"
-              location="Malabe"
-              countFromPostedDate="2 days ago"
-              category="Cleaning"
-              countFromEndDate="3 days"
-              image={CleaningJob}
-              Amount="Rs. 5000"
-            />
-            <ViewMyTaskItem
-              title="I need to clean my home"
-              location="Malabe"
-              countFromPostedDate="2 days ago"
-              category="Cleaning"
-              countFromEndDate="3 days"
-              image={CleaningJob}
-              Amount="Rs. 5000"
-            />
-            <ViewMyTaskItem
-              title="I need to clean my home"
-              location="Malabe"
-              countFromPostedDate="2 days ago"
-              category="Cleaning"
-              countFromEndDate="3 days"
-              image={CleaningJob}
-              Amount="Rs. 5000"
-            />
+            {/* Render your task items here */}
+            {tasks.map((task) => (
+              <TouchableOpacity key={task.id} onPress={() => handleClick()}>
+                <ViewMyTaskItem
+                  title={task.data.title}
+                  location={task.data.location}
+                  countFromPostedDate="2 days ago"
+                  category={task.data.category}
+                  countFromEndDate="5 days"
+                  image={CleaningJob}
+                  Amount={task.data.minBudget}
+                />
+              </TouchableOpacity>
+            ))}
           </VStack>
         </Box>
       </ScrollView>

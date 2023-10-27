@@ -132,6 +132,10 @@ const CreateTaskImage = () => {
         setUploading(false);
       }
 
+      //get current date
+      const currentDate = new Date();
+      const createdDate = currentDate.toDateString();
+
       await firebase.firestore().collection("tasks").add({
         category,
         title,
@@ -140,6 +144,7 @@ const CreateTaskImage = () => {
         minBudget,
         maxBudget,
         dueDate,
+        createdDate,
       });
 
       navigation.navigate("Task Success");
