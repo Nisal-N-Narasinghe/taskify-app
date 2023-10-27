@@ -8,7 +8,7 @@ import ChatOptionsActionSheet from "../../../components/common/Chat/ChatOptionsA
 import SendOfferPopup from "../../../components/Offer/SendOfferPopup";
 import { firebase } from "../../../../config";
 
-const ExpertChat = () => {
+const UserChat = () => {
   const [showChatOptions, setShowChatOptions] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclose();
 
@@ -20,7 +20,7 @@ const ExpertChat = () => {
     const data = {
       type: "text",
       textValue: messageToSend,
-      sentBy: "client",
+      sentBy: "expert",
       createdAt: new Date(),
     };
 
@@ -51,7 +51,7 @@ const ExpertChat = () => {
         onContentSizeChange={() =>
           this.scrollView.scrollToEnd({ animated: true })
         }>
-        <ChatContainer />
+        <ChatContainer isExpert={true} />
       </ScrollView>
 
       <HStack bg="primary.white" p={3} space={2}>
@@ -109,4 +109,4 @@ const ExpertChat = () => {
   );
 };
 
-export default ExpertChat;
+export default UserChat;

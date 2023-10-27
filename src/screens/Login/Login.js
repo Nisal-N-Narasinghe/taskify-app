@@ -1,7 +1,5 @@
 import {
-  AspectRatio,
   Box,
-  Image,
   Text,
   HStack,
   Heading,
@@ -12,7 +10,6 @@ import {
   FormControl,
   Link,
 } from "native-base";
-import { View, TouchableOpacity, TextInput, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { firebase } from "../../../config";
@@ -91,8 +88,13 @@ const Login = () => {
             </Link>
           </FormControl>
           <Button
-            mt="2"
-            colorScheme="indigo"
+            // justifyContent={"left"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            colorScheme={"emerald"}
+            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
             onPress={() => loginUser(email, password)}>
             Sign in
           </Button>
@@ -105,19 +107,9 @@ const Login = () => {
               }}>
               I'm a new user.{" "}
             </Text>
-            <Button
-              onPress={() => navigation.navigate("Registration")}
-              justifyContent={"left"}
-              h={10}
-              rounded={100}
-              p={0}
-              px={6}
-              colorScheme={"emerald"}
-              endIcon={
-                <Ionicons name="arrow-forward" size={24} color="white" />
-              }>
-              Sign Up
-            </Button>
+            <Link onPress={() => navigation.navigate("Registration")}>
+              Register now
+            </Link>
           </HStack>
         </VStack>
       </Box>
