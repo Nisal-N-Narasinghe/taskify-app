@@ -1,23 +1,21 @@
 import { View, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import { HStack, Text, VStack } from "native-base";
-import ChatBubble from "./ChatBubble";
 import ChatHeader from "./ChatHeader";
 import { firebase } from "../../../../config";
+import ChatItemHandler from "./ChatItemHandler";
 
-const ChatContainer = () => {
+const ChatContainer = ({ isExpert }) => {
   const [chatStream, setChatStream] = useState([]);
 
   useEffect(() => {
-    // Fetch messages when the component is mounted
     fetchChatMessages();
 
-    // Set up a real-time listener for new messages
-    const chatPath = "/conversations/gnAGmx7ZEJVffUr85V8W/stream"; // Replace with your chat path
+    const chatPath = "/conversations/gnAGmx7ZEJVffUr85V8W/stream";
     const listener = firebase
       .firestore()
       .collection(chatPath)
-      .orderBy("createdAt") // Order by a field in your messages
+      .orderBy("createdAt")
       .onSnapshot((querySnapshot) => {
         const messages = [];
         querySnapshot.forEach((doc) => {
@@ -27,14 +25,12 @@ const ChatContainer = () => {
         setChatStream(messages);
       });
 
-    // Clean up the listener when the component unmounts
     return () => {
       listener();
     };
   }, []);
 
   const fetchChatMessages = () => {
-    // Step 2: Fetch chat messages from Firebase
     const chatPath = "/conversations/gnAGmx7ZEJVffUr85V8W/stream";
 
     firebase
@@ -71,7 +67,11 @@ const ChatContainer = () => {
           />
         </TouchableOpacity>
         {chatStream.map((chatItem, index) => (
-          <ChatItemHandler key={index} chatItem={chatItem} />
+          <ChatItemHandler
+            isExpert={isExpert}
+            key={index}
+            chatItem={chatItem}
+          />
         ))}
 
         <HStack></HStack>

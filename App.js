@@ -41,6 +41,9 @@ import ViewSingleUpcommingJob from "./src/screens/Expert/ViewUpcomingJobs/ViewSi
 import ExpertDashboard from "./src/screens/Expert/ExpertDashboard";
 import UserDashboard from "./src/screens/User/UserDashboard";
 
+// Expert screens
+import ExpertChat from "./src/screens/Expert/Chat";
+
 //  STACK NAVIGATION CONFIG
 const TaskDashboardStack = createNativeStackNavigator();
 const ExpertDashboardStack = createNativeStackNavigator();
@@ -115,7 +118,7 @@ function ExpertProfileStackScreen() {
 function ExpertChatStackScreen() {
   return (
     <ExpertChatStack.Navigator>
-      <ExpertChatStack.Screen name="User Chat" component={UserChat} />
+      <ExpertChatStack.Screen name="Expert Chat" component={ExpertChat} />
     </ExpertChatStack.Navigator>
   );
 }

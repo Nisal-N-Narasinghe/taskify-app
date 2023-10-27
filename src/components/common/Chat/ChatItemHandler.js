@@ -1,12 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from "react-native";
+import React from "react";
+import ChatBubble from "./ChatBubble";
 
-const ChatItemHandler = ({chatItem}) => {
-  return (
-    <View>
-      <Text>ChatItemHandler</Text>
-    </View>
-  )
-}
+const ChatItemHandler = ({ chatItem, isExpert }) => {
+  if (chatItem.sentBy === "client") {
+    return <ChatBubble alignLeft={isExpert} message={chatItem} />;
+  }
 
-export default ChatItemHandler
+  if (chatItem.sentBy === "expert") {
+    return <ChatBubble alignLeft={!isExpert} message={chatItem} />;
+  }
+};
+
+export default ChatItemHandler;
