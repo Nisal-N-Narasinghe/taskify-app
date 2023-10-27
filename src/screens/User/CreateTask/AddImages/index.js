@@ -1,93 +1,185 @@
 import {
   Box,
   Button,
-  HStack,
   Heading,
   Icon,
-  ScrollView,
   Stack,
   Text,
+  Alert,
+  Image,
+  View,
+  ScrollView,
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from "expo-file-system";
+import { firebase } from "../../../../../config";
 
 const CreateTaskImage = () => {
   const navigation = useNavigation();
+
+  const [image, setImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
+
+  const pickImage = async () => {
+    //no permission request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All, //All, images, videos
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+
+    // navigation.navigate("View Task Image", { imageUri: result.assets[0].uri });
+  };
+
+  //upload media files
+  const uploadMedia = async () => {
+    setUploading(true);
+
+    try {
+      const { uri } = await FileSystem.getInfoAsync(image);
+      const blob = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+          resolve(xhr.response);
+        };
+        xhr.onerror = (e) => {
+          reject(new TypeError("Network Request Failed"));
+        };
+        xhr.responseType = "blob";
+        xhr.open("GET", uri, true);
+        xhr.send(null);
+      });
+
+      const filename = image.substring(image.lastIndexOf("/") + 1);
+      const ref = firebase.storage().ref().child(filename);
+
+      await ref.put(blob);
+      setUploading(false);
+      alert("Photo Selected!");
+      setImage(null);
+      navigation.navigate("Task Success");
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
 
   const handleUpload = () => {
     navigation.navigate("Task Success");
   };
 
   return (
-    <Box padding={3}>
-      <StepIndicator totalSteps={5} currentStep={3} />
-      <Heading marginTop={6} size="md" alignSelf="center">
-        Please Upload an Image
-      </Heading>
-      <Text fontWeight="500" marginBottom={6} alignSelf="center">
-        Upload images related to task
-      </Text>
-      <Box alignItems="center">
-        <Box
-          // w="100%"
-          w="full"
-          rounded="lg"
-          overflow="hidden"
-          borderColor="coolGray.200"
-          borderWidth="1"
-          _dark={{
-            borderColor: "coolGray.600",
-            backgroundColor: "gray.700",
-          }}
-          _web={{
-            shadow: 2,
-            borderWidth: 0,
-          }}
-          _light={{
-            // backgroundColor: "gray.50",
-            backgroundColor: "#E0E0E0",
-          }}
-        >
-          <Stack alignItems="center">
-            <Stack space={2}>
-              <Heading size="md" ml="-1" marginTop={6} marginBottom={4}>
-                Upload Image
-              </Heading>
-              <Icon
-                alignSelf="center"
-                //   m="2"
-                //   ml="3"
-                size="10"
-                color="gray.400"
-                as={<MaterialIcons name="image" />}
-                marginBottom={4}
-              />
-              <Button marginBottom={6} bgColor={"#272727"} rounded={100}>
-                Upload
-              </Button>
+    <ScrollView>
+      <Box padding={3}>
+        <StepIndicator totalSteps={5} currentStep={3} />
+        <Heading marginTop={6} size="md" alignSelf="center">
+          Please Upload an Image
+        </Heading>
+        <Text fontWeight="500" marginBottom={6} alignSelf="center">
+          Upload images related to task
+        </Text>
+
+        <Box alignItems="center">
+          <Box
+            // w="100%"
+            w="full"
+            rounded="lg"
+            overflow="hidden"
+            borderColor="coolGray.200"
+            borderWidth="1"
+            _dark={{
+              borderColor: "coolGray.600",
+              backgroundColor: "gray.700",
+            }}
+            _web={{
+              shadow: 2,
+              borderWidth: 0,
+            }}
+            _light={{
+              // backgroundColor: "gray.50",
+              backgroundColor: "#E0E0E0",
+            }}
+            marginBottom={"4"}
+          >
+            <Stack alignItems="center">
+              <Stack space={2}>
+                <Heading
+                  size="md"
+                  ml="-1"
+                  marginTop={6}
+                  marginBottom={4}
+                  alignSelf="center"
+                >
+                  Upload Image
+                </Heading>
+                <Icon
+                  alignSelf="center"
+                  //   m="2"
+                  //   ml="3"
+                  size="10"
+                  color="gray.400"
+                  as={<MaterialIcons name="image" />}
+                  marginBottom={4}
+                />
+                <Text alignSelf="center" fontWeight="500">
+                  Click here to pick the image
+                </Text>
+                <Button
+                  marginBottom={6}
+                  bgColor={"#272727"}
+                  rounded={100}
+                  onPress={pickImage}
+                >
+                  <Text
+                    fontSize={17}
+                    fontWeight="semibold"
+                    color={"primary.white"}
+                  >
+                    Pick Image
+                  </Text>
+                </Button>
+                <View>
+                  {image && (
+                    <Image
+                      source={{ uri: image }}
+                      style={{ width: 200, height: 200 }}
+                      alt="image"
+                      marginBottom={6}
+                    />
+                  )}
+                </View>
+              </Stack>
             </Stack>
-          </Stack>
+          </Box>
+
+          <Text alignSelf="center" fontWeight="500">
+            Click here to Create the Task
+          </Text>
+          <Button
+            marginBottom={6}
+            colorScheme={"emerald"}
+            rounded={100}
+            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
+            onPress={uploadMedia}
+            w={"80"}
+          >
+            <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+              Next
+            </Text>
+          </Button>
         </Box>
       </Box>
-      <Button
-        justifyContent={"center"}
-        h={10}
-        rounded={100}
-        p={0}
-        px={6}
-        colorScheme={"emerald"}
-        endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
-        onPress={handleUpload}
-        marginTop={300}
-      >
-        <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
-          Next
-        </Text>
-      </Button>
-    </Box>
+    </ScrollView>
   );
 };
 
