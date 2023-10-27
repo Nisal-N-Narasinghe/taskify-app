@@ -99,7 +99,7 @@ const UserDashboard = ({ navigation }) => {
   }, []);
 
   const handleClick = (taskId) => {
-    nav.navigate("View Ongoing Task", { taskId });
+    nav.navigate("View Task", { taskId });
     console.log(taskId);
   };
 
@@ -148,7 +148,7 @@ const UserDashboard = ({ navigation }) => {
               return (
                 <TouchableOpacity
                   key={task.id}
-                  onPress={() => handleClick(task.data.taskId)}
+                  onPress={() => handleClick(task.id)}
                 >
                   <ViewMyTaskItem
                     title={task.data.title}
