@@ -5,17 +5,18 @@ import {
   HStack,
   Heading,
   ScrollView,
+  Slider,
   Text,
   VStack,
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import ImageSlider from "../../../../components/common/ImageSlider";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 import ImageSliderIndicator from "../../../../components/common/ImageSliderIndicator";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../../../styles/Expert/ViewUpcomingJobs";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import CustomSlider from "../../../../components/common/CustomeSlider";
 const ViewSingleOngoingJob = () => {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState(0);
@@ -26,6 +27,12 @@ const ViewSingleOngoingJob = () => {
 
   const handleSwiperIndexChanged = (index) => {
     setCurrentStep(index + 1);
+  };
+  const statusOptions = ["Ongoing", "Completed"];
+  const [selectedStatus, setSelectedStatus] = useState("Ongoing");
+
+  const handleStatusChange = (newStatus) => {
+    setSelectedStatus(newStatus);
   };
 
   return (
@@ -88,9 +95,13 @@ const ViewSingleOngoingJob = () => {
           </HStack>
           <HStack justifyContent={"space-between"} marginTop={6}>
             <Text style={styles.bottomBoxHeddingText}>Status</Text>
-            <Text style={styles.bottomBoxText}>Ongoing</Text>
+            <Text style={styles.bottomBoxText}>{selectedStatus}</Text>
           </HStack>
-
+          <CustomSlider
+            options={statusOptions}
+            initialValue={selectedStatus}
+            onChange={handleStatusChange}
+          />
           <Button
             style={styles.chatButton}
             onPress={() => navigation.navigate("Chat")}
