@@ -331,7 +331,8 @@ export default function App() {
                   </View>
                 );
               },
-            })}>
+            })}
+          >
             <Tab.Screen
               name="Expert Dashboard Screen"
               component={ExpertDashboardStackScreen}
@@ -392,7 +393,8 @@ export default function App() {
                   </View>
                 );
               },
-            })}>
+            })}
+          >
             <Tab.Screen
               name="User Dashboard Screen"
               component={UserDashboardStackScreen}
