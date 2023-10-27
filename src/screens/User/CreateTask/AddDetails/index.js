@@ -1,33 +1,64 @@
 import {
-  AspectRatio,
   Box,
-  Image,
   Text,
   Stack,
   HStack,
   Heading,
   VStack,
   Input,
-  Icon,
   ScrollView,
   FormControl,
   TextArea,
   Button,
   Select,
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { firebase } from "../../../../../config";
 
-const CreateTaskDetails = ({ selectedCategory }) => {
+const CreateTaskDetails = () => {
+  const route = useRoute();
+  const selectedCategory = route.params.category;
+  console.log("slected category", selectedCategory);
+
   const navigation = useNavigation();
 
-  const [service, setService] = React.useState("");
+  const [category, setCategory] = useState(selectedCategory);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
-  const handleContinue = () => {
-    navigation.navigate("Task Image");
+  const createTask = async (
+    category,
+    title,
+    description,
+    location,
+    minBudget,
+    maxBudget,
+    dueDate
+  ) => {
+    try {
+      await firebase.firestore().collection("tasks").add({
+        category,
+        title,
+        description,
+        location,
+        minBudget,
+        maxBudget,
+        dueDate,
+      });
+
+      navigation.navigate("Task Image");
+    } catch (error) {
+      co;
+      nsole.error("Error creating task:", error);
+    }
   };
 
   return (
@@ -45,7 +76,8 @@ const CreateTaskDetails = ({ selectedCategory }) => {
               </FormControl.Label>
               <Input
                 type="text"
-                defaultValue={selectedCategory}
+                defaultValue={category}
+                onChangeText={(category) => setCategory(category)}
                 placeholder="Title"
                 bgColor="#E0E0E0"
                 readOnly
@@ -58,6 +90,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 type="text"
                 defaultValue=""
                 placeholder="Title"
+                onChangeText={(title) => setTitle(title)}
                 bgColor="#E0E0E0"
                 rounded={"100"}
                 marginBottom={3}
@@ -66,7 +99,10 @@ const CreateTaskDetails = ({ selectedCategory }) => {
               <FormControl.Label>Description</FormControl.Label>
               <TextArea
                 h={"32"}
+                type="text"
+                defaultValue=""
                 placeholder="Task Description"
+                onChangeText={(description) => setDescription(description)}
                 bgColor="#E0E0E0"
                 borderRadius={"25"}
                 marginBottom={3}
@@ -74,7 +110,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
 
               <FormControl.Label>Location</FormControl.Label>
               <Select
-                selectedValue={service}
+                selectedValue={location}
                 minWidth="200"
                 accessibilityLabel="Choose Service"
                 placeholder="Choose Location"
@@ -87,7 +123,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                     // endIcon: <CheckIcon size="5" />,
                   }
                 }
-                onValueChange={(itemValue) => setService(itemValue)}
+                onValueChange={(itemValue) => setLocation(itemValue)}
               >
                 <Select.Item label="Colombo" value="colombo" />
                 <Select.Item label="Gampaha" value="gampaha" />
@@ -100,13 +136,6 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 <Select.Item label="Galle" value="galle" />
                 <Select.Item label="Matara" value="matara" />
               </Select>
-              {/* <Input
-              type="text"
-              defaultValue=""
-              placeholder="Location"
-              bgColor="#E0E0E0"
-              borderRadius={10}
-            /> */}
 
               <HStack justifyContent={"space-between"} marginBottom={3}>
                 <VStack>
@@ -115,6 +144,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                     type="text"
                     defaultValue=""
                     placeholder="LKR"
+                    onChangeText={(minBudget) => setMinBudget(minBudget)}
                     bgColor="#E0E0E0"
                     rounded={"100"}
                     w={"190"}
@@ -126,6 +156,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                     type="text"
                     defaultValue=""
                     placeholder="LKR"
+                    onChangeText={(maxBudget) => setMaxBudget(maxBudget)}
                     bgColor="#E0E0E0"
                     rounded={"100"}
                     w={"190"}
@@ -137,6 +168,7 @@ const CreateTaskDetails = ({ selectedCategory }) => {
                 type="text"
                 defaultValue=""
                 placeholder="Time Period"
+                onChangeText={(dueDate) => setDueDate(dueDate)}
                 bgColor="#E0E0E0"
                 rounded={"100"}
                 marginBottom={3}
@@ -144,7 +176,6 @@ const CreateTaskDetails = ({ selectedCategory }) => {
             </Stack>
           </FormControl>
 
-          {/* <Button onPress={handleContinue}>Continue</Button> */}
           <Button
             justifyContent={"center"}
             h={10}
@@ -154,7 +185,15 @@ const CreateTaskDetails = ({ selectedCategory }) => {
             colorScheme={"emerald"}
             endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
             onPress={() => {
-              handleContinue();
+              createTask(
+                category,
+                title,
+                description,
+                location,
+                minBudget,
+                maxBudget,
+                dueDate
+              );
             }}
             marginTop={1}
           >
@@ -167,12 +206,5 @@ const CreateTaskDetails = ({ selectedCategory }) => {
     </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  imgCard: {
-    width: 200,
-    height: 300,
-  },
-});
 
 export default CreateTaskDetails;
