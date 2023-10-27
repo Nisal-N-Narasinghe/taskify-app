@@ -34,7 +34,7 @@ const CreateTaskDetails = () => {
   const [maxBudget, setMaxBudget] = useState("");
   const [dueDate, setDueDate] = useState("");
 
-  const createTask = async (
+  const handleNext = (
     category,
     title,
     description,
@@ -43,23 +43,44 @@ const CreateTaskDetails = () => {
     maxBudget,
     dueDate
   ) => {
-    try {
-      await firebase.firestore().collection("tasks").add({
-        category,
-        title,
-        description,
-        location,
-        minBudget,
-        maxBudget,
-        dueDate,
-      });
-
-      navigation.navigate("Task Image");
-    } catch (error) {
-      co;
-      nsole.error("Error creating task:", error);
-    }
+    navigation.navigate("Task Image", {
+      category,
+      title,
+      description,
+      location,
+      minBudget,
+      maxBudget,
+      dueDate,
+    });
+    console.log(maxBudget);
   };
+
+  // const createTask = async (
+  //   category,
+  //   title,
+  //   description,
+  //   location,
+  //   minBudget,
+  //   maxBudget,
+  //   dueDate
+  // ) => {
+  //   try {
+  //     await firebase.firestore().collection("tasks").add({
+  //       category,
+  //       title,
+  //       description,
+  //       location,
+  //       minBudget,
+  //       maxBudget,
+  //       dueDate,
+  //     });
+
+  //     navigation.navigate("Task Image");
+  //   } catch (error) {
+  //     co;
+  //     nsole.error("Error creating task:", error);
+  //   }
+  // };
 
   return (
     <Box p={4}>
@@ -184,8 +205,19 @@ const CreateTaskDetails = () => {
             px={6}
             colorScheme={"emerald"}
             endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
+            // onPress={() => {
+            //   createTask(
+            //     category,
+            //     title,
+            //     description,
+            //     location,
+            //     minBudget,
+            //     maxBudget,
+            //     dueDate
+            //   );
+            // }}
             onPress={() => {
-              createTask(
+              handleNext(
                 category,
                 title,
                 description,

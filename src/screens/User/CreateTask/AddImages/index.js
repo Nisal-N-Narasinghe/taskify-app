@@ -13,7 +13,7 @@ import {
 import React, { useState } from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import * as FileSystem from "expo-file-system";
@@ -21,6 +21,25 @@ import { firebase } from "../../../../../config";
 
 const CreateTaskImage = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const routeCategory = route.params.category;
+  const routeTitle = route.params.title;
+  const routeDescription = route.params.description;
+  const routeLocation = route.params.location;
+  const routeMinBudget = route.params.minBudget;
+  const routeMaxBudget = route.params.maxBudget;
+  const routeDueDate = route.params.dueDate;
+
+  console.log(maxBudget);
+
+  const [category, setCategory] = useState(routeCategory);
+  const [title, setTitle] = useState(routeTitle);
+  const [description, setDescription] = useState(routeDescription);
+  const [location, setLocation] = useState(routeLocation);
+  const [minBudget, setMinBudget] = useState(routeMinBudget);
+  const [maxBudget, setMaxBudget] = useState(routeMaxBudget);
+  const [dueDate, setDueDate] = useState(routeDueDate);
 
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -42,40 +61,91 @@ const CreateTaskImage = () => {
   };
 
   //upload media files
-  const uploadMedia = async () => {
-    setUploading(true);
+  // const uploadMedia = async () => {
+  //   setUploading(true);
 
+  //   try {
+  //     const { uri } = await FileSystem.getInfoAsync(image);
+  //     const blob = await new Promise((resolve, reject) => {
+  //       const xhr = new XMLHttpRequest();
+  //       xhr.onload = () => {
+  //         resolve(xhr.response);
+  //       };
+  //       xhr.onerror = (e) => {
+  //         reject(new TypeError("Network Request Failed"));
+  //       };
+  //       xhr.responseType = "blob";
+  //       xhr.open("GET", uri, true);
+  //       xhr.send(null);
+  //     });
+
+  //     const filename = image.substring(image.lastIndexOf("/") + 1);
+  //     const ref = firebase.storage().ref().child(filename);
+
+  //     await ref.put(blob);
+  //     setUploading(false);
+  //     alert("Photo Selected!");
+  //     setImage(null);
+  //     navigation.navigate("Task Success");
+  //   } catch (error) {
+  //     console.log(error);
+  //     setUploading(false);
+  //   }
+  // };
+
+  const createTask = async (
+    category,
+    title,
+    description,
+    location,
+    minBudget,
+    maxBudget,
+    dueDate
+  ) => {
     try {
-      const { uri } = await FileSystem.getInfoAsync(image);
-      const blob = await new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onload = () => {
-          resolve(xhr.response);
-        };
-        xhr.onerror = (e) => {
-          reject(new TypeError("Network Request Failed"));
-        };
-        xhr.responseType = "blob";
-        xhr.open("GET", uri, true);
-        xhr.send(null);
+      setUploading(true);
+
+      try {
+        const { uri } = await FileSystem.getInfoAsync(image);
+        const blob = await new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onload = () => {
+            resolve(xhr.response);
+          };
+          xhr.onerror = (e) => {
+            reject(new TypeError("Network Request Failed"));
+          };
+          xhr.responseType = "blob";
+          xhr.open("GET", uri, true);
+          xhr.send(null);
+        });
+
+        const filename = image.substring(image.lastIndexOf("/") + 1);
+        const ref = firebase.storage().ref().child(filename);
+
+        await ref.put(blob);
+        setUploading(false);
+        alert("Photo Selected!");
+        setImage(null);
+      } catch (error) {
+        console.log(error);
+        setUploading(false);
+      }
+
+      await firebase.firestore().collection("tasks").add({
+        category,
+        title,
+        description,
+        location,
+        minBudget,
+        maxBudget,
+        dueDate,
       });
 
-      const filename = image.substring(image.lastIndexOf("/") + 1);
-      const ref = firebase.storage().ref().child(filename);
-
-      await ref.put(blob);
-      setUploading(false);
-      alert("Photo Selected!");
-      setImage(null);
       navigation.navigate("Task Success");
     } catch (error) {
-      console.log(error);
-      setUploading(false);
+      console.error("Error creating task:", error);
     }
-  };
-
-  const handleUpload = () => {
-    navigation.navigate("Task Success");
   };
 
   return (
@@ -170,7 +240,17 @@ const CreateTaskImage = () => {
             colorScheme={"emerald"}
             rounded={100}
             endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
-            onPress={uploadMedia}
+            onPress={() => {
+              createTask(
+                category,
+                title,
+                description,
+                location,
+                minBudget,
+                maxBudget,
+                dueDate
+              );
+            }}
             w={"80"}
           >
             <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
