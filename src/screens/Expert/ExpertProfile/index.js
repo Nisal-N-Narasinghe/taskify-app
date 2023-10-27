@@ -10,7 +10,6 @@ import {
   Heading,
   Image,
 } from "native-base";
-import { firebase } from "../../../../config";
 
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import PROImg from "../../../../assets/Expertimages/expertPRO.jpg";
