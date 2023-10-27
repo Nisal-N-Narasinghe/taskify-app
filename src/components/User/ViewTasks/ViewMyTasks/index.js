@@ -7,10 +7,13 @@ import {
   HStack,
   Text,
   Divider,
+  Button,
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../../../styles/User/ViewTasks/ViewMyTasks";
 import { Feather } from "@expo/vector-icons";
+import { AlertDialog } from "native-base";
+import { useState } from "react";
 
 export const ViewMyTaskItem = ({
   title,
@@ -20,7 +23,14 @@ export const ViewMyTaskItem = ({
   countFromPostedDate,
   countFromEndDate,
   Amount,
+  onDelete,
 }) => {
+  const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+  const openDeleteConfirmation = () => {
+    setDeleteDialogOpen(true);
+  };
+
   return (
     <Box style={styles.viewMyTaskItem} shadow={2}>
       <HStack space={4} p={2}>
@@ -73,8 +83,52 @@ export const ViewMyTaskItem = ({
       <HStack justifyContent="space-between" padding={1}>
         <Text style={styles.Amount}>{Amount} LKR</Text>
         <HStack space={4}>
+          {/* edit */}
           <Feather name="edit" size={24} color="black" />
-          <Feather name="trash-2" size={24} color="black" />
+          {/* delete */}
+          <Feather
+            name="trash-2"
+            size={24}
+            color="black"
+            onPress={openDeleteConfirmation}
+          />
+
+          <AlertDialog
+            isOpen={isDeleteDialogOpen}
+            onClose={() => setDeleteDialogOpen(false)}
+          >
+            <AlertDialog.Content>
+              <AlertDialog.Header>Delete Task</AlertDialog.Header>
+              <AlertDialog.Body>
+                Are you sure you want to delete this task?
+              </AlertDialog.Body>
+              <AlertDialog.Footer>
+                <HStack space={4}>
+                  <Button.Group space={2}>
+                    <Button
+                      variant="unstyled"
+                      colorScheme="coolGray"
+                      onPress={() => setDeleteDialogOpen(false)}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      colorScheme="danger"
+                      // onPress={() => {
+                      //   onDelete; // Call the onDelete prop to perform the actual deletion
+                      //   setDeleteDialogOpen(false);
+                      // }}
+                      onPress={
+                        onDelete // Call the onDelete prop to perform the actual deletion
+                      }
+                    >
+                      Delete
+                    </Button>
+                  </Button.Group>
+                </HStack>
+              </AlertDialog.Footer>
+            </AlertDialog.Content>
+          </AlertDialog>
         </HStack>
       </HStack>
     </Box>

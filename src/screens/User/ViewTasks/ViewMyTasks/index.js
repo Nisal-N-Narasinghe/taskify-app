@@ -35,32 +35,44 @@ const ViewMyTasks = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const taskCollection = await firebase
-          .firestore()
-          .collection("tasks")
-          .get();
-        const tasksArray = [];
+    const tasksRef = firebase.firestore().collection("tasks");
 
-        taskCollection.forEach((doc) => {
-          tasksArray.push({
-            id: doc.id,
-            data: doc.data(),
-          });
+    // real-time listener for tasks collection
+    const unsubscribe = tasksRef.onSnapshot((snapshot) => {
+      const tasksArray = [];
+
+      snapshot.forEach((doc) => {
+        tasksArray.push({
+          id: doc.id,
+          data: doc.data(),
         });
+      });
 
-        setTasks(tasksArray);
-      } catch (error) {
-        console.error("Error fetching tasks:", error);
-      }
-    };
+      setTasks(tasksArray);
+    });
 
-    fetchData();
+    // Cleanup listener when the component unmounts
+    return () => unsubscribe();
   }, []);
 
+  const deleteTask = (taskId) => {
+    const tasksRef = firebase.firestore().collection("tasks");
+
+    // Delete task with the taskId
+    tasksRef
+      .doc(taskId)
+      .delete()
+      .then(() => {
+        // The task successfully deleted
+        console.log(`Task with ID ${taskId} deleted successfully.`);
+      })
+      .catch((error) => {
+        // errors during the deletion
+        console.error(`Error deleting task with ID ${taskId}:`, error);
+      });
+  };
+
   const handleClick = (taskId) => {
-    // navigation.navigate("My Tasks");
     navigation.navigate("View Task", { taskId });
     console.log(taskId);
   };
@@ -123,6 +135,7 @@ const ViewMyTasks = () => {
                   countFromEndDate="5 days"
                   image={CleaningJob}
                   Amount={task.data.minBudget}
+                  onDelete={() => deleteTask(task.id)}
                 />
               </TouchableOpacity>
             ))}
