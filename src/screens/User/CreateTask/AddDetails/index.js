@@ -168,7 +168,7 @@ const CreateTaskDetails = () => {
                     onChangeText={(minBudget) => setMinBudget(minBudget)}
                     bgColor="#E0E0E0"
                     rounded={"100"}
-                    w={"190"}
+                    w={"160"}
                   />
                 </VStack>
                 <VStack>
@@ -180,7 +180,7 @@ const CreateTaskDetails = () => {
                     onChangeText={(maxBudget) => setMaxBudget(maxBudget)}
                     bgColor="#E0E0E0"
                     rounded={"100"}
-                    w={"190"}
+                    w={"160"}
                   />
                 </VStack>
               </HStack>
