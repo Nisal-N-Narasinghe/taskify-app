@@ -27,6 +27,7 @@ export const styles = {
   button: {
     padding: 10,
     width: "60%",
+    height: 60,
     justifyContent: "center",
     borderRadius: 34,
     margin: 10,
@@ -34,6 +35,8 @@ export const styles = {
   buttonContent: {
     flexDirection: "row",
     alignItems: "center",
+    fontWeight: "bold",
+    fontSize: 18,
     marginLeft: 10,
     width: "100%",
     color: "white",
@@ -58,5 +61,24 @@ export const styles = {
   },
   value: {
     margin: 5,
+  },
+  deleteText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  deleteYesbtn: {
+    backgroundColor: "red",
+    padding: 10,
+    borderRadius: 16,
+    width: "90%",
+
+    marginBottom: 10,
+  },
+  deleteCancelbtn: {
+    backgroundColor: "#149873",
+    padding: 10,
+    borderRadius: 16,
+    width: "90%",
   },
 };

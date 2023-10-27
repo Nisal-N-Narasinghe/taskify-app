@@ -112,9 +112,15 @@ const Dashboard = ({ navigation }) => {
           <View style={styles.cardContainer}>
             <TouchableOpacity
               style={styles.card}
-              onPress={() => navigation.navigate("All Expert Area")}>
-              <Ionicons name="arrow-forward-sharp" size={40} color="#2ecc71" />
-              <Text style={styles.cardTitle}>All Expert Area</Text>
+              onPress={() => navigation.navigate("Ongoing Job")}>
+              <Ionicons name="watch" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Ongoing Job</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("Expert Dashboard")}>
+              <Ionicons name="watch" size={40} color="#2ecc71" />
+              <Text style={styles.cardTitle}>Expert Dashboard</Text>
             </TouchableOpacity>
           </View>
         </VStack>

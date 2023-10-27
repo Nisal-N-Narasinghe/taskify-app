@@ -1,66 +1,71 @@
 import React, { useState } from "react";
-import { Box, ScrollView, VStack } from "native-base";
+import { Box, Heading, ScrollView, VStack } from "native-base";
 import CleaningJob from "../../../../assets/cleaning.jpg";
-import { useNavigation } from "@react-navigation/native";
+import ComputerJob from "../../../../assets/computer.jpg";
 import { TouchableOpacity } from "react-native";
 import { ViewUpcomingJobItem } from "../../../components/Expert/ViewUpcomingJobs";
 
-const ViewUpcomingJobs = () => {
-  const navigation = useNavigation();
+const ViewUpcomingJobs = ({ navigation }) => {
+  const id = 123;
+  const upcomingJobItems = [
+    {
+      title: "Cleaning Job",
+      location: "Malabe",
+      countFromPostedDate: "In 2 days",
+      image: [CleaningJob, ComputerJob, CleaningJob],
+      Amount: "Rs. 5000",
+    },
+    {
+      title: "Computer Job",
+      location: "Malabe",
+      countFromPostedDate: "In 2 days",
+      image: [ComputerJob, CleaningJob, CleaningJob],
+      Amount: "Rs. 5000",
+    },
+  ];
 
-  const handleClick = () => {
-    navigation.navigate("");
-  };
   return (
     <Box>
       <ScrollView>
-        <Box safeArea>
+        <Box safeArea background={"white"}>
+          <Heading pl={2} size='md'>
+            Ongoing Jobs
+          </Heading>
           <VStack paddingX={4}>
-            <TouchableOpacity onPress={handleClick}>
-              <ViewUpcomingJobItem
-                title='Cleaning Job'
-                location='Malabe'
-                countFromPostedDate='In 2 days'
-                image={CleaningJob}
-                Amount='Rs. 5000'
-              />
-            </TouchableOpacity>
-
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
-            <ViewUpcomingJobItem
-              title='Cleaning Job'
-              location='Malabe'
-              countFromPostedDate='In 2 days'
-              image={CleaningJob}
-              Amount='Rs. 5000'
-            />
+            {upcomingJobItems.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => navigation.navigate("Upcoming Job", { id })}>
+                <ViewUpcomingJobItem
+                  title={item.title}
+                  location={item.location}
+                  countFromPostedDate={item.countFromPostedDate}
+                  image={item.image[0]}
+                  Amount={item.Amount}
+                />
+              </TouchableOpacity>
+            ))}
+          </VStack>
+        </Box>
+        <Box safeArea background={"white"}>
+          <Heading pl={2} size='md'>
+            Upcoming Jobs
+          </Heading>
+          <VStack paddingX={4}>
+            {upcomingJobItems.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => navigation.navigate("Upcoming Job", { id })}
+              >
+                <ViewUpcomingJobItem
+                  title={item.title}
+                  location={item.location}
+                  countFromPostedDate={item.countFromPostedDate}
+                  image={item.image[0]}
+                  Amount={item.Amount}
+                />
+              </TouchableOpacity>
+            ))}
           </VStack>
         </Box>
       </ScrollView>
