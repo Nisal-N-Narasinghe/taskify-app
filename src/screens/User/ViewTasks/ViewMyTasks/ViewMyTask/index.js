@@ -14,6 +14,8 @@ import { useState } from "react";
 import ImageSliderIndicator from "../../../../../components/common/ImageSliderIndicator";
 import { Ionicons } from "@expo/vector-icons";
 import StatusSlider from "../../../../../components/common/StatusSlider";
+import { firebase } from "../../../../../../config";
+import { useEffect } from "react";
 
 const ViewTask = () =>
   // taskTitle,
@@ -27,6 +29,27 @@ const ViewTask = () =>
   {
     const navigation = useNavigation();
     const [currentStep, setCurrentStep] = useState(0);
+
+    const [taskTitle, setTaskTitle] = useState("");
+
+    useEffect(() => {
+      const currentUserId = firebase.auth().currentUser.uid;
+      firebase
+        .firestore()
+        .collection("tasks")
+        .where("userId", "==", currentUserId)
+        .get()
+        .then((querySnapshot) => {
+          if (!querySnapshot.empty) {
+            setTaskTitle(querySnapshot.docs[0].data().taskTitle);
+          } else {
+            console.log("No tasks found for the user.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching user's tasks:", error);
+        });
+    }, []);
 
     const images = [
       require("../../../../../../assets/cleaning.jpg"),
@@ -47,10 +70,7 @@ const ViewTask = () =>
     return (
       <ScrollView padding={3} flex={1} showsVerticalScrollIndicator={true}>
         <Box safeArea>
-          <Heading size="lg">
-            Title
-            {/* {taskTitle} */}
-          </Heading>
+          <Heading size="lg">Title: {taskTitle}</Heading>
 
           <HStack
             marginTop={6}
