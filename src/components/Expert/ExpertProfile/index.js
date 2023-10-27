@@ -50,7 +50,7 @@ export const ExpertCard = ({ title, jobcount, experience, JobDiscription }) => {
       borderRadius={8}
       padding={4}
       marginY={2}
-      shadow={1}>
+      shadow={3}>
       <Heading fontSize='18' fontWeight='bold' alignSelf='center'>
         {title}
       </Heading>

@@ -55,8 +55,8 @@ const styles = {
   expertCard: {
     backgroundColor: "white",
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "gray.200",
+    // borderWidth: 1,
+    // borderColor: "grey",
     padding: 4,
     marginY: 2,
     shadow: 1,

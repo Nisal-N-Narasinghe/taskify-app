@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, ScrollView, VStack } from "native-base";
+import { Box, Heading, ScrollView, VStack } from "native-base";
 import CleaningJob from "../../../../assets/cleaning.jpg";
 import ComputerJob from "../../../../assets/computer.jpg";
 import { TouchableOpacity } from "react-native";
@@ -27,7 +27,30 @@ const ViewUpcomingJobs = ({ navigation }) => {
   return (
     <Box>
       <ScrollView>
-        <Box safeArea>
+        <Box safeArea background={"white"}>
+          <Heading pl={2} size='md'>
+            Ongoing Jobs
+          </Heading>
+          <VStack paddingX={4}>
+            {upcomingJobItems.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => navigation.navigate("Upcoming Job", { id })}>
+                <ViewUpcomingJobItem
+                  title={item.title}
+                  location={item.location}
+                  countFromPostedDate={item.countFromPostedDate}
+                  image={item.image[0]}
+                  Amount={item.Amount}
+                />
+              </TouchableOpacity>
+            ))}
+          </VStack>
+        </Box>
+        <Box safeArea background={"white"}>
+          <Heading pl={2} size='md'>
+            Upcoming Jobs
+          </Heading>
           <VStack paddingX={4}>
             {upcomingJobItems.map((item, index) => (
               <TouchableOpacity
