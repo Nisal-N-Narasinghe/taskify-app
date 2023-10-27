@@ -45,53 +45,75 @@ const DashboardStack = createNativeStackNavigator();
 const TaskDashboardStack = createNativeStackNavigator();
 const ProfileDashboardStack = createNativeStackNavigator();
 const ExpertDashboardStack = createNativeStackNavigator();
+const ExpertChatStack = createNativeStackNavigator();
+const ExpertJobStack = createNativeStackNavigator();
+const ExpertProfileStack = createNativeStackNavigator();
 
 function ExpertDashboardStackScreen() {
   return (
     <ExpertDashboardStack.Navigator>
-      <ExpertDashboardStack.Screen name='Dashboard' component={Dashboard} />
       <ExpertDashboardStack.Screen
-        name='Add New Expert'
-        component={AddNewExpert}
-      />
-      <ExpertDashboardStack.Screen name='User Chat' component={UserChat} />
-      <ExpertDashboardStack.Screen
-        name='Expert Profile'
-        component={ExpertProfile}
-      />
-      <ExpertDashboardStack.Screen
-        name='View Single Expert'
-        component={ViewSingleExpert}
-      />
-      <ExpertDashboardStack.Screen
-        name='Expert Job History'
-        component={ExpertJobHistory}
-      />
-      <ExpertDashboardStack.Screen
-        name='Expert Area'
-        component={ExpertViewExpertiseArea}
+        name='Expert Dashboard'
+        component={ExpertDashboard}
       />
       <ExpertDashboardStack.Screen
         name='Completed Jobs'
         component={ExpertViewSingleJobHistoryItem}
       />
-      <ExpertDashboardStack.Screen
-        name='Upcoming Jobs'
-        component={ViewUpcomingJobs}
-      />
-      <ExpertDashboardStack.Screen
+      {/* <ExpertDashboardStack.Screen name='Dashboard' component={Dashboard} /> */}
+    </ExpertDashboardStack.Navigator>
+  );
+}
+
+function ExpertJobStackScreen() {
+  return (
+    <ExpertJobStack.Navigator>
+      <ExpertJobStack.Screen name='All Jobs' component={ViewUpcomingJobs} />
+      <ExpertJobStack.Screen
         name='Upcoming Job'
         component={ViewSingleUpcommingJob}
       />
-      <ExpertDashboardStack.Screen
-        name='Ongoing Job'
-        component={ViewOngoingJob}
+      <ExpertJobStack.Screen name='Ongoing Job' component={ViewOngoingJob} />
+    </ExpertJobStack.Navigator>
+  );
+}
+
+function ExpertProfileStackScreen() {
+  return (
+    <ExpertProfileStack.Navigator>
+      <ExpertProfileStack.Screen
+        name='Expert Profile'
+        component={ExpertProfile}
       />
-      <ExpertDashboardStack.Screen
-        name='Expert Dashboard'
-        component={ExpertDashboard}
+      <ExpertProfileStack.Screen
+        name='Expert Job History'
+        component={ExpertJobHistory}
       />
-    </ExpertDashboardStack.Navigator>
+      <ExpertProfileStack.Screen
+        name='Completed Jobs'
+        component={ExpertViewSingleJobHistoryItem}
+      />
+      <ExpertProfileStack.Screen
+        name='Expert Area'
+        component={ExpertViewExpertiseArea}
+      />
+      <ExpertProfileStack.Screen
+        name='Add New Expert'
+        component={AddNewExpert}
+      />
+      <ExpertProfileStack.Screen
+        name='View Single Expert'
+        component={ViewSingleExpert}
+      />
+    </ExpertProfileStack.Navigator>
+  );
+}
+
+function ExpertChatStackScreen() {
+  return (
+    <ExpertChatStack.Navigator>
+      <ExpertChatStack.Screen name='User Chat' component={UserChat} />
+    </ExpertChatStack.Navigator>
   );
 }
 
@@ -145,17 +167,6 @@ function TaskDashboardStackScreen() {
   );
 }
 
-function ProfileDashboardStackScreen() {
-  return (
-    <ProfileDashboardStack.Navigator>
-      {/* <ProfileDashboardStack.Screen
-        name="Profile Dashboard"
-        component={ProfileDashboard}
-      /> */}
-    </ProfileDashboardStack.Navigator>
-  );
-}
-
 // TAB NAVIGATION CONFIG
 
 const Tab = createBottomTabNavigator();
@@ -193,7 +204,7 @@ export default function App() {
         });
     }
   }, [user]);
-  //console.log("User Data:", userData);
+  //console.log("User Data:", userData.role);
 
   if (initializeing) return null;
 
@@ -215,32 +226,43 @@ export default function App() {
     );
   }
 
-  return (
-    <NativeBaseProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName='Dashboard'
-          screenOptions={({ route }) => ({
-            headerShown: false,
-            tabBarShowLabel: false,
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
+  if (userData.role == "expert") {
+    return (
+      <NativeBaseProvider theme={theme}>
+        <NavigationContainer>
+          <Tab.Navigator
+            initialRouteName='Expert Dashboard'
+            screenOptions={({ route }) => ({
+              headerShown: false,
+              tabBarShowLabel: false,
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
 
-              if (route.name === "Dashboard") {
-                iconName = "home-outline";
-              } else if (route.name === "Tasks") {
-                iconName = "hammer-outline";
-              } else if (route.name === "Profile") {
-                iconName = "person-outline";
-              }
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-          })}>
-          <Tab.Screen name='Dashboard' component={ExpertDashboardStackScreen} />
-          <Tab.Screen name='Tasks' component={TaskDashboardStackScreen} />
-          <Tab.Screen name='Profile' component={ProfileDashboardStackScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </NativeBaseProvider>
-  );
+                if (route.name === "Expert Dashboard") {
+                  iconName = "home-outline";
+                } else if (route.name === "chats") {
+                  iconName = "chatbubbles-outline";
+                } else if (route.name === "Jobs") {
+                  iconName = "md-calendar-outline";
+                } else if (route.name === "Profile") {
+                  iconName = "person-outline";
+                }
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+            })}>
+            <Tab.Screen
+              name='Expert Dashboard'
+              component={ExpertDashboardStackScreen}
+            />
+            <Tab.Screen name='chats' component={ExpertChatStackScreen} />
+            <Tab.Screen name='Jobs' component={ExpertJobStackScreen} />
+            <Tab.Screen name='Profile' component={ExpertProfileStackScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    );
+  }
+
+  if (userData.role == "client") {
+  }
 }
