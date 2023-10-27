@@ -25,6 +25,7 @@ import AllCompletedWorks from "./src/screens/User/AllCompletedWorks";
 import ViewOngoingTask from "./src/screens/User/ViewTasks/ViewOngoingTasks/ViewOngoingTask";
 import ViewOngoingJob from "./src/screens/Expert/ViewOngoingJobs/ViewOngoingJob";
 import ViewPastTask from "./src/screens/User/ViewTasks/ViewPastTasks/ViewPastTask";
+import ViewImage from "./src/screens/User/CreateTask/ViewImages";
 
 //  STACK NAVIGATION CONFIG
 import ViewMyTasks from "./src/screens/User/ViewTasks/ViewMyTasks";
@@ -118,6 +119,7 @@ function TaskDashboardStackScreen() {
         name='Task Image'
         component={CreateTaskImage}
       />
+      <TaskDashboardStack.Screen name="View Task Image" component={ViewImage} />
       <TaskDashboardStack.Screen
         name='Task Success'
         component={CreateTaskSuccess}
