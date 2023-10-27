@@ -18,6 +18,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import * as FileSystem from "expo-file-system";
 import { firebase } from "../../../../../config";
+import { useEffect } from "react";
 
 const CreateTaskImage = () => {
   const navigation = useNavigation();
@@ -41,8 +42,22 @@ const CreateTaskImage = () => {
   const [maxBudget, setMaxBudget] = useState(routeMaxBudget);
   const [dueDate, setDueDate] = useState(routeDueDate);
 
+  const [userId, setUserId] = useState(null);
+
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    const currentUser = firebase.auth().currentUser.uid;
+
+    if (currentUser) {
+      setUserId(currentUser);
+    } else {
+      console.log("No user is currently signed in");
+    }
+  }, []);
+
+  console.log("USER ID", userId);
 
   const pickImage = async () => {
     //no permission request is necessary for launching the image library
@@ -136,6 +151,8 @@ const CreateTaskImage = () => {
       const currentDate = new Date();
       const createdDate = currentDate.toDateString();
 
+      const taskState = "Pending";
+
       await firebase.firestore().collection("tasks").add({
         category,
         title,
@@ -145,7 +162,11 @@ const CreateTaskImage = () => {
         maxBudget,
         dueDate,
         createdDate,
+        userId,
+        taskState,
       });
+
+      // console.log(taskState);
 
       navigation.navigate("Task Success");
     } catch (error) {
