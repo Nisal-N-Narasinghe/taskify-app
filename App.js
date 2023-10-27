@@ -41,14 +41,16 @@ import ExpertDashboard from "./src/screens/Expert/ExpertDashboard";
 import UserDashboard from "./src/screens/User/UserDashboard";
 
 //  STACK NAVIGATION CONFIG
-const DashboardStack = createNativeStackNavigator();
 const TaskDashboardStack = createNativeStackNavigator();
-const ProfileDashboardStack = createNativeStackNavigator();
 const ExpertDashboardStack = createNativeStackNavigator();
 const ExpertChatStack = createNativeStackNavigator();
 const ExpertJobStack = createNativeStackNavigator();
 const ExpertProfileStack = createNativeStackNavigator();
+const UserDashboardStack = createNativeStackNavigator();
+const UserTaskStack = createNativeStackNavigator();
+const UserChatStack = createNativeStackNavigator();
 
+//EXPERT STACK NAVIGATION
 function ExpertDashboardStackScreen() {
   return (
     <ExpertDashboardStack.Navigator>
@@ -117,6 +119,7 @@ function ExpertChatStackScreen() {
   );
 }
 
+//USER STACK NAVIGATION
 function TaskDashboardStackScreen() {
   return (
     <TaskDashboardStack.Navigator>
@@ -159,16 +162,55 @@ function TaskDashboardStackScreen() {
         component={ViewOngoingTask}
       />
       <TaskDashboardStack.Screen name='Add Feedback' component={AddFeedback} />
-      <TaskDashboardStack.Screen
-        name='User Dashboard'
-        component={UserDashboard}
-      />
     </TaskDashboardStack.Navigator>
   );
 }
 
-// TAB NAVIGATION CONFIG
+function UserDashboardStackScreen() {
+  return (
+    <UserDashboardStack.Navigator>
+      <UserDashboardStack.Screen
+        name='User Dashboard'
+        component={UserDashboard}
+      />
+    </UserDashboardStack.Navigator>
+  );
+}
 
+function UserChatStackScreen() {
+  return (
+    <UserChatStack.Navigator>
+      <UserChatStack.Screen name='User Chat' component={UserChat} />
+    </UserChatStack.Navigator>
+  );
+}
+
+function UserTaskStackScreen() {
+  return (
+    <UserTaskStack.Navigator>
+      <UserTaskStack.Screen name='Task Dashboard' component={TaskDashboard} />
+      <UserTaskStack.Screen name='Create Task' component={CreateTaskCategory} />
+      <UserTaskStack.Screen name='Task Details' component={CreateTaskDetails} />
+      <UserTaskStack.Screen
+        name='All Completed Tasks'
+        component={AllCompletedWorks}
+      />
+      <UserTaskStack.Screen name='Task Image' component={CreateTaskImage} />
+      <UserTaskStack.Screen name='Task Success' component={CreateTaskSuccess} />
+      <UserTaskStack.Screen name='My Tasks' component={ViewMyTasks} />
+      <UserTaskStack.Screen name='View Task' component={ViewTask} />
+      <UserTaskStack.Screen name='View Past Tasks' component={ViewPastTasks} />
+      <UserTaskStack.Screen name='View Past Task' component={ViewPastTask} />
+      <UserTaskStack.Screen
+        name='View Ongoing Task'
+        component={ViewOngoingTask}
+      />
+      <UserTaskStack.Screen name='Add Feedback' component={AddFeedback} />
+    </UserTaskStack.Navigator>
+  );
+}
+
+// TAB NAVIGATION CONFIG
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -210,6 +252,7 @@ export default function App() {
 
   //console.log("User:", user);
 
+  //Login and Registration
   if (!user) {
     return (
       <NativeBaseProvider theme={theme}>
@@ -226,12 +269,13 @@ export default function App() {
     );
   }
 
+  //Expert Tab Navigation
   if (userData.role == "expert") {
     return (
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName='Expert Dashboard'
+            initialRouteName='Expert Dashboard Screen'
             screenOptions={({ route }) => ({
               headerShown: false,
               tabBarShowLabel: false,
@@ -284,6 +328,62 @@ export default function App() {
     );
   }
 
+  //User Tab Navigation
   if (userData.role == "client") {
+    return (
+      <NativeBaseProvider theme={theme}>
+        <NavigationContainer>
+          <Tab.Navigator
+            initialRouteName='User Dashboard Screen'
+            screenOptions={({ route }) => ({
+              headerShown: false,
+              tabBarShowLabel: false,
+              tabBarIcon: ({ focused, color, size }) => {
+                const tabStyle = {
+                  marginBottom: 10,
+
+                  borderRadius: 12,
+                  width: 50,
+                  height: 50,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: focused ? "#149873" : "transparent",
+                };
+                const iconStyle = {
+                  color: focused ? "white" : color,
+                };
+                let iconName;
+
+                if (route.name === "User Dashboard Screen") {
+                  iconName = "home-outline";
+                } else if (route.name === "chats") {
+                  iconName = "chatbubbles-outline";
+                } else if (route.name === "Tasks") {
+                  iconName = "md-calendar-outline";
+                } else if (route.name === "Create a Task") {
+                  iconName = "hammer-outline";
+                }
+                return (
+                  <View style={tabStyle}>
+                    <Ionicons
+                      name={iconName}
+                      size={size}
+                      color={iconStyle.color}
+                    />
+                  </View>
+                );
+              },
+            })}>
+            <Tab.Screen
+              name='User Dashboard Screen'
+              component={UserDashboardStackScreen}
+            />
+            <Tab.Screen name='chats' component={UserChatStackScreen} />
+            <Tab.Screen name='Tasks' component={UserTaskStackScreen} />
+            <Tab.Screen name='Create a Task' component={UserTaskStackScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    );
   }
 }
