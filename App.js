@@ -1,4 +1,4 @@
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, View } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -236,9 +236,22 @@ export default function App() {
               headerShown: false,
               tabBarShowLabel: false,
               tabBarIcon: ({ focused, color, size }) => {
+                const tabStyle = {
+                  marginBottom: 10,
+
+                  borderRadius: 12,
+                  width: 50,
+                  height: 50,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: focused ? "#149873" : "transparent",
+                };
+                const iconStyle = {
+                  color: focused ? "white" : color,
+                };
                 let iconName;
 
-                if (route.name === "Expert Dashboard") {
+                if (route.name === "Dashboard") {
                   iconName = "home-outline";
                 } else if (route.name === "chats") {
                   iconName = "chatbubbles-outline";
@@ -247,11 +260,19 @@ export default function App() {
                 } else if (route.name === "Profile") {
                   iconName = "person-outline";
                 }
-                return <Ionicons name={iconName} size={size} color={color} />;
+                return (
+                  <View style={tabStyle}>
+                    <Ionicons
+                      name={iconName}
+                      size={size}
+                      color={iconStyle.color}
+                    />
+                  </View>
+                );
               },
             })}>
             <Tab.Screen
-              name='Expert Dashboard'
+              name='Dashboard'
               component={ExpertDashboardStackScreen}
             />
             <Tab.Screen name='chats' component={ExpertChatStackScreen} />
