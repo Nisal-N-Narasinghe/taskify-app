@@ -29,7 +29,7 @@ const ExpertDashboard = ({ navigation }) => {
   const id = 123;
   const jobHistoryItems = [
     {
-      title: "House Plane",
+      title: "House Planning Job",
       location: "Arangala",
       startTime: "9:00 AM",
       startDate: "26-10-2023",
@@ -41,7 +41,7 @@ const ExpertDashboard = ({ navigation }) => {
       Amount: "Rs.8000",
     },
     {
-      title: "Backyard Plane",
+      title: "Backyard Planning Job",
       location: "Kaduwela",
       startTime: "8:30 AM",
       startDate: "25-10-2023",
@@ -53,7 +53,7 @@ const ExpertDashboard = ({ navigation }) => {
       Amount: "Rs.6000",
     },
     {
-      title: "Frontyard Plane",
+      title: "Frontyard Planning Job",
       location: "Malabe",
       startTime: "8:15 AM",
       startDate: "20-10-2023",

@@ -48,7 +48,7 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
       <Box safeArea flex={1} style={styles.container} background={"white"}>
-        <Heading m={4}>Cleaning Job</Heading>
+        <Heading m={4}>House Planning Job</Heading>
         <Box flex={1} pl={4}>
           <ImageSlider
             images={images}
