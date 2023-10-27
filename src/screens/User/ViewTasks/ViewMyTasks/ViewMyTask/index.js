@@ -9,7 +9,7 @@ import {
 } from "native-base";
 import React from "react";
 import ImageSlider from "../../../../../components/common/ImageSlider";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useState } from "react";
 import ImageSliderIndicator from "../../../../../components/common/ImageSliderIndicator";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,166 +17,154 @@ import StatusSlider from "../../../../../components/common/StatusSlider";
 import { firebase } from "../../../../../../config";
 import { useEffect } from "react";
 
-const ViewTask = () =>
-  // taskTitle,
-  // location
-  // postedDate
-  // description
-  // budget
-  // amount
-  // timePeriod
+const ViewTask = () => {
+  const route = useRoute();
+  const taskId = route.params.taskId;
+  console.log("Task ID", taskId);
 
-  {
-    const navigation = useNavigation();
-    const [currentStep, setCurrentStep] = useState(0);
+  const navigation = useNavigation();
+  const [currentStep, setCurrentStep] = useState(0);
 
-    const [taskTitle, setTaskTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [createdDate, setCreatedDate] = useState("");
 
-    useEffect(() => {
-      const currentUserId = firebase.auth().currentUser.uid;
-      firebase
-        .firestore()
-        .collection("tasks")
-        .where("userId", "==", currentUserId)
-        .get()
-        .then((querySnapshot) => {
-          if (!querySnapshot.empty) {
-            setTaskTitle(querySnapshot.docs[0].data().taskTitle);
-          } else {
-            console.log("No tasks found for the user.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching user's tasks:", error);
-        });
-    }, []);
+  const [task, setTask] = useState([]);
 
-    const images = [
-      require("../../../../../../assets/cleaning.jpg"),
-      require("../../../../../../assets/computer.jpg"),
-      require("../../../../../../assets/gardening.jpg"),
-      require("../../../../../../assets/plumber.jpg"),
-      require("../../../../../../assets/dog.jpg"),
-    ];
+  useEffect(() => {
+    const fetchTaskData = async () => {
+      try {
+        // Fetch the task data using taskId
+        const taskDoc = await firebase
+          .firestore()
+          .collection("tasks")
+          .doc(taskId)
+          .get();
 
-    const handleViewOffer = () => {
-      navigation.navigate("Expert Area");
+        if (taskDoc.exists) {
+          const taskData = taskDoc.data();
+          setTask(taskData);
+        } else {
+          console.log("Task not found");
+        }
+      } catch (error) {
+        console.error("Error fetching task data:", error);
+      }
     };
 
-    const handleSwiperIndexChanged = (index) => {
-      setCurrentStep(index + 1);
-    };
+    if (taskId) {
+      fetchTaskData();
+    }
+  }, [taskId]);
 
-    return (
-      <ScrollView padding={3} flex={1} showsVerticalScrollIndicator={true}>
-        <Box safeArea>
-          <Heading size="lg">Title: {taskTitle}</Heading>
+  const images = [
+    require("../../../../../../assets/cleaning.jpg"),
+    require("../../../../../../assets/computer.jpg"),
+    require("../../../../../../assets/gardening.jpg"),
+    require("../../../../../../assets/plumber.jpg"),
+    require("../../../../../../assets/dog.jpg"),
+  ];
 
-          <HStack
-            marginTop={6}
-            marginBottom={6}
-            justifyContent={"space-between"}
-          >
+  const handleViewOffer = () => {
+    navigation.navigate("Expert Area");
+  };
+
+  const handleSwiperIndexChanged = (index) => {
+    setCurrentStep(index + 1);
+  };
+
+  return (
+    <ScrollView padding={3} flex={1} showsVerticalScrollIndicator={true}>
+      <Box safeArea>
+        {/* Render task item here */}
+
+        <Heading size="lg">{task.title}</Heading>
+
+        <HStack marginTop={6} marginBottom={6} justifyContent={"space-between"}>
+          {/* location */}
+          <HStack alignItems={"center"}>
+            <Ionicons
+              name="location-outline"
+              size={24}
+              color="black"
+              marginRight={4}
+            />
+            <Text fontSize={"lg"}>{task.location}</Text>
+          </HStack>
+          {/* created date */}
+          <VStack>
             <HStack alignItems={"center"}>
               <Ionicons
-                name="location-outline"
+                name="calendar-outline"
                 size={24}
                 color="black"
                 marginRight={4}
               />
-              <Text fontSize={"lg"}>
-                Location
-                {/* location */}
-              </Text>
+              <Text fontSize={"lg"}>{task.createdDate}</Text>
             </HStack>
-            <VStack>
-              <HStack alignItems={"center"}>
-                <Ionicons
-                  name="calendar-outline"
-                  size={24}
-                  color="black"
-                  marginRight={4}
-                />
-                <Text fontSize={"lg"}>
-                  Posted date
-                  {/* {postedDate} */}
-                </Text>
-              </HStack>
-            </VStack>
-          </HStack>
-          <HStack>
-            <ImageSlider
-              images={images}
-              onIndexChanged={handleSwiperIndexChanged}
-            />
-          </HStack>
-          <ImageSliderIndicator
-            currentStep={currentStep}
-            totalStep={images.length}
+          </VStack>
+        </HStack>
+        <HStack>
+          <ImageSlider
+            images={images}
+            onIndexChanged={handleSwiperIndexChanged}
           />
-          <HStack marginTop={2}>
+        </HStack>
+        <ImageSliderIndicator
+          currentStep={currentStep}
+          totalStep={images.length}
+        />
+        <HStack marginTop={2}>
+          <Text fontSize={"lg"}>{task.description}</Text>
+        </HStack>
+        <HStack justifyContent={"space-between"} marginTop={6}>
+          <Text fontSize={"lg"}>Min Budget:</Text>
+          <Text fontSize={"lg"}>{task.minBudget}</Text>
+        </HStack>
+        <HStack justifyContent={"space-between"} marginTop={6}>
+          <Text fontSize={"lg"}>Max Budget:</Text>
+          <Text fontSize={"lg"}>{task.maxBudget}</Text>
+        </HStack>
+        <HStack justifyContent={"space-between"} marginTop={6}>
+          <VStack>
+            <Text fontSize={"lg"}>Time Period:</Text>
+          </VStack>
+          <VStack>
             <Text fontSize={"lg"}>
-              Description
-              {/* {description} */}
+              7 days
+              {/* timePeriod */}
             </Text>
-          </HStack>
-          <HStack justifyContent={"space-between"} marginTop={6}>
-            <Text fontSize={"lg"}>
-              Min Budget:
-              {/* {budget} */}
+          </VStack>
+        </HStack>
+        <HStack marginTop={4} marginBottom={4}>
+          <StatusSlider disableStatus={true} statusValue={0} />
+        </HStack>
+        <Box>
+          <Button
+            justifyContent={"center"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            colorScheme={"emerald"}
+            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
+            onPress={handleViewOffer}
+            marginTop={1}
+          >
+            {/* Navigate to offers list sent by Experts */}
+            <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+              View Offers
             </Text>
-            <Text fontSize={"lg"}>
-              2000 LKR
-              {/* {amount} */}
-            </Text>
-          </HStack>
-          <HStack justifyContent={"space-between"} marginTop={6}>
-            <Text fontSize={"lg"}>
-              Max Budget:
-              {/* {budget} */}
-            </Text>
-            <Text fontSize={"lg"}>
-              2000 LKR
-              {/* {amount} */}
-            </Text>
-          </HStack>
-          <HStack justifyContent={"space-between"} marginTop={6}>
-            <VStack>
-              <Text fontSize={"lg"}>Time Period:</Text>
-            </VStack>
-            <VStack>
-              <Text fontSize={"lg"}>
-                7 days
-                {/* timePeriod */}
-              </Text>
-            </VStack>
-          </HStack>
-          <HStack marginTop={4} marginBottom={4}>
-            <StatusSlider disableStatus={true} statusValue={0} />
-          </HStack>
-          <Box>
-            <Button
-              justifyContent={"center"}
-              h={10}
-              rounded={100}
-              p={0}
-              px={6}
-              colorScheme={"emerald"}
-              endIcon={
-                <Ionicons name="arrow-forward" size={24} color="white" />
-              }
-              onPress={handleViewOffer}
-              marginTop={1}
-            >
-              {/* Navigate to offers list sent by Experts */}
-              <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
-                View Offers
-              </Text>
-            </Button>
-          </Box>
+          </Button>
         </Box>
-      </ScrollView>
-    );
-  };
+      </Box>
+    </ScrollView>
+  );
+};
 
 export default ViewTask;

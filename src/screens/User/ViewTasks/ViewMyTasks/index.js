@@ -59,9 +59,10 @@ const ViewMyTasks = () => {
     fetchData();
   }, []);
 
-  const handleClick = () => {
+  const handleClick = (taskId) => {
     // navigation.navigate("My Tasks");
-    navigation.navigate("View Task");
+    navigation.navigate("View Task", { taskId });
+    console.log(taskId);
   };
 
   const toggleFilterModal = () => {
@@ -108,9 +109,12 @@ const ViewMyTasks = () => {
       <ScrollView>
         <Box safeArea>
           <VStack paddingX={4}>
-            {/* Render your task items here */}
+            {/* Render task items here */}
             {tasks.map((task) => (
-              <TouchableOpacity key={task.id} onPress={() => handleClick()}>
+              <TouchableOpacity
+                key={task.id}
+                onPress={() => handleClick(task.id)}
+              >
                 <ViewMyTaskItem
                   title={task.data.title}
                   location={task.data.location}
