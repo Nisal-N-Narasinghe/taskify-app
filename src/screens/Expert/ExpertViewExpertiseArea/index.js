@@ -13,7 +13,7 @@ import ImageSliderIndicator from "../../../components/common/ImageSliderIndicato
 import "firebase/firestore";
 import { firebase } from "../../../../config";
 
-const ExpertViewExpertiseArea = ({ route }) => {
+const ExpertViewExpertiseArea = ({ route, navigation }) => {
   const [completedWorks, setCompletedWorks] = useState([]);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const images = [
@@ -41,9 +41,27 @@ const ExpertViewExpertiseArea = ({ route }) => {
   };
   const confirmDelete = () => {
     // Perform the delete operation here
-    // After the delete operation is successful, you can close the modal
+    const expertCollection = firebase.firestore().collection("experts");
+
+    if (expertId) {
+      expertCollection
+        .doc(expertId)
+        .delete()
+        .then(() => {
+          console.log("Expert deleted successfully");
+          navigation.navigate("Expert Profile");
+        })
+        .catch((error) => {
+          console.error("Error deleting expert:", error);
+        });
+    } else {
+      console.error(
+        "Expert ID is missing. Delete operation cannot be performed."
+      );
+    }
     toggleDeleteModal();
   };
+
   const handleSwiperIndexChanged = (index) => {
     setCurrentStep(index + 1);
   };
@@ -82,7 +100,7 @@ const ExpertViewExpertiseArea = ({ route }) => {
               currentStep={currentStep}
               totalStep={images.length}
             />
-            <ExpertDiscription discription="Detail Description" />
+            <ExpertDiscription discription='Detail Description' />
             {expertDetails && (
               <ExpertDetails
                 name={expertDetails.name}
@@ -92,22 +110,22 @@ const ExpertViewExpertiseArea = ({ route }) => {
                 phone={expertDetails.phone}
               />
             )}
-            <Availability availability="Weekdays" />
+            <Availability availability='Weekdays' />
           </VStack>
 
-          <Box justifyContent="center" alignItems="center">
+          <Box justifyContent='center' alignItems='center'>
             <Button
               style={styles.button}
               onPress={handleEdit}
               background={"#149873"}
-              endIcon={<MaterialIcons name="edit" size={24} color="white" />}>
+              endIcon={<MaterialIcons name='edit' size={24} color='white' />}>
               <Text style={styles.buttonContent}>Edit</Text>
             </Button>
             <Button
               style={styles.button}
               onPress={handleDelete}
               background={"red.500"}
-              endIcon={<MaterialIcons name="delete" size={24} color="white" />}>
+              endIcon={<MaterialIcons name='delete' size={24} color='white' />}>
               <Text style={styles.buttonContent}>Delete</Text>
             </Button>
           </Box>
