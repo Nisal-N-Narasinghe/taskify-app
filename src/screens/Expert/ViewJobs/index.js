@@ -8,7 +8,7 @@ import gardenPlan2 from "../../../../assets/Expertimages/GardenPlanning/gardenPl
 import { TouchableOpacity } from "react-native";
 import { ViewUpcomingJobItem } from "../../../components/Expert/ViewUpcomingJobs";
 
-const ViewUpcomingJobs = ({ navigation }) => {
+const ViewJobs = ({ navigation }) => {
   const id = 123;
 
   const onGoingJobItems = [
@@ -86,4 +86,4 @@ const ViewUpcomingJobs = ({ navigation }) => {
   );
 };
 
-export default ViewUpcomingJobs;
+export default ViewJobs;
