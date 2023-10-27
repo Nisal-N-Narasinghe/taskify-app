@@ -32,6 +32,7 @@ import ExpertViewSingleJobHistoryItem from "./src/screens/Expert/ExpertJobHistor
 import ViewUpcomingJobs from "./src/screens/Expert/ViewUpcomingJobs";
 import Login from "./src/screens/Login/Login";
 import Registration from "./src/screens/Login/Registration";
+import AllExpertArea from "./src/screens/Expert/AllExpertArea";
 
 //  STACK NAVIGATION CONFIG
 const DashboardStack = createNativeStackNavigator();
@@ -71,6 +72,10 @@ function ExpertDashboardStackScreen() {
       <ExpertDashboardStack.Screen
         name="Upcoming Jobs"
         component={ViewUpcomingJobs}
+      />
+      <ExpertDashboardStack.Screen
+        name="All Expert Area"
+        component={AllExpertArea}
       />
     </ExpertDashboardStack.Navigator>
   );
