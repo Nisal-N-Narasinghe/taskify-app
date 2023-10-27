@@ -21,16 +21,16 @@ import { TouchableOpacity } from "react-native";
 import ImageSlider from "../../../../components/common/ImageSlider";
 import ImageSliderIndicator from "../../../../components/common/ImageSliderIndicator";
 import { styles } from "../../../../styles/Expert/ExpertJobHistory/ExpertViewSingleJobHistoryItem";
+import { truncateText } from "../../../../utils/helpers/components/common/truncateText";
 const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
   const handleAddExpertiseArea = () => {
     navigation.navigate("Add New Expert");
   };
   const images = [
-    require("../../../../../assets/cleaning.jpg"),
-    require("../../../../../assets/computer.jpg"),
-    require("../../../../../assets/gardening.jpg"),
-    require("../../../../../assets/plumber.jpg"),
-    require("../../../../../assets/dog.jpg"),
+    require("../../../../../assets/Expertimages/HousePlanning/housePlanSketch.jpg"),
+    require("../../../../../assets/Expertimages/HousePlanning/housePlanSketch2.jpg"),
+    require("../../../../../assets/Expertimages/HousePlanning/housePlane3D.jpg"),
+    require("../../../../../assets/Expertimages/HousePlanning/housePlane3D2.jpg"),
   ];
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -38,16 +38,16 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
     setCurrentStep(index + 1);
   };
   const ratingData = [
-    { heading: "Quality Of Work", rating: 4.5 },
-    { heading: "Organization", rating: 3.8 },
-    { heading: "Time", rating: 5.0 },
-    { heading: "Communication", rating: 4.0 },
-    { heading: "Price", rating: 4.5 },
+    { heading: "Quality", rating: 4.0 },
+    { heading: "Cleanliness", rating: 3.2 },
+    { heading: "Timeliness", rating: 3.8 },
+    { heading: "Communication", rating: 3.0 },
+    { heading: "Satisfaction", rating: 4.5 },
   ];
 
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
-      <Box safeArea flex={1} style={styles.container}>
+      <Box safeArea flex={1} style={styles.container} background={"white"}>
         <Heading m={4}>Cleaning Job</Heading>
         <Box flex={1} pl={4}>
           <ImageSlider
@@ -76,18 +76,19 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
           </ScrollView>
 
           <Text style={styles.ratingsFrameText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Vivamus
-            at augue eget arcu.
+            Outstanding house planning service! Mr Kamal exceeded expectations
+            with their professionalism, innovative designs, on-time completion,
+            and budget adherence. Highly recommended for turning dreams into
+            reality.
           </Text>
         </Box>
       </Box>
-      <Box flex={1} pt={4}>
+      <Box flex={1} pt={4} background={"white"}>
         <Box pb={4} pl={4}>
           <HStack>
             <Icon as={Ionicons} name='alarm-outline' size={6} mr={2} ml={2} />
             <Text style={styles.dateAndTimeText} pb={1}>
-              Start: 8.30 AM - 2023/09/02
+              Start: 9.00 AM - 26/10/2023
             </Text>
           </HStack>
         </Box>
@@ -95,7 +96,7 @@ const ExpertViewSingleJobHistoryItem = ({ navigation }) => {
           <HStack>
             <Icon as={Ionicons} name='alarm-outline' size={6} mr={2} ml={2} />
             <Text style={styles.dateAndTimeText} pb={1}>
-              End: 8.30 AM - 2023/09/02
+              End: 12.10 PM - 27/10/2023
             </Text>
           </HStack>
         </Box>
