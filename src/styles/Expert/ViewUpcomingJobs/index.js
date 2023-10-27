@@ -58,7 +58,7 @@ export const styles = {
   chatButton: {
     padding: 10,
     width: "80%",
-    height: 60,
+    height: 40,
     justifyContent: "center",
     borderRadius: 34,
     marginTop: 40,
