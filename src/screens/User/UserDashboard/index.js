@@ -80,17 +80,7 @@ const UserDashboard = ({ navigation }) => {
 
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
-      <Box backgroundColor="white" pt={2} pr={2}>
-        <Button
-          alignSelf={"flex-end"}
-          onPress={() => {
-            firebase.auth().signOut();
-          }}
-        >
-          Sign Out
-        </Button>
-      </Box>
-      <Box backgroundColor="white">
+      <Box backgroundColor='white'>
         <Heading pl={4} pb={2} pt={4}>
           Find An Expert
         </Heading>
@@ -98,9 +88,8 @@ const UserDashboard = ({ navigation }) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           pt={4}
-          mb={4}
-        >
-          <Flex flexDirection="row" width="auto" pl={1}>
+          mb={4}>
+          <Flex flexDirection='row' width='auto' pl={1}>
             {findAnExpertData.map((findAnExpertData, index) => (
               <FindAnExpertCard
                 key={index}

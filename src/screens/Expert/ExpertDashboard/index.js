@@ -74,15 +74,6 @@ const ExpertDashboard = ({ navigation }) => {
 
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
-      <Box backgroundColor='white' pt={2} pr={2}>
-        <Button
-          alignSelf={"flex-end"}
-          onPress={() => {
-            firebase.auth().signOut();
-          }}>
-          Sign Out
-        </Button>
-      </Box>
       <Box backgroundColor='white' pt={8} p={4}>
         <VStack>
           <Box style={styles.totalEarningBox}>

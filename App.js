@@ -1,4 +1,4 @@
-import { NativeBaseProvider, View } from "native-base";
+import { Box, Button, NativeBaseProvider, View } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -46,6 +46,9 @@ import ViewSingleOngoingJob from "./src/screens/Expert/ViewJobs/ViewSingleOngoin
 // Expert screens
 import ExpertChat from "./src/screens/Expert/Chat";
 
+// Header Button
+import { useNavigation } from "@react-navigation/native";
+
 //  STACK NAVIGATION CONFIG
 const TaskDashboardStack = createNativeStackNavigator();
 const ExpertDashboardStack = createNativeStackNavigator();
@@ -56,16 +59,35 @@ const UserDashboardStack = createNativeStackNavigator();
 const UserTaskStack = createNativeStackNavigator();
 const UserChatStack = createNativeStackNavigator();
 
+function LogoutButtonHeader() {
+  return (
+    <Box>
+      <Ionicons
+        name='log-out-outline'
+        size={38}
+        color='#149873'
+        onPress={() => {
+          firebase.auth().signOut();
+        }}
+      />
+    </Box>
+  );
+}
+
 //EXPERT STACK NAVIGATION
 function ExpertDashboardStackScreen() {
   return (
     <ExpertDashboardStack.Navigator>
       <ExpertDashboardStack.Screen
-        name="Expert Dashboard"
+        name='Expert Dashboard'
         component={ExpertDashboard}
+        options={{
+          headerTitle: "Expert Dashboard",
+          headerRight: () => <LogoutButtonHeader />,
+        }}
       />
       <ExpertDashboardStack.Screen
-        name="Completed Jobs"
+        name='Completed Jobs'
         component={ExpertViewSingleJobHistoryItem}
       />
       {/* <ExpertDashboardStack.Screen name='Dashboard' component={Dashboard} /> */}
@@ -76,14 +98,14 @@ function ExpertDashboardStackScreen() {
 function ExpertJobStackScreen() {
   return (
     <ExpertJobStack.Navigator>
-      <ExpertJobStack.Screen name="All Jobs" component={ViewJobs} />
+      <ExpertJobStack.Screen name='All Jobs' component={ViewJobs} />
       <ExpertJobStack.Screen
-        name="Upcoming Job"
+        name='Upcoming Job'
         component={ViewSingleUpcommingJob}
       />
-      <ExpertJobStack.Screen name="Ongoing Jobs" component={ViewOngoingJob} />
+      <ExpertJobStack.Screen name='Ongoing Jobs' component={ViewOngoingJob} />
       <ExpertJobStack.Screen
-        name="Ongoing Job"
+        name='Ongoing Job'
         component={ViewSingleOngoingJob}
       />
     </ExpertJobStack.Navigator>
@@ -94,31 +116,35 @@ function ExpertProfileStackScreen() {
   return (
     <ExpertProfileStack.Navigator>
       <ExpertProfileStack.Screen
-        name="Expert Profile"
+        name='Expert Profile'
         component={ExpertProfile}
+        options={{
+          headerTitle: "Expert Profile",
+          headerRight: () => <LogoutButtonHeader />,
+        }}
       />
       <ExpertProfileStack.Screen
-        name="Expert Job History"
+        name='Expert Job History'
         component={ExpertJobHistory}
       />
       <ExpertProfileStack.Screen
-        name="Completed Jobs"
+        name='Completed Jobs'
         component={ExpertViewSingleJobHistoryItem}
       />
       <ExpertProfileStack.Screen
-        name="Expert Area"
+        name='Expert Area'
         component={ExpertViewExpertiseArea}
       />
       <ExpertProfileStack.Screen
-        name="Add New Expert"
+        name='Add New Expert'
         component={AddNewExpert}
       />
       <ExpertProfileStack.Screen
-        name="View Single Expert"
+        name='View Single Expert'
         component={ViewSingleExpert}
       />
       <ExpertProfileStack.Screen
-        name="All Expert Area"
+        name='All Expert Area'
         component={AllExpertArea}
       />
     </ExpertProfileStack.Navigator>
@@ -128,7 +154,7 @@ function ExpertProfileStackScreen() {
 function ExpertChatStackScreen() {
   return (
     <ExpertChatStack.Navigator>
-      <ExpertChatStack.Screen name="Expert Chat" component={ExpertChat} />
+      <ExpertChatStack.Screen name='Expert Chat' component={ExpertChat} />
     </ExpertChatStack.Navigator>
   );
 }
@@ -138,45 +164,45 @@ function TaskDashboardStackScreen() {
   return (
     <TaskDashboardStack.Navigator>
       <TaskDashboardStack.Screen
-        name="Task Dashboard"
+        name='Task Dashboard'
         component={TaskDashboard}
       />
       <TaskDashboardStack.Screen
-        name="Create Task"
+        name='Create Task'
         component={CreateTaskCategory}
       />
       <TaskDashboardStack.Screen
-        name="Task Details"
+        name='Task Details'
         component={CreateTaskDetails}
       />
       <TaskDashboardStack.Screen
-        name="All Completed Tasks"
+        name='All Completed Tasks'
         component={AllCompletedWorks}
       />
       <TaskDashboardStack.Screen
-        name="Task Image"
+        name='Task Image'
         component={CreateTaskImage}
       />
-      <TaskDashboardStack.Screen name="View Task Image" component={ViewImage} />
+      <TaskDashboardStack.Screen name='View Task Image' component={ViewImage} />
       <TaskDashboardStack.Screen
-        name="Task Success"
+        name='Task Success'
         component={CreateTaskSuccess}
       />
-      <TaskDashboardStack.Screen name="My Tasks" component={ViewMyTasks} />
-      <TaskDashboardStack.Screen name="View Task" component={ViewTask} />
+      <TaskDashboardStack.Screen name='My Tasks' component={ViewMyTasks} />
+      <TaskDashboardStack.Screen name='View Task' component={ViewTask} />
       <TaskDashboardStack.Screen
-        name="View Past Tasks"
+        name='View Past Tasks'
         component={ViewPastTasks}
       />
       <TaskDashboardStack.Screen
-        name="View Past Task"
+        name='View Past Task'
         component={ViewPastTask}
       />
       <TaskDashboardStack.Screen
-        name="View Ongoing Task"
+        name='View Ongoing Task'
         component={ViewOngoingTask}
       />
-      <TaskDashboardStack.Screen name="Add Feedback" component={AddFeedback} />
+      <TaskDashboardStack.Screen name='Add Feedback' component={AddFeedback} />
     </TaskDashboardStack.Navigator>
   );
 }
@@ -185,8 +211,12 @@ function UserDashboardStackScreen() {
   return (
     <UserDashboardStack.Navigator>
       <UserDashboardStack.Screen
-        name="User Dashboard"
+        name='User Dashboard'
         component={UserDashboard}
+        options={{
+          headerTitle: "User Dashboard",
+          headerRight: () => <LogoutButtonHeader />,
+        }}
       />
     </UserDashboardStack.Navigator>
   );
@@ -195,7 +225,7 @@ function UserDashboardStackScreen() {
 function UserChatStackScreen() {
   return (
     <UserChatStack.Navigator>
-      <UserChatStack.Screen name="User Chat" component={UserChat} />
+      <UserChatStack.Screen name='User Chat' component={UserChat} />
     </UserChatStack.Navigator>
   );
 }
@@ -203,24 +233,24 @@ function UserChatStackScreen() {
 function UserTaskStackScreen() {
   return (
     <UserTaskStack.Navigator>
-      <UserTaskStack.Screen name="Task Dashboard" component={TaskDashboard} />
-      <UserTaskStack.Screen name="Create Task" component={CreateTaskCategory} />
-      <UserTaskStack.Screen name="Task Details" component={CreateTaskDetails} />
+      <UserTaskStack.Screen name='Task Dashboard' component={TaskDashboard} />
+      <UserTaskStack.Screen name='Create Task' component={CreateTaskCategory} />
+      <UserTaskStack.Screen name='Task Details' component={CreateTaskDetails} />
       <UserTaskStack.Screen
-        name="All Completed Tasks"
+        name='All Completed Tasks'
         component={AllCompletedWorks}
       />
-      <UserTaskStack.Screen name="Task Image" component={CreateTaskImage} />
-      <UserTaskStack.Screen name="Task Success" component={CreateTaskSuccess} />
-      <UserTaskStack.Screen name="My Tasks" component={ViewMyTasks} />
-      <UserTaskStack.Screen name="View Task" component={ViewTask} />
-      <UserTaskStack.Screen name="View Past Tasks" component={ViewPastTasks} />
-      <UserTaskStack.Screen name="View Past Task" component={ViewPastTask} />
+      <UserTaskStack.Screen name='Task Image' component={CreateTaskImage} />
+      <UserTaskStack.Screen name='Task Success' component={CreateTaskSuccess} />
+      <UserTaskStack.Screen name='My Tasks' component={ViewMyTasks} />
+      <UserTaskStack.Screen name='View Task' component={ViewTask} />
+      <UserTaskStack.Screen name='View Past Tasks' component={ViewPastTasks} />
+      <UserTaskStack.Screen name='View Past Task' component={ViewPastTask} />
       <UserTaskStack.Screen
-        name="View Ongoing Task"
+        name='View Ongoing Task'
         component={ViewOngoingTask}
       />
-      <UserTaskStack.Screen name="Add Feedback" component={AddFeedback} />
+      <UserTaskStack.Screen name='Add Feedback' component={AddFeedback} />
     </UserTaskStack.Navigator>
   );
 }
@@ -273,9 +303,9 @@ export default function App() {
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <ExpertDashboardStack.Navigator>
-            <ExpertDashboardStack.Screen name="Login" component={Login} />
+            <ExpertDashboardStack.Screen name='Login' component={Login} />
             <ExpertDashboardStack.Screen
-              name="Registration"
+              name='Registration'
               component={Registration}
             />
           </ExpertDashboardStack.Navigator>
@@ -290,7 +320,7 @@ export default function App() {
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName="Expert Dashboard Screen"
+            initialRouteName='Expert Dashboard Screen'
             screenOptions={({ route }) => ({
               tabBarStyle: {
                 paddingTop: 24,
@@ -334,12 +364,12 @@ export default function App() {
             })}
           >
             <Tab.Screen
-              name="Expert Dashboard Screen"
+              name='Expert Dashboard Screen'
               component={ExpertDashboardStackScreen}
             />
-            <Tab.Screen name="chats" component={ExpertChatStackScreen} />
-            <Tab.Screen name="Jobs" component={ExpertJobStackScreen} />
-            <Tab.Screen name="Profile" component={ExpertProfileStackScreen} />
+            <Tab.Screen name='chats' component={ExpertChatStackScreen} />
+            <Tab.Screen name='Jobs' component={ExpertJobStackScreen} />
+            <Tab.Screen name='Profile' component={ExpertProfileStackScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
@@ -352,7 +382,7 @@ export default function App() {
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName="User Dashboard Screen"
+            initialRouteName='User Dashboard Screen'
             screenOptions={({ route }) => ({
               tabBarStyle: {
                 paddingTop: 24,
@@ -396,12 +426,12 @@ export default function App() {
             })}
           >
             <Tab.Screen
-              name="User Dashboard Screen"
+              name='User Dashboard Screen'
               component={UserDashboardStackScreen}
             />
-            <Tab.Screen name="chats" component={UserChatStackScreen} />
-            <Tab.Screen name="Tasks" component={UserTaskStackScreen} />
-            <Tab.Screen name="Create a Task" component={UserTaskStackScreen} />
+            <Tab.Screen name='chats' component={UserChatStackScreen} />
+            <Tab.Screen name='Tasks' component={UserTaskStackScreen} />
+            <Tab.Screen name='Create a Task' component={UserTaskStackScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>

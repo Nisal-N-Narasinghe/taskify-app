@@ -31,6 +31,7 @@ const styles = {
   buttonAdd: {
     backgroundColor: "white",
     borderRadius: 10,
+    marginTop: 10,
     padding: 4,
     width: 75,
     height: 75,
