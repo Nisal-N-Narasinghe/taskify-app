@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import { Box, ScrollView, VStack } from "native-base";
+import { Box, Heading, ScrollView, VStack } from "native-base";
 import CleaningJob from "../../../../assets/cleaning.jpg";
 import ComputerJob from "../../../../assets/computer.jpg";
-import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import { ViewUpcomingJobItem } from "../../../components/Expert/ViewUpcomingJobs";
 
-const ViewUpcomingJobs = () => {
-  const navigation = useNavigation();
-
-  const handleClick = () => {
-    navigation.navigate("");
-  };
+const ViewUpcomingJobs = ({ navigation }) => {
+  const id = 123;
   const upcomingJobItems = [
     {
       title: "Cleaning Job",
@@ -32,10 +27,36 @@ const ViewUpcomingJobs = () => {
   return (
     <Box>
       <ScrollView>
-        <Box safeArea>
+        <Box safeArea background={"white"}>
+          <Heading pl={2} size='md'>
+            Ongoing Jobs
+          </Heading>
           <VStack paddingX={4}>
             {upcomingJobItems.map((item, index) => (
-              <TouchableOpacity key={index} onPress={handleClick}>
+              <TouchableOpacity
+                key={index}
+                onPress={() => navigation.navigate("Upcoming Job", { id })}>
+                <ViewUpcomingJobItem
+                  title={item.title}
+                  location={item.location}
+                  countFromPostedDate={item.countFromPostedDate}
+                  image={item.image[0]}
+                  Amount={item.Amount}
+                />
+              </TouchableOpacity>
+            ))}
+          </VStack>
+        </Box>
+        <Box safeArea background={"white"}>
+          <Heading pl={2} size='md'>
+            Upcoming Jobs
+          </Heading>
+          <VStack paddingX={4}>
+            {upcomingJobItems.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => navigation.navigate("Upcoming Job", { id })}
+              >
                 <ViewUpcomingJobItem
                   title={item.title}
                   location={item.location}

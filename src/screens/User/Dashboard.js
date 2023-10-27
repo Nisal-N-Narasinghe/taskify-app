@@ -54,13 +54,13 @@ const Dashboard = ({ navigation }) => {
       <Text style={{ fontWeight: "bold", fontSize: 20 }}>
         Hello {firstName.firstName}
       </Text>
-      <Box w="90%" alignItems="flex-start">
+      <Box w='90%' alignItems='flex-start'>
         <Menu
-          w="190"
+          w='190'
           trigger={(triggerProps) => {
             return (
               <Pressable
-                accessibilityLabel="More options menu"
+                accessibilityLabel='More options menu'
                 {...triggerProps}>
                 <HamburgerIcon />
               </Pressable>
@@ -81,13 +81,13 @@ const Dashboard = ({ navigation }) => {
             <TouchableOpacity
               onPress={() => navigation.navigate("Add New Expert")}
               style={styles.card}>
-              <Ionicons name="person-add" size={40} color="#3498db" />
+              <Ionicons name='person-add' size={40} color='#3498db' />
               <Text style={styles.cardTitle}>Add New Expert</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.card}
               onPress={() => navigation.navigate("Expert Profile")}>
-              <Ionicons name="person-circle" size={40} color="#2ecc71" />
+              <Ionicons name='person-circle' size={40} color='#2ecc71' />
               <Text style={styles.cardTitle}>Expert Profile</Text>
             </TouchableOpacity>
           </View>
@@ -97,14 +97,30 @@ const Dashboard = ({ navigation }) => {
             <TouchableOpacity
               style={styles.card}
               onPress={() => navigation.navigate("Upcoming Jobs")}>
-              <Ionicons name="calendar" size={40} color="#2ecc71" />
+              <Ionicons name='calendar' size={40} color='#2ecc71' />
               <Text style={styles.cardTitle}>Upcoming Jobs</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.card}
               onPress={() => navigation.navigate("User Chat")}>
-              <Ionicons name="chatbubble-sharp" size={40} color="#2ecc71" />
+              <Ionicons name='chatbubble-sharp' size={40} color='#2ecc71' />
               <Text style={styles.cardTitle}>User Chat</Text>
+            </TouchableOpacity>
+          </View>
+        </VStack>
+        <VStack>
+          <View style={styles.cardContainer}>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("Ongoing Job")}>
+              <Ionicons name='watch' size={40} color='#2ecc71' />
+              <Text style={styles.cardTitle}>Ongoing Job</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("Expert Dashboard")}>
+              <Ionicons name='watch' size={40} color='#2ecc71' />
+              <Text style={styles.cardTitle}>Expert Dashboard</Text>
             </TouchableOpacity>
           </View>
         </VStack>

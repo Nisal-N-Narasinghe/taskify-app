@@ -11,6 +11,7 @@ import {
   Button,
   FormControl,
   Link,
+  Radio,
 } from "native-base";
 import { StyleSheet } from "react-native";
 import React, { useState } from "react";
@@ -22,8 +23,9 @@ const Registration = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [role, setRole] = useState("");
 
-  registerUser = async (email, password, firstName, lastName) => {
+  registerUser = async (email, password, firstName, lastName, role) => {
     await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -49,7 +51,7 @@ const Registration = () => {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
-                role: "user",
+                role: role,
               });
           })
           .catch((error) => {
@@ -84,6 +86,20 @@ const Registration = () => {
           Sign up to continue!
         </Heading>
         <VStack space={3} mt="5">
+          <FormControl>
+            <FormControl.Label>Role</FormControl.Label>
+            <VStack space={2}>
+              <Radio.Group
+                name="role"
+                value={role}
+                onChange={(value) => setRole(value)}>
+                <HStack space={5} alignItems="center">
+                  <Radio value="expert">Expert</Radio>
+                  <Radio value="client">Client</Radio>
+                </HStack>
+              </Radio.Group>
+            </VStack>
+          </FormControl>
           <FormControl>
             <FormControl.Label>First Name</FormControl.Label>
             <Input
@@ -121,6 +137,7 @@ const Registration = () => {
               secureTextEntry={true}
             />
           </FormControl>
+
           <Button
             // justifyContent={"left"}
             mt={6}

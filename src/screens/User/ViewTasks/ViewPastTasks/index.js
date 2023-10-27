@@ -30,7 +30,7 @@ const ViewPastTasks = () => {
   const navigation = useNavigation();
 
   const handleClick = () => {
-    navigation.navigate("View Task");
+    navigation.navigate("View Past Task");
   };
 
   const toggleFilterModal = () => {

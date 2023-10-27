@@ -2,16 +2,10 @@ import {
   AspectRatio,
   Box,
   Image,
-  Text,
-  Stack,
   HStack,
   Heading,
   VStack,
-  Input,
-  Icon,
   ScrollView,
-  Row,
-  Button,
 } from "native-base";
 import React from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
@@ -28,7 +22,8 @@ import { CategoryItem } from "../../../../components/User/CreateTask/AddCategory
 
 const CreateTaskCategory = ({ navigation }) => {
   const handleClick = (category) => {
-    navigation.navigate("Task Details", { selectedCategory: category });
+    navigation.navigate("Task Details", { category });
+    console.log(category);
   };
 
   return (
@@ -63,7 +58,7 @@ const CreateTaskCategory = ({ navigation }) => {
                 handleClick("Cleaning");
               }}
             >
-              <CategoryItem image={CleanImg} category={"Cleaning"} />
+              <CategoryItem image={CleanImg} category="Cleaning" />
             </TouchableOpacity>
 
             {/* second box*/}

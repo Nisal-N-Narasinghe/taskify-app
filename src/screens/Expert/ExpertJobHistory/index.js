@@ -133,12 +133,12 @@ const ExpertJobHistory = ({ navigation }) => {
     timeSortingOrder,
     locationFilter
   );
-  console.log("Sorted Job History Items:", sortedJobHistoryItems);
+  // console.log("Sorted Job History Items:", sortedJobHistoryItems);
 
   return (
     <Box>
       <ScrollView showsVerticalScrollIndicator={true}>
-        <Box backgroundColor='white' pb={10} pt={12} safeArea>
+        <Box backgroundColor='white' pb={10} pt={6} safeArea>
           <Center>
             <Image
               source={PROImg}
@@ -188,7 +188,7 @@ const ExpertJobHistory = ({ navigation }) => {
         </Box>
 
         <ScrollView showsVerticalScrollIndicator={true} flex={1}>
-          <Box safeArea flex={1}>
+          <Box safeArea flex={1} background={"white"}>
             <VStack paddingX={4} paddingY={2}>
               {/* Render your job history items here */}
               {sortedJobHistoryItems.map((item, index) => (
