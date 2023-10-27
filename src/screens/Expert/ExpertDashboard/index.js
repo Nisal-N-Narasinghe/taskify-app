@@ -12,20 +12,19 @@ import {
   HStack,
   Text,
 } from "native-base";
-
+import { Ionicons } from "@expo/vector-icons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import PROImg from "../../../../assets/Expertimages/expertPRO.jpg";
 import styles from "../../../styles/Expert/ExpertDashboard";
 import CleaningJob from "../../../../assets/cleaning.jpg";
 import ComputerJob from "../../../../assets/computer.jpg";
 import { JobHistoryItem } from "../../../components/Expert/ExpertJobHistory";
-
+import { firebase } from "../../../../config";
 import { TouchableOpacity } from "react-native";
 import { FindAJobCard } from "../../../components/Expert/ExpertDashboard";
 
 const ExpertDashboard = ({ navigation }) => {
   const id = 123;
-
   const jobHistoryItems = [
     {
       title: "Cleaning",
@@ -75,6 +74,15 @@ const ExpertDashboard = ({ navigation }) => {
 
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
+      <Box backgroundColor='white' pt={2} pr={2}>
+        <Button
+          alignSelf={"flex-end"}
+          onPress={() => {
+            firebase.auth().signOut();
+          }}>
+          Sign Out
+        </Button>
+      </Box>
       <Box backgroundColor='white' pt={8} p={4}>
         <VStack>
           <Box style={styles.totalEarningBox}>
