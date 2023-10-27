@@ -1,4 +1,4 @@
-import { NativeBaseProvider, View } from "native-base";
+import { Box, Button, NativeBaseProvider, View } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -46,6 +46,9 @@ import ViewSingleOngoingJob from "./src/screens/Expert/ViewJobs/ViewSingleOngoin
 // Expert screens
 import ExpertChat from "./src/screens/Expert/Chat";
 
+// Header Button
+import { useNavigation } from "@react-navigation/native";
+
 //  STACK NAVIGATION CONFIG
 const TaskDashboardStack = createNativeStackNavigator();
 const ExpertDashboardStack = createNativeStackNavigator();
@@ -56,6 +59,21 @@ const UserDashboardStack = createNativeStackNavigator();
 const UserTaskStack = createNativeStackNavigator();
 const UserChatStack = createNativeStackNavigator();
 
+function LogoutButtonHeader() {
+  return (
+    <Box>
+      <Ionicons
+        name="log-out-outline"
+        size={38}
+        color="#149873"
+        onPress={() => {
+          firebase.auth().signOut();
+        }}
+      />
+    </Box>
+  );
+}
+
 //EXPERT STACK NAVIGATION
 function ExpertDashboardStackScreen() {
   return (
@@ -63,6 +81,10 @@ function ExpertDashboardStackScreen() {
       <ExpertDashboardStack.Screen
         name="Expert Dashboard"
         component={ExpertDashboard}
+        options={{
+          headerTitle: "Expert Dashboard",
+          headerRight: () => <LogoutButtonHeader />,
+        }}
       />
       <ExpertDashboardStack.Screen
         name="Completed Jobs"
@@ -96,6 +118,10 @@ function ExpertProfileStackScreen() {
       <ExpertProfileStack.Screen
         name="Expert Profile"
         component={ExpertProfile}
+        options={{
+          headerTitle: "Expert Profile",
+          headerRight: () => <LogoutButtonHeader />,
+        }}
       />
       <ExpertProfileStack.Screen
         name="Expert Job History"
@@ -187,6 +213,10 @@ function UserDashboardStackScreen() {
       <UserDashboardStack.Screen
         name="User Dashboard"
         component={UserDashboard}
+        options={{
+          headerTitle: "User Dashboard",
+          headerRight: () => <LogoutButtonHeader />,
+        }}
       />
     </UserDashboardStack.Navigator>
   );
