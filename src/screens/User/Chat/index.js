@@ -1,19 +1,7 @@
 // import { View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChatContainer from "../../../components/common/Chat/ChatContainer";
-import {
-  Actionsheet,
-  Box,
-  Button,
-  HStack,
-  Input,
-  PresenceTransition,
-  ScrollView,
-  Text,
-  VStack,
-  View,
-  useDisclose,
-} from "native-base";
+import { Box, HStack, Input, ScrollView, useDisclose } from "native-base";
 import { Feather } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import ChatOptionsActionSheet from "../../../components/common/Chat/ChatOptionsActionSheet";
@@ -24,6 +12,20 @@ const UserChat = () => {
   const { isOpen, onOpen, onClose } = useDisclose();
 
   const [showOfferPopup, setShowOfferPopup] = useState(false);
+
+  const [messageToSend, setMessageToSend] = useState("");
+
+  const sendMessage = () => {
+    const data = {
+      type: "text",
+      textValue: messageToSend,
+      sentBy: "client",
+      createdAt: new Date(),
+    };
+
+    // clear input field
+    setMessageToSend("");
+  };
 
   return (
     <>
@@ -51,6 +53,8 @@ const UserChat = () => {
           pl={4}
           pr={4}
           focusOutlineColor="transparent"
+          value={messageToSend}
+          onChangeText={(text) => setMessageToSend(text)}
         />
         <TouchableOpacity
           _pressed={{ backgroundColor: "#404040" }}
@@ -62,7 +66,7 @@ const UserChat = () => {
             <Feather name="plus" size={20} color="white" />
           </Box>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={sendMessage}>
           <Box bgColor="primary.green" p={2.5} rounded={100}>
             <Feather name="send" size={20} color="white" />
           </Box>

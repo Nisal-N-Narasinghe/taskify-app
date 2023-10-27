@@ -12,7 +12,7 @@ import {
   FormControl,
   Link,
 } from "native-base";
-import { View, TouchableOpacity, TextInput, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { firebase } from "../../../config";
 import { Ionicons } from "@expo/vector-icons";

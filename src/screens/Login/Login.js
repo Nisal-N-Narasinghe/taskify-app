@@ -1,7 +1,5 @@
 import {
-  AspectRatio,
   Box,
-  Image,
   Text,
   HStack,
   Heading,
@@ -12,7 +10,6 @@ import {
   FormControl,
   Link,
 } from "native-base";
-import { View, TouchableOpacity, TextInput, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { firebase } from "../../../config";

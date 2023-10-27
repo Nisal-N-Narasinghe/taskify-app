@@ -1,25 +1,57 @@
 import { View, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HStack, Text, VStack } from "native-base";
 import ChatBubble from "./ChatBubble";
 import ChatHeader from "./ChatHeader";
+import { firebase } from "../../../../config";
 
 const ChatContainer = () => {
-  const message = {
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-    sentBy: "user",
-    sentTime: "2021-10-11T16:22:00.000Z",
-    id: 1,
-  };
-  const message1 = {
-    text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ",
-    sentBy: "user",
-    sentTime: "2021-10-11T16:22:00.000Z",
-    id: 1,
-  };
+  const [chatStream, setChatStream] = useState([]);
 
-  const fetchMessages = () => {
-    // TODO: Fetch messages from backend
+  useEffect(() => {
+    // Fetch messages when the component is mounted
+    fetchChatMessages();
+
+    // Set up a real-time listener for new messages
+    const chatPath = "/conversations/gnAGmx7ZEJVffUr85V8W/stream"; // Replace with your chat path
+    const listener = firebase
+      .firestore()
+      .collection(chatPath)
+      .orderBy("createdAt") // Order by a field in your messages
+      .onSnapshot((querySnapshot) => {
+        const messages = [];
+        querySnapshot.forEach((doc) => {
+          const messageData = doc.data();
+          messages.push(messageData);
+        });
+        setChatStream(messages);
+      });
+
+    // Clean up the listener when the component unmounts
+    return () => {
+      listener();
+    };
+  }, []);
+
+  const fetchChatMessages = () => {
+    // Step 2: Fetch chat messages from Firebase
+    const chatPath = "/conversations/gnAGmx7ZEJVffUr85V8W/stream";
+
+    firebase
+      .firestore()
+      .collection(chatPath)
+      .get()
+      .then((querySnapshot) => {
+        const messages = [];
+        querySnapshot.forEach((doc) => {
+          const messageData = doc.data();
+          messages.push(messageData);
+        });
+        setChatStream(messages);
+      })
+      .catch((error) => {
+        console.error("Error fetching messages:", error);
+      });
   };
 
   const navigateToTaskListing = () => {
@@ -38,13 +70,10 @@ const ChatContainer = () => {
             taskStartDate="22 September 2023"
           />
         </TouchableOpacity>
-        <ChatBubble message={message} alignLeft={false} />
-        <ChatBubble message={message1} alignLeft={true} />
-        <ChatBubble message={message} alignLeft={true} />
-        <ChatBubble message={message} alignLeft={true} />
-        <ChatBubble message={message} alignLeft={false} />
-        <ChatBubble message={message1} alignLeft={true} />
-        <ChatBubble message={message1} alignLeft={true} />
+        {chatStream.map((chatItem, index) => (
+          <ChatItemHandler key={index} chatItem={chatItem} />
+        ))}
+
         <HStack></HStack>
       </VStack>
     </View>
