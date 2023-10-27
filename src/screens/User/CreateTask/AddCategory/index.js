@@ -29,7 +29,7 @@ const CreateTaskCategory = ({ navigation }) => {
   return (
     <Box padding={3}>
       <ScrollView>
-        <StepIndicator totalSteps={5} currentStep={1} />
+        <StepIndicator totalSteps={4} currentStep={1} />
         <Heading marginTop={3} size="md">
           Create Your Task Now
         </Heading>

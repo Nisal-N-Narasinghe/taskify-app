@@ -55,37 +55,10 @@ const CreateTaskDetails = () => {
     console.log(maxBudget);
   };
 
-  // const createTask = async (
-  //   category,
-  //   title,
-  //   description,
-  //   location,
-  //   minBudget,
-  //   maxBudget,
-  //   dueDate
-  // ) => {
-  //   try {
-  //     await firebase.firestore().collection("tasks").add({
-  //       category,
-  //       title,
-  //       description,
-  //       location,
-  //       minBudget,
-  //       maxBudget,
-  //       dueDate,
-  //     });
-
-  //     navigation.navigate("Task Image");
-  //   } catch (error) {
-  //     co;
-  //     nsole.error("Error creating task:", error);
-  //   }
-  // };
-
   return (
     <Box p={4}>
       <ScrollView showsVerticalScrollIndicator={true}>
-        <StepIndicator totalSteps={5} currentStep={2} />
+        <StepIndicator totalSteps={4} currentStep={2} />
         <Heading marginBottom={3} marginTop={3} size="md">
           Please fill the below details
         </Heading>

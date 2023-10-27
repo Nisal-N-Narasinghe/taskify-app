@@ -177,7 +177,7 @@ const CreateTaskImage = () => {
   return (
     <ScrollView>
       <Box padding={3}>
-        <StepIndicator totalSteps={5} currentStep={3} />
+        <StepIndicator totalSteps={4} currentStep={3} />
         <Heading marginTop={6} size="md" alignSelf="center">
           Please Upload an Image
         </Heading>
