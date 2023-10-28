@@ -3,11 +3,119 @@ import React from "react";
 import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-const OfferCard = (props) => {
+const ExpertOfferCard = (props) => {
   if (props.status === "pending") {
     return (
       <LinearGradient
-        style={{ borderRadius: 18 }}
+        style={{ borderRadius: 14 }}
+        colors={["#149873", "#14DCA4"]}
+        start={[0, 0]}
+        end={[1, 0]}>
+        <VStack p={4} space={2} alignItems="center">
+          <HStack alignItems="center">
+            <Feather name="zap" size={22} color="white" />
+            <Text ml={1} fontSize={17} color="white" fontWeight="semibold">
+              You sent an offer
+            </Text>
+          </HStack>
+          <Text mt="-1" color="white" fontSize="36" fontWeight="bold">
+            {props.offer} LKR
+          </Text>
+          <Button
+            w="full"
+            justifyContent={"center"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            backgroundColor={"primary.white"}
+            _pressed={{ backgroundColor: "#EFEFEF" }}
+            endIcon={
+              <Ionicons name="create-outline" size={24} color="#149873" />
+            }
+            onPress={() => {}}>
+            <Text fontSize={17} fontWeight="semibold" color={"primary.green"}>
+              Edit offer
+            </Text>
+          </Button>
+          <Button
+            w="full"
+            justifyContent={"center"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            backgroundColor={"primary.black"}
+            _pressed={{ backgroundColor: "#404040" }}
+            endIcon={<Ionicons name="close-sharp" size={24} color="white" />}
+            onPress={() => {}}>
+            <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+              Cancel
+            </Text>
+          </Button>
+        </VStack>
+      </LinearGradient>
+    );
+  } else if (props.status === "accepted") {
+    return (
+      <LinearGradient
+        style={{ borderRadius: 14 }}
+        colors={["#149873", "#14DCA4"]}
+        start={[0, 0]}
+        end={[1, 0]}>
+        <VStack p={4} space={2} alignItems="center">
+          <HStack alignItems="center">
+            <Text mr={1} fontSize={17} color="white" fontWeight="semibold">
+              Offer accepted by client
+            </Text>
+            <MaterialCommunityIcons
+              name="checkbox-marked-circle-outline"
+              size={24}
+              color="white"
+            />
+          </HStack>
+          <Text mt="-1" color="white" fontSize="36" fontWeight="bold">
+            {props.offer} LKR
+          </Text>
+          <Button
+            w="full"
+            justifyContent={"center"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            backgroundColor={"primary.white"}
+            _pressed={{ backgroundColor: "#EFEFEF" }}
+            endIcon={
+              <Ionicons name="arrow-forward-sharp" size={24} color="#149873" />
+            }
+            onPress={() => {}}>
+            <Text fontSize={17} fontWeight="semibold" color={"primary.green"}>
+              Open job description
+            </Text>
+          </Button>
+          <Button
+            w="full"
+            justifyContent={"center"}
+            h={10}
+            rounded={100}
+            p={0}
+            px={6}
+            backgroundColor={"primary.white"}
+            _pressed={{ backgroundColor: "#EFEFEF" }}
+            endIcon={<Ionicons name="map-outline" size={24} color="#149873" />}
+            onPress={() => {}}>
+            <Text fontSize={17} fontWeight="semibold" color={"primary.green"}>
+              Open location in Maps
+            </Text>
+          </Button>
+        </VStack>
+      </LinearGradient>
+    );
+  } else if (props.status === "cancelled") {
+    return (
+      <LinearGradient
+        style={{ borderRadius: 14 }}
         colors={["#149873", "#14DCA4"]}
         start={[0, 0]}
         end={[1, 0]}>
@@ -31,11 +139,11 @@ const OfferCard = (props) => {
             backgroundColor={"primary.white"}
             _pressed={{ backgroundColor: "#EFEFEF" }}
             endIcon={
-              <Ionicons name="checkmark-sharp" size={24} color="#149873" />
+              <Ionicons name="arrow-forward-sharp" size={24} color="#149873" />
             }
             onPress={() => {}}>
             <Text fontSize={17} fontWeight="semibold" color={"primary.green"}>
-              Accept
+              View Progress
             </Text>
           </Button>
           <Button
@@ -62,48 +170,6 @@ const OfferCard = (props) => {
         </VStack>
       </LinearGradient>
     );
-  } else if (props.status === "accepted") {
-    return (
-      <LinearGradient
-        style={{ borderRadius: 18 }}
-        colors={["#149873", "#14DCA4"]}
-        start={[0, 0]}
-        end={[1, 0]}>
-        <VStack p={4} space={2} alignItems="center">
-          <Text color="white" fontSize="36" fontWeight="bold">
-            {props.offer} LKR
-          </Text>
-          <HStack mt="-1" mb="1" alignItems="center">
-            <Text mr={1} fontSize={17} color="white" fontWeight="semibold">
-              You accepted this offer
-            </Text>
-            <MaterialCommunityIcons
-              name="checkbox-marked-circle-outline"
-              size={24}
-              color="white"
-            />
-          </HStack>
-
-          <Button
-            w="full"
-            justifyContent={"center"}
-            h={10}
-            rounded={100}
-            p={0}
-            px={6}
-            backgroundColor={"primary.white"}
-            _pressed={{ backgroundColor: "#EFEFEF" }}
-            endIcon={
-              <Ionicons name="arrow-forward-sharp" size={24} color="#149873" />
-            }
-            onPress={() => {}}>
-            <Text fontSize={17} fontWeight="semibold" color={"primary.green"}>
-              View Progress
-            </Text>
-          </Button>
-        </VStack>
-      </LinearGradient>
-    );
   } else if (props.status === "rejected") {
     return (
       <LinearGradient
@@ -112,6 +178,12 @@ const OfferCard = (props) => {
         start={[0, 0]}
         end={[1, 0]}>
         <VStack p={4} space={2} alignItems="center">
+          <HStack alignItems="center">
+            <Text mr={1} fontSize={17} color="white" fontWeight="semibold">
+              Offer declined by client
+            </Text>
+            <Ionicons name="close-sharp" size={22} color="white" />
+          </HStack>
           <Text
             textDecorationLine="line-through"
             mt="-1"
@@ -120,7 +192,7 @@ const OfferCard = (props) => {
             fontWeight="bold">
             {props.offer} LKR
           </Text>
-          {/* <Button
+          <Button
             w="full"
             justifyContent={"center"}
             h={10}
@@ -134,9 +206,9 @@ const OfferCard = (props) => {
             }
             onPress={() => {}}>
             <Text fontSize={17} fontWeight="semibold" color={"primary.orange"}>
-              View Progress
+              Send new offer
             </Text>
-          </Button> */}
+          </Button>
 
           {/* <HStack alignItems="center" mt={1}>
             <MaterialCommunityIcons name="timer-sand" size={22} color="white" />
@@ -144,16 +216,10 @@ const OfferCard = (props) => {
               Expires in 1 day
             </Text>
           </HStack> */}
-          <HStack alignItems="center">
-            <Text mr={1} fontSize={17} color="white" fontWeight="semibold">
-              You declined this offer
-            </Text>
-            <Ionicons name="close-sharp" size={22} color="white" />
-          </HStack>
         </VStack>
       </LinearGradient>
     );
   }
 };
 
-export default OfferCard;
+export default ExpertOfferCard;
