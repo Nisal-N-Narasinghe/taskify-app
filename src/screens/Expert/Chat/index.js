@@ -85,7 +85,6 @@ const UserChat = () => {
           </Box>
         </TouchableOpacity>
       </HStack>
-
       <ChatOptionsActionSheet
         isOpen={isOpen}
         onClose={() => {
@@ -97,6 +96,7 @@ const UserChat = () => {
         attachImagePopup={() => {
           alert("attach image");
         }}
+        isExpert={true}
       />
 
       <SendOfferPopup

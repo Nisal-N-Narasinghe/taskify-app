@@ -1,11 +1,11 @@
 import { View } from "react-native";
 import React from "react";
-import { Box, HStack, Text } from "native-base";
+import { Box, HStack, Image, Text } from "native-base";
 import { wrapText } from "../../../utils/common/textUtils";
 import { convertFirebaseTimestampToTime } from "../../../utils/common/dateTimeUtils";
 
 const ChatBubble = ({
-  message: { textValue, sentBy, createdAt },
+  message: { textValue, createdAt, type, imageURL },
   alignLeft,
   id,
 }) => {
@@ -20,13 +20,18 @@ const ChatBubble = ({
           pb={6}
           minW={24}
           bgColor={alignLeft ? "primary.grey" : "primary.green"}>
-          <Text
-            color={alignLeft ? "primary.black" : "primary.white"}
-            textAlign="left"
-            fontSize={16}
-            fontWeight={400}>
-            {wrapText(textValue, 35)}
-          </Text>
+          {type === "text" && (
+            <Text
+              color={alignLeft ? "primary.black" : "primary.white"}
+              textAlign="left"
+              fontSize={16}
+              fontWeight={400}>
+              {wrapText(textValue, 35)}
+            </Text>
+          )}
+          {type === "image" && (
+            <Image src={imageURL} w="280" h="280" rounded={4} />
+          )}
           <Text
             fontSize={10}
             position="absolute"

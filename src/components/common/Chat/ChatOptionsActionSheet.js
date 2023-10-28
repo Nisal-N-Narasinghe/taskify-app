@@ -7,6 +7,7 @@ const ChatOptionsActionSheet = ({
   onClose,
   sendOfferPopup,
   attachImagePopup,
+  isExpert,
 }) => {
   return (
     <Actionsheet
@@ -19,22 +20,26 @@ const ChatOptionsActionSheet = ({
           <Text fontSize={16} fontWeight="semibold">
             Chat options
           </Text>
-          <Button
-            justifyContent={"left"}
-            h={10}
-            rounded={100}
-            p={0}
-            px={6}
-            colorScheme={"emerald"}
-            endIcon={<Ionicons name="arrow-forward" size={24} color="white" />}
-            onPress={() => {
-              sendOfferPopup();
-              onClose();
-            }}>
-            <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
-              Send offer
-            </Text>
-          </Button>
+          {isExpert && (
+            <Button
+              justifyContent={"left"}
+              h={10}
+              rounded={100}
+              p={0}
+              px={6}
+              colorScheme={"emerald"}
+              endIcon={
+                <Ionicons name="arrow-forward" size={24} color="white" />
+              }
+              onPress={() => {
+                sendOfferPopup();
+                onClose();
+              }}>
+              <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
+                Send offer
+              </Text>
+            </Button>
+          )}
           <Button
             justifyContent={"left"}
             h={10}

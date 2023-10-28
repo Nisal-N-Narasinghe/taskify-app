@@ -7,10 +7,37 @@ import {
   Text,
   VStack,
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import { Ionicons, Feather } from "@expo/vector-icons";
+import { firebase } from "../../../config";
 
 const SendOfferPopup = ({ isOpen, onClose }) => {
+  const [offer, setOffer] = useState(null);
+
+  const handleSendOffer = () => {
+    const data = {
+      type: "offer",
+      offerValue: offer,
+      createdAt: new Date(),
+      status: "pending",
+    };
+
+    setOffer("");
+
+    const chatPath = "/conversations/gnAGmx7ZEJVffUr85V8W/stream"; // Replace with your chat path
+
+    firebase
+      .firestore()
+      .collection(chatPath)
+      .add(data)
+      .then((docRef) => {
+        // console.log("Message written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding message: ", error);
+      });
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -27,7 +54,11 @@ const SendOfferPopup = ({ isOpen, onClose }) => {
               </Text>
             </HStack>
             <Input
-              defaultValue="8,000"
+              // defaultValue="8,000"
+              value={offer}
+              onChange={(e) => {
+                setOffer(e.nativeEvent.text);
+              }}
               flex={1}
               rounded={18}
               h="70"
@@ -54,6 +85,7 @@ const SendOfferPopup = ({ isOpen, onClose }) => {
                 <Ionicons name="checkmark-sharp" size={24} color="white" />
               }
               onPress={() => {
+                handleSendOffer();
                 onClose();
               }}>
               <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
