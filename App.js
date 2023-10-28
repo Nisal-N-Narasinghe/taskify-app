@@ -226,6 +226,10 @@ function UserChatStackScreen() {
   return (
     <UserChatStack.Navigator>
       <UserChatStack.Screen name="User Chat" component={UserChat} />
+      <UserChatStack.Screen
+        name="Ongoing Job"
+        component={ViewSingleOngoingJob}
+      />
     </UserChatStack.Navigator>
   );
 }
@@ -361,8 +365,7 @@ export default function App() {
                   </View>
                 );
               },
-            })}
-          >
+            })}>
             <Tab.Screen
               name="Expert Dashboard Screen"
               component={ExpertDashboardStackScreen}
@@ -423,8 +426,7 @@ export default function App() {
                   </View>
                 );
               },
-            })}
-          >
+            })}>
             <Tab.Screen
               name="User Dashboard Screen"
               component={UserDashboardStackScreen}

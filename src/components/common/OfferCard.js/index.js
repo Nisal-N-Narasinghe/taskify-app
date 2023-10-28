@@ -12,13 +12,19 @@ const OfferCard = (props) => {
       .firestore()
       .doc(offerPath)
       .update({ status: "accepted" })
-      .then(() => {
-        alert("Offer accepted successfully.");
-        // console.log("Offer accepted successfully.");
-      })
-      .catch((error) => {
-        // console.error("Error accepting offer:", error);
-      });
+      .then(() => {})
+      .catch((error) => {});
+  };
+
+  const handleDeclineOffer = (offerId) => {
+    const offerPath = `/conversations/gnAGmx7ZEJVffUr85V8W/stream/${offerId}`;
+
+    firebase
+      .firestore()
+      .doc(offerPath)
+      .update({ status: "rejected" })
+      .then(() => {})
+      .catch((error) => {});
   };
 
   if (props.status === "pending") {
@@ -65,7 +71,9 @@ const OfferCard = (props) => {
             backgroundColor={"primary.black"}
             _pressed={{ backgroundColor: "#404040" }}
             endIcon={<Ionicons name="close-sharp" size={24} color="white" />}
-            onPress={() => {}}>
+            onPress={() => {
+              handleDeclineOffer(props.id);
+            }}>
             <Text fontSize={17} fontWeight="semibold" color={"primary.white"}>
               Decline
             </Text>
@@ -113,7 +121,9 @@ const OfferCard = (props) => {
             endIcon={
               <Ionicons name="arrow-forward-sharp" size={24} color="#149873" />
             }
-            onPress={() => {}}>
+            onPress={() => {
+              props.navigation.navigate("Ongoing Job");
+            }}>
             <Text fontSize={17} fontWeight="semibold" color={"primary.green"}>
               View Progress
             </Text>

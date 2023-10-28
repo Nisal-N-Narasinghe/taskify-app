@@ -5,7 +5,7 @@ import ChatHeader from "./ChatHeader";
 import { firebase } from "../../../../config";
 import ChatItemHandler from "./ChatItemHandler";
 
-const ChatContainer = ({ isExpert }) => {
+const ChatContainer = ({ isExpert, navigation }) => {
   const [chatStream, setChatStream] = useState([]);
 
   useEffect(() => {
@@ -72,6 +72,7 @@ const ChatContainer = ({ isExpert }) => {
             isExpert={isExpert}
             key={index}
             chatItem={chatItem}
+            navigation={navigation}
           />
         ))}
 

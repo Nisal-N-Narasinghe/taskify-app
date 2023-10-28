@@ -8,7 +8,8 @@ import ChatOptionsActionSheet from "../../../components/common/Chat/ChatOptionsA
 import SendOfferPopup from "../../../components/Offer/SendOfferPopup";
 import { firebase } from "../../../../config";
 
-const ExpertChat = () => {
+// props-> conversationID
+const ExpertChat = (props) => {
   const [showChatOptions, setShowChatOptions] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclose();
 
@@ -26,7 +27,7 @@ const ExpertChat = () => {
 
     setMessageToSend("");
 
-    const chatPath = "/conversations/gnAGmx7ZEJVffUr85V8W/stream"; // Replace with your chat path
+    const chatPath = `/conversations/gnAGmx7ZEJVffUr85V8W/stream`; // Replace with your chat path
 
     firebase
       .firestore()
@@ -49,7 +50,7 @@ const ExpertChat = () => {
         onContentSizeChange={() =>
           this.scrollView.scrollToEnd({ animated: true })
         }>
-        <ChatContainer />
+        <ChatContainer navigation={props.navigation} taskID={props.taskID} />
       </ScrollView>
 
       <HStack bg="primary.white" p={3} space={2}>
@@ -93,7 +94,7 @@ const ExpertChat = () => {
           setShowOfferPopup(true);
         }}
         attachImagePopup={() => {
-          alert("attach image");
+          alert("Please attach image");
         }}
       />
 
