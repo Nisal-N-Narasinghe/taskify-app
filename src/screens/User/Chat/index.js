@@ -32,9 +32,7 @@ const ExpertChat = () => {
       .firestore()
       .collection(chatPath)
       .add(data)
-      .then((docRef) => {
-        // console.log("Message written with ID: ", docRef.id);
-      })
+      .then((docRef) => {})
       .catch((error) => {
         console.error("Error adding message: ", error);
       });

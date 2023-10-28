@@ -2,8 +2,25 @@ import { View, Text, HStack, VStack, Button } from "native-base";
 import React from "react";
 import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { firebase } from "../../../../config";
 
 const OfferCard = (props) => {
+  const handleAcceptOffer = (offerId) => {
+    const offerPath = `/conversations/gnAGmx7ZEJVffUr85V8W/stream/${offerId}`;
+
+    firebase
+      .firestore()
+      .doc(offerPath)
+      .update({ status: "accepted" })
+      .then(() => {
+        alert("Offer accepted successfully.");
+        // console.log("Offer accepted successfully.");
+      })
+      .catch((error) => {
+        // console.error("Error accepting offer:", error);
+      });
+  };
+
   if (props.status === "pending") {
     return (
       <LinearGradient
@@ -33,7 +50,7 @@ const OfferCard = (props) => {
             endIcon={
               <Ionicons name="checkmark-sharp" size={24} color="#149873" />
             }
-            onPress={() => {}}>
+            onPress={() => handleAcceptOffer(props.id)}>
             <Text fontSize={17} fontWeight="semibold" color={"primary.green"}>
               Accept
             </Text>
@@ -120,30 +137,6 @@ const OfferCard = (props) => {
             fontWeight="bold">
             {props.offer} LKR
           </Text>
-          {/* <Button
-            w="full"
-            justifyContent={"center"}
-            h={10}
-            rounded={100}
-            p={0}
-            px={6}
-            backgroundColor={"primary.white"}
-            _pressed={{ backgroundColor: "#EFEFEF" }}
-            endIcon={
-              <Ionicons name="arrow-forward-sharp" size={24} color="#EF7D41" />
-            }
-            onPress={() => {}}>
-            <Text fontSize={17} fontWeight="semibold" color={"primary.orange"}>
-              View Progress
-            </Text>
-          </Button> */}
-
-          {/* <HStack alignItems="center" mt={1}>
-            <MaterialCommunityIcons name="timer-sand" size={22} color="white" />
-            <Text ml={1} fontSize={17} color="white" fontWeight="normal">
-              Expires in 1 day
-            </Text>
-          </HStack> */}
           <HStack alignItems="center">
             <Text mr={1} fontSize={17} color="white" fontWeight="semibold">
               You declined this offer

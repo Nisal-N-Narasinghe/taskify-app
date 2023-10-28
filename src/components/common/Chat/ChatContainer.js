@@ -20,7 +20,8 @@ const ChatContainer = ({ isExpert }) => {
         const messages = [];
         querySnapshot.forEach((doc) => {
           const messageData = doc.data();
-          messages.push(messageData);
+          const messageId = doc.id; // Get the document ID
+          messages.push({ id: messageId, ...messageData }); // Include the ID in the message object
         });
         setChatStream(messages);
       });

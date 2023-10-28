@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import ChatBubble from "./ChatBubble";
 import OfferCard from "../OfferCard.js";
@@ -15,10 +14,20 @@ const ChatItemHandler = ({ chatItem, isExpert }) => {
   } else if (chatItem.type === "offer") {
     if (isExpert) {
       return (
-        <ExpertOfferCard offer={chatItem.offerValue} status={chatItem.status} />
+        <ExpertOfferCard
+          id={chatItem.id}
+          offer={chatItem.offerValue}
+          status={chatItem.status}
+        />
       );
     }
-    return <OfferCard offer={chatItem.offerValue} status={chatItem.status} />;
+    return (
+      <OfferCard
+        id={chatItem.id}
+        offer={chatItem.offerValue}
+        status={chatItem.status}
+      />
+    );
   }
 };
 
