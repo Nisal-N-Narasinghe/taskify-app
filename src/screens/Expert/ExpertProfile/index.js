@@ -51,11 +51,11 @@ const ExpertProfileScreen = ({ navigation }) => {
   };
 
   const ratingsData = [
-    { review: "Sample Review", rating: 4.5 },
-    { review: "Sample Review", rating: 4.5 },
-    { review: "Sample Review", rating: 4.5 },
-    { review: "Sample Review", rating: 4.5 },
-    { review: "Sample Review", rating: 4.5 },
+    { review: "Quality", rating: 3.2 },
+    { review: "Cleanliness", rating: 4.0 },
+    { review: "Timeliness", rating: 3.8 },
+    { review: "Communication", rating: 4.5 },
+    { review: "Satifaction", rating: 4.0 },
   ];
   /* const expertiseAreas = [
     {
