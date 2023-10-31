@@ -226,6 +226,10 @@ function UserChatStackScreen() {
   return (
     <UserChatStack.Navigator>
       <UserChatStack.Screen name='User Chat' component={UserChat} />
+      <UserChatStack.Screen
+        name='Ongoing Job'
+        component={ViewSingleOngoingJob}
+      />
     </UserChatStack.Navigator>
   );
 }

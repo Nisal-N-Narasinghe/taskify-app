@@ -74,7 +74,7 @@ const ExpertDashboard = ({ navigation }) => {
 
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={true}>
-      <Box backgroundColor='white' pt={8} p={4}>
+      <Box backgroundColor="white" pt={8} p={4}>
         <VStack>
           <Box style={styles.totalEarningBox}>
             <Heading pl={4} pb={2} pt={4}>
@@ -114,16 +114,16 @@ const ExpertDashboard = ({ navigation }) => {
           </HStack>
         </VStack>
       </Box>
-      <Box backgroundColor='white'>
+      <Box backgroundColor="white">
         <Heading pl={4} pb={2} pt={4}>
-          Find A Job
+          Explore Jobs
         </Heading>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           pt={4}
           mb={4}>
-          <Flex flexDirection='row' width='auto' pl={1}>
+          <Flex flexDirection="row" width="auto" pl={1}>
             {findAJobData.map((findAJobData, index) => (
               <FindAJobCard
                 key={index}
