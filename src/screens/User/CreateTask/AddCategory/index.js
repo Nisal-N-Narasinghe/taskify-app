@@ -6,6 +6,7 @@ import {
   Heading,
   VStack,
   ScrollView,
+  Center,
 } from "native-base";
 import React from "react";
 import StepIndicator from "../../../../components/common/StepIndicators";
@@ -29,20 +30,24 @@ const CreateTaskCategory = ({ navigation }) => {
   return (
     <Box padding={3}>
       <ScrollView>
-        <StepIndicator totalSteps={4} currentStep={1} />
-        <Heading marginTop={3} size="md">
-          Create Your Task Now
-        </Heading>
-        <Heading size="md">Select your task catagory</Heading>
+        <Box marginTop={6}>
+          <StepIndicator totalSteps={4} currentStep={1} />
+        </Box>
+        <Center>
+          <Heading marginTop={3} size='lg' marginBottom={4}>
+            Create Your Task Now
+          </Heading>
+        </Center>
+        <Heading size='md'>Select your task catagory</Heading>
         <Box>
-          <AspectRatio w="100%" ratio={30 / 10} marginTop={3}>
+          <AspectRatio w='100%' ratio={30 / 10} marginTop={3}>
             <Image
               source={UpperImg}
-              alt="image"
-              width="100%"
-              height="auto"
-              rounded="lg"
-              opacity="70"
+              alt='image'
+              width='100%'
+              height='auto'
+              rounded='lg'
+              opacity='70'
             />
           </AspectRatio>
         </Box>
@@ -56,9 +61,8 @@ const CreateTaskCategory = ({ navigation }) => {
               style={{ flex: 1 }}
               onPress={() => {
                 handleClick("Cleaning");
-              }}
-            >
-              <CategoryItem image={CleanImg} category="Cleaning" />
+              }}>
+              <CategoryItem image={CleanImg} category='Cleaning' />
             </TouchableOpacity>
 
             {/* second box*/}
@@ -66,8 +70,7 @@ const CreateTaskCategory = ({ navigation }) => {
               style={{ flex: 1 }}
               onPress={() => {
                 handleClick("Plumbing");
-              }}
-            >
+              }}>
               <CategoryItem image={PlumberImg} category={"Plumbing"} />
             </TouchableOpacity>
           </HStack>
@@ -77,8 +80,7 @@ const CreateTaskCategory = ({ navigation }) => {
               style={{ flex: 1 }}
               onPress={() => {
                 handleClick("Electric Work");
-              }}
-            >
+              }}>
               <CategoryItem image={ElectricImg} category={"Electric Work"} />
             </TouchableOpacity>
 
@@ -87,8 +89,7 @@ const CreateTaskCategory = ({ navigation }) => {
               style={{ flex: 1 }}
               onPress={() => {
                 handleClick("Landscaping");
-              }}
-            >
+              }}>
               <CategoryItem image={GardenImg} category={"Landscaping"} />
             </TouchableOpacity>
           </HStack>
@@ -98,8 +99,7 @@ const CreateTaskCategory = ({ navigation }) => {
               style={{ flex: 1 }}
               onPress={() => {
                 handleClick("Computer Repair");
-              }}
-            >
+              }}>
               <CategoryItem image={ComputerImg} category={"Computer Repair"} />
             </TouchableOpacity>
 
@@ -108,8 +108,7 @@ const CreateTaskCategory = ({ navigation }) => {
               style={{ flex: 1 }}
               onPress={() => {
                 handleClick("Pet Care");
-              }}
-            >
+              }}>
               <CategoryItem image={DogImg} category={"Pet Care"} />
             </TouchableOpacity>
           </HStack>

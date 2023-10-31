@@ -5,7 +5,7 @@ import ChatHeader from "./ChatHeader";
 import { firebase } from "../../../../config";
 import ChatItemHandler from "./ChatItemHandler";
 
-const ChatContainer = ({ isExpert }) => {
+const ChatContainer = ({ isExpert, navigation }) => {
   const [chatStream, setChatStream] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,8 @@ const ChatContainer = ({ isExpert }) => {
         const messages = [];
         querySnapshot.forEach((doc) => {
           const messageData = doc.data();
-          messages.push(messageData);
+          const messageId = doc.id; // Get the document ID
+          messages.push({ id: messageId, ...messageData }); // Include the ID in the message object
         });
         setChatStream(messages);
       });
@@ -71,6 +72,7 @@ const ChatContainer = ({ isExpert }) => {
             isExpert={isExpert}
             key={index}
             chatItem={chatItem}
+            navigation={navigation}
           />
         ))}
 
