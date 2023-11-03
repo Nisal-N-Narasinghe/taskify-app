@@ -13,12 +13,10 @@ export const RatingCard = ({ rating, review }) => {
       p={2}
       mx={2}>
       <Stack alignItems='center' my={2}>
-        <Text style={styles.ratintext}>Rating</Text>
+        <Text style={styles.ratintext}>{review}</Text>
         <RatingIndicator rating={rating} />
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Flex flex={1} flexDirection='row' width='auto'>
-            <Text style={styles.reviewtext}>{review}</Text>
-          </Flex>
+          <Flex flex={1} flexDirection='row' width='auto'></Flex>
         </ScrollView>
       </Stack>
     </Box>

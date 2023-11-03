@@ -16,7 +16,7 @@ export const ViewUpcomingJobItem = ({
   title,
   location,
   image,
-  countFromPostedDate,
+  countToJobDate,
   Amount,
 }) => {
   return (
@@ -49,7 +49,7 @@ export const ViewUpcomingJobItem = ({
               mr={2}
             />
             <Text fontSize='sm'>
-              {location} - {countFromPostedDate}
+              {location} - {countToJobDate}
             </Text>
           </HStack>
           <Box style={styles.amountLabel}>

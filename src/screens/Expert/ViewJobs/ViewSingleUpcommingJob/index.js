@@ -8,18 +8,23 @@ import {
   Text,
   VStack,
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import ImageSlider from "../../../../components/common/ImageSlider";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 import ImageSliderIndicator from "../../../../components/common/ImageSliderIndicator";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../../../styles/Expert/ViewUpcomingJobs";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import CustomSlider from "../../../../components/common/CustomeSlider";
 const ViewSingleUpcommingJob = () => {
   const navigation = useNavigation();
-  const [currentStep, setCurrentStep] = useState(0);
+  const statusOptions = ["Upcomming", "Ongoing"];
+  const [selectedStatus, setSelectedStatus] = useState("UpComming");
+  const handleStatusChange = (newStatus) => {
+    setSelectedStatus(newStatus);
+  };
 
+  const [currentStep, setCurrentStep] = useState(0);
   const images = [
     require("../../../../../assets/Expertimages/GardenPlanning/gardenPlanning1.jpeg"),
   ];
@@ -94,7 +99,15 @@ const ViewSingleUpcommingJob = () => {
             <Text style={styles.bottomBoxHeddingText}>Job</Text>
             <Text style={styles.bottomBoxText}>In 2 days</Text>
           </HStack>
-
+          <HStack justifyContent={"space-between"} marginTop={6}>
+            <Text style={styles.bottomBoxHeddingText}>Status</Text>
+            <Text style={styles.bottomBoxText}>{selectedStatus}</Text>
+          </HStack>
+          <CustomSlider
+            options={statusOptions}
+            initialValue={selectedStatus}
+            onChange={handleStatusChange}
+          />
           <Button
             style={styles.chatButton}
             onPress={() => navigation.navigate("Chat")}
