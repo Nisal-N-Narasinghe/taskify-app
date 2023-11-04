@@ -5,12 +5,12 @@ import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCpLkRGAawz0Ux7Vr-wtK1e6Cm6R04L07A",
-  authDomain: "taskify-6ba79.firebaseapp.com",
-  projectId: "taskify-6ba79",
-  storageBucket: "taskify-6ba79.appspot.com",
-  messagingSenderId: "702526951889",
-  appId: "1:702526951889:web:5b97b1e9c3ee1f76d810f0",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIRBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 if (!firebase.apps.length) {
